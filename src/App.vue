@@ -1,13 +1,19 @@
 <template>
-  <div id="header">
-    <the-header> </the-header>
+  <div class="app">
+    <div class="header">
+      <the-header> </the-header>
+    </div>
+    <div class="row">
+      <div class="column">
+        <donor-count> </donor-count>
+        <goal> </goal>
+        <flip-bits @update-donors="updateDonorList"> </flip-bits>
+      </div>
+      <div class="column">
+        <donor-list v-if="donorList.length > 0" :donorList="donorList"> </donor-list>
+      </div>
+    </div>
   </div>
-  <div class="lineOne">
-    <donor-count> </donor-count>
-    <donor-list :donorList="donorList"> </donor-list>
-  </div>
-  <goal> </goal>
-  <flip-bits @update-donors="updateDonorList"> </flip-bits>
 </template>
 
 <script>
@@ -42,6 +48,16 @@ export default {
 </script>
 
 <style>
+
+.row {
+  display: flex;
+}
+
+.column {
+  float: left;
+  width: 50%;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 * {
@@ -50,6 +66,9 @@ export default {
 
 html {
   font-family: 'Roboto', sans-serif;
+}
+.app {
+  background-color: white;
 }
 
 body {
