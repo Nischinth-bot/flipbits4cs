@@ -1,50 +1,46 @@
 <template>
   <teleport to="body">
-  <div v-if="show" class="backdrop"></div>
-  <transition name="dialog">
-    <dialog open v-if="show">
-      <header>
-        <slot name="header">
-          <h2>{{ title }}</h2>
-        </slot>
-      </header>
-      <section>
-        <form method="dialog" @submit.prevent="tryClose">
-          <h3>Thanks for your donation! Join our hall of fame!</h3>
-          <p>
-            <label for="fullname"> Please enter your name. </label>
-            <input id="fullname" type="text" v-model="fullName" />
-          </p>
-          <h3>Are you an alumini?</h3>
-          <p>
-            <label for="alum"> Yes </label>
-            <input id="alum" 
-            type="radio" 
-            value="true" 
-            v-model="isAlumini" 
-            />
-            <label for="notAlum"> No </label>
-            <input
-              id="notAlum"
-              type="radio"
-              value="false"
-              v-model="isAlumini"
-            />
-          </p>
-          <div v-if="isAlumini && isAlumini=='true'">
-            <h3>Please enter your year of graduation.</h3>
+    <div v-if="show" class="backdrop"></div>
+    <transition name="dialog">
+      <dialog open v-if="show">
+        <header>
+          <slot name="header">
+            <h2>{{ title }}</h2>
+          </slot>
+        </header>
+        <section>
+          <form method="dialog" @submit.prevent="tryClose('neither')">
+            <h3>Thanks for your donation! Join our hall of fame!</h3>
             <p>
-              <input id="alum" type="text" v-model.number="year" />
+              <label for="fullname"> Please enter your name. </label>
+              <input id="fullname" type="text" v-model="fullName" />
             </p>
-          </div>
-          <span id="confirmCancel">
-            <base-button @click="tryClose('confirm')"> Confirm </base-button>
-            <base-button @click="tryClose('close')"> Close </base-button>
-          </span>
-        </form>
-      </section>
-    </dialog>
-  </transition>
+            <h3>Are you an alumini?</h3>
+            <p>
+              <label for="alum"> Yes </label>
+              <input id="alum" type="radio" value="true" v-model="isAlumini" />
+              <label for="notAlum"> No </label>
+              <input
+                id="notAlum"
+                type="radio"
+                value="false"
+                v-model="isAlumini"
+              />
+            </p>
+            <div v-if="isAlumini && isAlumini == 'true'">
+              <h3>Please enter your year of graduation.</h3>
+              <p>
+                <input id="alum" type="text" v-model.number="year" />
+              </p>
+            </div>
+            <span id="confirmCancel">
+              <base-button @click="tryClose('confirm')"> Confirm </base-button>
+              <base-button @click="tryClose('cancel')"> Close </base-button>
+            </span>
+          </form>
+        </section>
+      </dialog>
+    </transition>
   </teleport>
 </template>
 
@@ -53,7 +49,7 @@ import BaseButton from './BaseButton.vue';
 export default {
   data() {
     return {
-      fullName: null,
+      fullName: '',
       isAlumini: null,
       year: null,
     };
@@ -83,8 +79,14 @@ export default {
       if (this.fixed) {
         return;
       }
-      this.$emit('close', { type: arg });
-      this.fullName = null;
+      const donor = {
+        fullName: this.fullName,
+        isAlumini: this.isAlumini,
+        yearOfGraduation: this.year,
+      };
+      this.$emit('close', { type: arg, donor: donor });
+      // console.log(donor);
+      this.fullName = '';
       this.isAlumini = null;
       this.year = null;
     },

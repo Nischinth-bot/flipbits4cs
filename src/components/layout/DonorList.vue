@@ -6,11 +6,11 @@
         <div v-if="donor.number > -1">
           <div class="inline">
             <strong> {{ donor.fullName }} {{ donor.yearOfGraduation }} <br><br> </strong>
-            <bit-pattern
+            <!-- <bit-pattern
               :number="donor.number"
               :interactive="false"
               donorList="true"
-            />
+            /> -->
           </div>
         </div>
         <br />
@@ -20,9 +20,9 @@
 </template>
 
 <script>
-import BitPattern from '../bits/BitPattern.vue';
+// import BitPattern from '../bits/BitPattern.vue';
 export default {
-  components: { BitPattern },
+//   components: { BitPattern },
   props: ['donorList'],
 };
 </script>
