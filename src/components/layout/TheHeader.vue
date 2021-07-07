@@ -1,76 +1,53 @@
 <template>
-  <header>
-      <img src="../../pics/asu_logo.png" class="left">  
-      <h1> Flip Bits 4 CS</h1>
-  </header>
+  <div class="header">
+    <div id="company-name">
+      <h1><strong> FlipBits </strong></h1>
+    </div>
+    <div class="cart">
+      <i
+        id="cart"
+        class="fa fa-shopping-cart"
+        style="font-size: 24px; color: gold"
+      ></i>
+      <strong> {{ this.cart.itemCount }} </strong>
+    </div>
+  </div>
 </template>
 
-<style scoped>
 
-.left {
-  position: absolute;
-  left: 0px;
-  width: 100px;
-  padding: 10px;
+<script>
+export default {
+  data() {
+    return {
+      cart: {
+        itemCount: 0,
+        items: [],
+        empty: true,
+      },
+    };
+  },
+};
+</script>
+
+<style>
+body {
+  font-family: Tahoma, sans-serif;
 }
 
-header {
-  width: 100%;
-  height: 5rem;
-  background-color: #000000;
-  color: gold ;
+.header {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  background: black;
+  color: gold;
+  padding: 10px 10px;
 }
 
-header a {
-  text-decoration: none;
-  color: #f391e3;
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid transparent;
-}
-
-a:active,
-a:hover,
-a.router-link-active {
-  border: 1px solid #f391e3;
-}
-
-h1 {
-  margin: 0;
-}
-
-h1 a {
-  color: white;
-  margin: 0;
-}
-
-h1 a:hover,
-h1 a:active,
-h1 a.router-link-active {
-  border-color: transparent;
-}
-
-header nav {
-  width: 90%;
-  margin: auto;
+.cart {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-header ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-li {
-  margin: 0 0.5rem;
+  width: 65px;
 }
 </style>
+

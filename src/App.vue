@@ -1,34 +1,27 @@
 <template>
   <div class="app">
-    <div class="header">
-      <the-header> </the-header>
+    <head>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      />
+    </head>
+    <div class="the-header">
+      <the-header></the-header>
     </div>
-    <div class="row">
-      <div class="column">
-        <donor-count> </donor-count>
-        <goal> </goal>
-        <flip-bits @update-donors="updateDonorList"> </flip-bits>
-      </div>
-      <div class="column">
-        <donor-list v-if="donorList.length > 0" :donorList="donorList"> </donor-list>
-      </div>
+    <div class="home-page">
+      <home-page> </home-page>
     </div>
   </div>
 </template>
 
 <script>
-import DonorCount from './components/layout/DonorCount.vue';
 import TheHeader from './components/layout/TheHeader.vue';
-import Goal from './components/layout/Goal.vue';
-import FlipBits from './components/layout/FlipBits.vue';
-import DonorList from './components/layout/DonorList.vue';
+import HomePage from './pages/HomePage.vue';
 export default {
   components: {
+    HomePage,
     TheHeader,
-    DonorCount,
-    Goal,
-    FlipBits,
-    DonorList,
   },
   data() {
     return {
@@ -48,7 +41,6 @@ export default {
 </script>
 
 <style>
-
 .row {
   display: flex;
 }

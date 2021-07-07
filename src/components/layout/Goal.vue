@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     donationsRequired(){
-      return (this.$store.getters.goal - (this.$store.getters.donorCount * 1000));
+      return (this.$store.getters.goal - (this.$store.getters.donorCount * 25));
     }
   },
   components: { BaseCard, BitPattern },

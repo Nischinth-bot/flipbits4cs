@@ -50,19 +50,6 @@ export default {
   animation-duration: 2s;
 }
 
-.base-card-gold {
-  border-radius: 12px;
-  border-color: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  background-color: gold;
-  padding: 1rem;
-  margin: 2rem auto;
-  max-width: 40rem;
-  display: block;
-  animation-name: 'fade-in';
-  animation-duration: 2s;
-}
-
 .base-card h1 {
   margin: 0;
   background-color: black;
