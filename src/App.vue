@@ -9,18 +9,16 @@
     <div class="the-header">
       <the-header></the-header>
     </div>
-    <div class="home-page">
-      <home-page> </home-page>
+    <div class="router-view">
+      <router-view> </router-view>
     </div>
   </div>
 </template>
 
 <script>
 import TheHeader from './components/layout/TheHeader.vue';
-import HomePage from './pages/HomePage.vue';
 export default {
   components: {
-    HomePage,
     TheHeader,
   },
   data() {
