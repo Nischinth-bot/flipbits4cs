@@ -39,29 +39,42 @@ export default {
 </script>
 
 <style>
-.row {
-  display: flex;
-}
-
-.column {
-  float: left;
-  width: 50%;
-}
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-  font-family: 'Roboto', sans-serif;
-}
-.app {
-  background-color: white;
+  font-family: Tahoma, sans-serif;
+  height: 100%;
+  background: rgb(155, 154, 154);
+  color: gold;
+  height: 100%;
+  margin: 0;
 }
 
-body {
-  margin: 0;
+h1 {
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-zoom {
+  0% {
+    font-size: inherit;
+  }
+
+  100% {
+    font-size: 30px;
+    transform: translateX(50px);
+  }
 }
 </style>

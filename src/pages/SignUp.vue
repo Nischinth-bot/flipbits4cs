@@ -54,6 +54,10 @@ export default {
 </script>
 
 <style scoped>
+html,
+body {
+  height: 100%;
+}
 
 .signup-page {
   display: flex;
@@ -84,6 +88,9 @@ button {
   background: black;
   color: white;
   border: 1px solid black;
+}
+
+h1 {
 }
 
 p {

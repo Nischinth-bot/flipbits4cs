@@ -1,20 +1,49 @@
 <template>
-  <div class="row">
-    <div class="column">
-      <donor-count> </donor-count>
-      <goal> </goal>
-      <flip-bits @update-donors="updateDonorList"> </flip-bits>
+  <div class="welcome-page-alpha">
+    <div class="welcome-page">
+      <h1>Welcome!</h1>
+      <br />
+      <ul>
+        <li>Our Mission</li>
+        <li>Make a Pledge</li>
+        <li>Our Progress</li>
+        <li>AppState CS Merch</li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
-import DonorCount from '../components/layout/DonorCount.vue';
-import Goal from '../components/layout/Goal.vue';
-import FlipBits from '../components/layout/FlipBits.vue';
 export default {
-  components: {
-      DonorCount, FlipBits, Goal 
-  },
+  components: {},
 };
 </script>
+
+<style scoped>
+.welcome-page-alpha {
+  display: flex;
+  justify-content: center;
+  color: gold;
+  animation: fade 2s ease-in-out;
+}
+.welcome-page {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 25%;
+  padding-top: 20%;
+}
+
+.welcome-page ul {
+  list-style: none;
+}
+
+.welcome-page ul li:hover {
+  /* font-size: 25px; */
+  animation: slide-zoom 0.5s forwards;
+}
+
+li:hover {
+  cursor: pointer;
+}
+</style>

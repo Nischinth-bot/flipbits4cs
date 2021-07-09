@@ -49,9 +49,6 @@ export default {
 </script>
 
 <style>
-body {
-  font-family: Tahoma, sans-serif;
-}
 
 .right {
   display: flex;
@@ -64,9 +61,14 @@ body {
   align-items: center;
   justify-content: space-between;
   height: 50px;
-  background: black;
+  background: rgb(167, 165, 165);
   color: gold;
   padding: 10px 10px;
+}
+
+#company-name {
+  justify-content: center;
+  align-items: center;
 }
 
 .cart {
