@@ -74,7 +74,6 @@ h1 {
 
   100% {
     font-size: 30px;
-    transform: translateX(50px);
   }
 }
 </style>

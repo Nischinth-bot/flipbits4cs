@@ -24,14 +24,14 @@ export default {
   display: flex;
   justify-content: center;
   color: gold;
-  animation: fade 2s ease-in-out;
+  animation: fade 1s ease-in-out;
 }
 .welcome-page {
   display: flex;
   flex-direction: column;
   text-align: center;
   width: 25%;
-  padding-top: 20%;
+  padding-top: 10%;
 }
 
 .welcome-page ul {
@@ -41,9 +41,6 @@ export default {
 .welcome-page ul li:hover {
   /* font-size: 25px; */
   animation: slide-zoom 0.5s forwards;
-}
-
-li:hover {
   cursor: pointer;
 }
 </style>

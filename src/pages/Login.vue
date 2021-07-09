@@ -56,19 +56,21 @@ export default {
 
 
 <style>
-body {
-  /* background: url("../../assets/clouds.jpg") no-repeat fixed center; */
-  font-family: Tahoma, sans-serif;
-}
 
-.login-page {
-}
 .main {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   padding-top: 10rem;
+}
+
+h1{
+  padding: 2rem;
+}
+
+li{
+  padding: 0.5rem;
 }
 .warning {
   color: red;
