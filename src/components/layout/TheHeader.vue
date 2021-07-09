@@ -2,6 +2,7 @@
   <div class="header">
     <div id="company-name">
       <h1 @click="goToHomePage()"><strong> FlipBits </strong></h1>
+      <img src="./asu_logo.png"/>
     </div>
     <div class="right">
       <div class="login-signup">
@@ -49,10 +50,13 @@ export default {
 </script>
 
 <style>
-
 .right {
   display: flex;
   justify-content: space-around;
+}
+img {
+  width: 200px;
+  height: 50px;
 }
 
 .header {
@@ -67,6 +71,8 @@ export default {
 }
 
 #company-name {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }

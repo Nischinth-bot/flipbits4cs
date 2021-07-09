@@ -3,6 +3,7 @@
     <div class="main">
       <h1>Welcome back!</h1>
       <p>Please enter your login details</p>
+      <br>
       <form @submit.prevent="submitForm">
         <div class="login-form">
           <label for="username"> Username </label>
@@ -56,6 +57,10 @@ export default {
 
 
 <style>
+
+.login-page {
+  animation: fade 1s ease-in-out;
+}
 
 .main {
   display: flex;

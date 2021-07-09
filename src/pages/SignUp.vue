@@ -54,10 +54,6 @@ export default {
 </script>
 
 <style scoped>
-html,
-body {
-  height: 100%;
-}
 
 .signup-page {
   display: flex;
@@ -65,6 +61,7 @@ body {
   align-items: center;
   justify-content: center;
   padding-top: 10rem;
+  animation: fade 1s ease-in-out;
 }
 
 .signup-page h1 {
