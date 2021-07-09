@@ -1,28 +1,36 @@
 <template>
   <base-card>
     <h1>GOAL</h1>
-    <p>Our goal is to raise <strong> ${{ donationsRequired }}</strong> for an endowement.</p>
-    <bit-pattern :interactive="false" :key="donationsRequired" :number="donationsRequired"> </bit-pattern>
+    <p>
+      Our goal is to raise <strong> ${{ donationsRequired }}</strong> for an
+      endowement.
+    </p>
+    <bit-pattern
+      :interactive="false"
+      :key="donationsRequired"
+      :number="donationsRequired"
+    >
+    </bit-pattern>
   </base-card>
-
 </template>
 
 <script>
 import BitPattern from '../bits/BitPattern.vue';
 import BaseCard from '../ui/BaseCard.vue';
 export default {
-  data() {
-  },
+  data() {},
   computed: {
-    donationsRequired(){
-      return (this.$store.getters.goal - (this.$store.getters.donorCount * 25));
-    }
+    donationsRequired() {
+      return this.$store.getters.goal - this.$store.getters.donorCount * 25;
+    },
   },
   components: { BaseCard, BitPattern },
 };
 </script>
 
 <style scoped>
+
+
 .left {
   position: absolute;
   left: 0px;

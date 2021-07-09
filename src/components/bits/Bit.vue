@@ -68,6 +68,9 @@ export default {
 </script>
 
 <style scoped>
+
+html {
+}
 @keyframes gold-to-black {
   0% {
     background-color: black;

@@ -6,7 +6,7 @@
       <ul>
         <li>Our Mission</li>
         <li>Make a Pledge</li>
-        <li>Our Progress</li>
+        <li @click="goToProgressPage()">Our Progress</li>
         <li>AppState CS Merch</li>
       </ul>
     </div>
@@ -15,7 +15,11 @@
 
 <script>
 export default {
-  components: {},
+  methods: {
+    goToProgressPage() {
+      this.$router.push('/progress');
+    },
+  },
 };
 </script>
 

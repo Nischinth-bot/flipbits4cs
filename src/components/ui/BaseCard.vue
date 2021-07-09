@@ -32,22 +32,17 @@ export default {
     opacity: 1;
   }
 }
-.card {
-  position: relative;
-  right: 160px;
-  width: 1000px;
-}
 
 .base-card {
   border-radius: 12px;
   border-color: white;
+  background: rgb(202, 199, 199);
+  color: black;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 1rem;
-  margin: 2rem auto;
+  margin: 0.5rem;
   max-width: 40rem;
-  display: block;
-  animation-name: 'fade-in';
-  animation-duration: 2s;
+  animation: fade 1s ease-in-out;
 }
 
 .base-card h1 {

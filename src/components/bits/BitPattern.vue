@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bit-pattern">
     <ul class="list-inline">
       <li v-for="idx in maxBits - 1" :key="idx">
         <bit
@@ -70,16 +70,11 @@ export default {
 
 <style scoped>
 .list-inline {
+  display:flex;
+  flex-direction: row;
   list-style: none;
-  margin-left: 0;
-  padding-left: 0;
 }
-.list-inline > li:before {
-  content: '\200B'; /* 1 */
-  position: absolute; /* 2 */
-}
-
-.list-inline > li {
-  display: inline-block;
+li {
+  margin: -7.8px;
 }
 </style>

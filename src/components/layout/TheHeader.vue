@@ -1,7 +1,7 @@
 <template>
-  <div class="header">
-    <div id="company-name">
-      <h1 @click="goToHomePage()"><strong> FlipBits </strong></h1>
+  <div class="header" >
+    <div id="company-name" @click="goToHomePage()">
+      <h1><strong> FlipBits </strong></h1>
       <img src="./asu_logo.png"/>
     </div>
     <div class="right">

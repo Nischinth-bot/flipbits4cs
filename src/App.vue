@@ -52,8 +52,8 @@ html {
   height: 100%;
   background: rgb(155, 154, 154);
   color: gold;
-  height: 100%;
   margin: 0;
+  padding: 0;
 }
 
 h1 {
