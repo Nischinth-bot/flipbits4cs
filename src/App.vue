@@ -50,7 +50,7 @@ export default {
 html {
   font-family: Tahoma, sans-serif;
   height: 100%;
-  background: rgb(155, 154, 154);
+  background: rgb(172, 172, 172);
   color: gold;
   margin: 0;
   padding: 0;

@@ -37,7 +37,7 @@ a {
   font: inherit;
   background-color: black;
   color: gold;
-  border: 1px solid white;
+  border: 1px solid black;
   color: white;
   cursor: pointer;
   border-radius: 30px;
@@ -50,7 +50,7 @@ a:active,
 button:hover,
 button:active {
   background-color: rgb(33, 32, 32);
-  border-color: white;
+  border-color: gold;
   color: gold;
 
 }

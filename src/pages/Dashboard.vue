@@ -18,11 +18,9 @@ export default {
 <style scoped>
 .dashboard {
   display: flex;
-  flex-direction: column;
-  width: 80%;
 }
 
 .dashboard-alpha {
-    display: flex;
-}
+  display: flex;
+  }
 </style>
