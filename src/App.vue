@@ -12,6 +12,7 @@
     <div class="router-view">
       <router-view> </router-view>
     </div>
+    <div class="footer">Footer</div>
   </div>
 </template>
 
@@ -47,13 +48,11 @@ export default {
   padding: 0;
 }
 
-html {
+html, body {
   font-family: Tahoma, sans-serif;
   height: 100%;
   background: rgb(172, 172, 172);
   color: gold;
-  margin: 0;
-  padding: 0;
 }
 
 h1 {
@@ -76,4 +75,18 @@ h1 {
     font-size: 30px;
   }
 }
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: gold;
+  text-align: center;
+}
+
+.app {
+}
+
 </style>

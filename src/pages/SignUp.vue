@@ -10,7 +10,8 @@
       <input type="text" id="email" v-model="email" />
       <label for="email">Enter a new password </label>
       <input type="password" id="email" v-model="password" />
-      <button type="submit">Submit</button>
+      <br>
+      <base-button>Submit</base-button>
     </form>
     <p v-if="!validState && validState != null">
       Your input is invalid. Please check all fields and try again.
@@ -19,7 +20,9 @@
 </template>
 
 <script>
+import BaseButton from '../components/ui/BaseButton.vue';
 export default {
+  components: { BaseButton },
   emits: ['signup-user-info'],
   data() {
     return {
@@ -79,6 +82,7 @@ export default {
 
 ul {
   list-style: none;
+  margin: 1rem;
 }
 
 button {

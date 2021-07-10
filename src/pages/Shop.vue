@@ -29,7 +29,8 @@ export default {
   background: gold;
 }
 
-.shop-alpha{
-
+.shop-alpha {
+  border: 1px solid black;
+  background: gold;
 }
 </style>
