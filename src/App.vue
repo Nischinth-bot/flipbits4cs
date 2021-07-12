@@ -57,7 +57,6 @@ body {
 .router-view {
   min-height: 100%;
   color: rgb(204, 178, 28);
-  animation: fade 1.0s ease-in-out;
 }
 
 .app {

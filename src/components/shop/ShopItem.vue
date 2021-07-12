@@ -1,19 +1,23 @@
 <template>
   <div class="shop-item">
     <img :src="getImgUrl()" />
+    <div class="item-desc">
+      {{ description }}
+    </div>
     <div class="cart-wishlist">
-      <base-button> Add to Cart </base-button>
-      <div @click="changecolor()" :class="color">&hearts;</div>
+      <base-button @click="addToCart()"> Add to Cart </base-button>
+      <div @click="wishlist()" :class="color">&hearts;</div>
+      <div class="price"> $ {{ price }} </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['itemName', 'imgLink', 'price'],
+  props: ['itemName', 'imgLink', 'price', 'description'],
   data() {
     return {
-      color: 'heart-black',
+      color: 'heart-black', 
     };
   },
   computed: {},
@@ -32,6 +36,12 @@ export default {
       this.color = 'heart-red';
       return;
     },
+    wishlist() {
+      this.changecolor();
+    },
+    addToCart(){
+      
+    }
   },
 };
 </script>
@@ -76,5 +86,9 @@ img {
   justify-content: space-around;
   width: 50%;
   margin: 5%;
+}
+
+.shop-item .price {
+  margin-top: 5%;
 }
 </style>

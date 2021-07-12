@@ -1,11 +1,16 @@
 <template>
   <div class="shop-alpha">
-    <div class="shop">
+    <!-- <div class="sidebar">
+      <h1>Sidebar</h1>
+      </div> -->
+    <div class="shop-items">
       <shop-item
         v-for="item in shop_items"
         :key="item.key"
         :imgLink="item.link"
+        :price="item.price"
         :itemName="item.name"
+        :description="item.description"
       >
       </shop-item>
     </div>
@@ -27,6 +32,7 @@ export default {
       this.shop_items.push({
         link: 'burberry.png',
         name: 'CS T-Shirt',
+        description: 'App State Unisex M/F Black Computer Science T-shirt',
         key: i,
         price: 25,
       });
@@ -36,6 +42,7 @@ export default {
       this.shop_items.push({
         link: 'mug.png',
         name: 'CS Department Mug',
+        description: 'App State FlipBits White Coffee Mug',
         key: i,
         price: 15,
       });
@@ -46,22 +53,30 @@ export default {
 </script>
 
 <style scoped>
-.shop {
+.shop-items {
   display: flex;
   flex-direction: row;
+  flex-wrap:wrap;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin-bottom: 10%;
+  padding-bottom: 10%;
+  padding-top: 5%;
+  margin-left: 10%;
+  animation: fade 1s ease-in-out;
 }
 
 .shop-alpha {
   border: 1px solid black;
-  height: 100%;
-  width: 100%;
-}
+  display: flex;
 
-.sidebar{
-  font-size: 100px;
-  color:black;
 }
+/* 
+.sidebar{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  color:black;
+  width: 15%;
+  border: 1px solid black;
+} */
 </style>
