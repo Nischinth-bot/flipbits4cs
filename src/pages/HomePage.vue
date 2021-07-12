@@ -30,14 +30,12 @@ export default {
 .welcome-page-alpha {
   display: flex;
   justify-content: center;
-  color: gold;
   animation: fade 1s ease-in-out;
 }
 .welcome-page {
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 25%;
   padding-top: 10%;
 }
 

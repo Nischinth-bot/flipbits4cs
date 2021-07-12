@@ -12,7 +12,6 @@
     <div class="router-view">
       <router-view> </router-view>
     </div>
-    <div class="footer">Footer</div>
   </div>
 </template>
 
@@ -48,15 +47,24 @@ export default {
   padding: 0;
 }
 
-html, body {
+html,
+body {
   font-family: Tahoma, sans-serif;
+  background: rgb(233, 233, 228);
   height: 100%;
-  background: rgb(172, 172, 172);
-  color: gold;
 }
 
-h1 {
+.router-view {
+  min-height: 100%;
+  color: rgb(204, 178, 28);
+  animation: fade 1.0s ease-in-out;
 }
+
+.app {
+  min-height: 100%;
+  color: black;
+}
+
 @keyframes fade {
   0% {
     opacity: 0;
@@ -75,18 +83,4 @@ h1 {
     font-size: 30px;
   }
 }
-
-.footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: black;
-  color: gold;
-  text-align: center;
-}
-
-.app {
-}
-
 </style>
