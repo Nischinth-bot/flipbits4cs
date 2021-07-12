@@ -4,7 +4,7 @@
     <dialog open v-if="open">
       <div class="x-bar">
         <h3 class="title">{{ title }}</h3>
-        <x class="x" @click="$emit('close')">x</x>
+        <div class="x" @click="$emit('close')">x</div>
       </div>
       <slot> </slot>
     </dialog>

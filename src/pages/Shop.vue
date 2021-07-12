@@ -29,27 +29,20 @@ export default {
     };
   },
   mounted() {
-    var i = 0;
-    while (i < 1) {
-      this.shop_items.push({
-        link: 'burberry.png',
-        name: 'CS T-Shirt',
-        description: 'App State Unisex M/F Black Computer Science T-shirt',
-        key: i,
-        price: 25,
-      });
-      i += 1;
-    }
-    while (i < 2) {
-      this.shop_items.push({
-        link: 'mug.png',
-        name: 'CS Department Mug',
-        description: 'App State FlipBits White Coffee Mug',
-        key: i,
-        price: 15,
-      });
-      i += 1;
-    }
+    this.shop_items.push({
+      link: 'burberry.png',
+      name: 'CS T-Shirt',
+      description: 'App State Unisex M/F Black Computer Science T-shirt',
+      key: 't-shirt',
+      price: 25,
+    });
+    this.shop_items.push({
+      link: 'mug.png',
+      name: 'CS Department Mug',
+      description: 'App State FlipBits Coffee Mug',
+      key: 'mug',
+      price: 15,
+    });
   },
 };
 </script>
@@ -58,7 +51,7 @@ export default {
 .shop-items {
   display: flex;
   flex-direction: row;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   justify-content: space-around;
   flex-wrap: wrap;
   padding-bottom: 10%;
@@ -70,7 +63,6 @@ export default {
 .shop-alpha {
   border: 1px solid black;
   display: flex;
-
 }
 /* 
 .sidebar{

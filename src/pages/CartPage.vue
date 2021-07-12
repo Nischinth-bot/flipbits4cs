@@ -3,7 +3,10 @@
     <ul class="item-list">
       <li v-for="item in cartItems" :key="item.description">
         {{ item.description }}
+        ${{ item.price }}
         {{ item.units }}
+        {{ item.color }}
+        {{ item.size }}
       </li>
     </ul>
   </div>
