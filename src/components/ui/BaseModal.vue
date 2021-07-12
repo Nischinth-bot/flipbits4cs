@@ -2,6 +2,9 @@
   <div v-if="open" class="backdrop" @click="$emit('close')"></div>
   <transition name="modal">
     <dialog open v-if="open">
+      <div class="x-bar">
+        <div class="x" @click="$emit('close')">x</div>
+      </div>
       <slot> </slot>
     </dialog>
   </transition>
@@ -17,6 +20,7 @@ export default {
 <style >
 .backdrop {
   position: fixed;
+  border: 1px solid black;
   top: 0;
   left: 0;
   width: 100%;
@@ -40,6 +44,10 @@ dialog {
   /* animation: modal 0.3s ease-out forwards; */
 }
 
+.x-bar {
+  display: flex;
+  justify-content: flex-end;
+}
 .modal-enter-active {
   animation: modal 0.3s ease-out;
 }

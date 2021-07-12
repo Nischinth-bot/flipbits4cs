@@ -5,9 +5,12 @@
       {{ description }}
     </div>
     <div class="cart-wishlist">
-      <base-button @click="addToCart()"> Add to Cart </base-button>
+      <base-button @click="showItemModal()"> Add to Cart </base-button>
+      <base-modal :open="showDialog" @close="closeItemModal()">
+        Please Confirm
+      </base-modal>
       <div @click="wishlist()" :class="color">&hearts;</div>
-      <div class="price"> $ {{ price }} </div>
+      <div class="price">$ {{ price }}</div>
     </div>
   </div>
 </template>
@@ -17,31 +20,34 @@ export default {
   props: ['itemName', 'imgLink', 'price', 'description'],
   data() {
     return {
-      color: 'heart-black', 
+      color: 'heart-black',
+      showDialog: false,
     };
   },
-  computed: {},
-  mounted() {},
   methods: {
     getImgUrl() {
       return require('@/assets/' + this.imgLink);
     },
     changecolor() {
       if (this.color === 'heart-red') {
-        console.log('Chaning to black');
+        // console.log('Chaning to black');
         this.color = 'heart-black';
         return;
       }
-      console.log('Chaning to red');
+      // console.log('Chaning to red');
       this.color = 'heart-red';
       return;
     },
     wishlist() {
       this.changecolor();
     },
-    addToCart(){
-      
-    }
+    showItemModal() {
+      this.showDialog = true;
+    },
+    closeItemModal() {
+      console.log("Closing dialogue");
+      this.showDialog = false;
+    },
   },
 };
 </script>
