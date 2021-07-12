@@ -9,7 +9,7 @@
         <base-button @click="goToLoginPage()"> Login </base-button>
         <base-button @click="goToSignupPage()"> Signup </base-button>
       </div>
-      <div class="cart">
+      <div class="cart" @click="goToCartPage()">
         <i
           id="cart"
           class="fa fa-shopping-cart"
@@ -37,6 +37,9 @@ export default {
     goToHomePage() {
       this.$router.push('/home');
     },
+    goToCartPage(){
+      this.$router.push('/cart');
+    }
   },
 };
 </script>

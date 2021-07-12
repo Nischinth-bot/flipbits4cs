@@ -5,6 +5,7 @@ import SignUp from './pages/SignUp.vue';
 import Login from './pages/Login.vue';
 import Dashboard from './pages/Dashboard.vue';
 import Shop from './pages/Shop.vue';
+import CartPage from './pages/CartPage.vue';
 
 const routes = [
   { path: '/', redirect: '/home' },
@@ -13,6 +14,7 @@ const routes = [
   { path: '/login', component: Login },
   { path: '/progress', component: Dashboard },
   { path: '/shop', component: Shop },
+  { path: '/cart', component: CartPage},
   { path: '/:notFound(.*)', component: NotFound }
 ];
 

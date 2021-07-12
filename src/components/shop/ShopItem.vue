@@ -49,19 +49,18 @@ export default {
       return;
     },
     updateCart(newItems) {
-      // console.log(newItems);
       const numItems = newItems.units;
       var i = 0;
       while (i < numItems) {
         this.$store.state.cart_stuff.cartItems.push({
           description: this.description,
           price: this.price,
-          img: this.imgLink,
+          img: this.getImgUrl(),
         });
         i += 1;
       }
-      console.log("Here");
       this.$emit('updateCartCount');
+      // console.log("Here");
       // console.log(this.$store.state.cart_stuff.cartItems);
     },
     wishlist() {

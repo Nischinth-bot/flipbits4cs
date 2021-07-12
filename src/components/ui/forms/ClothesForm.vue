@@ -59,7 +59,7 @@ export default {
         units: this.selectedUnits,
         size: this.selectedSize,
       };
-      console.log(addedToCart);
+      // console.log(addedToCart);
       this.$emit('itemsAddedToCart', addedToCart);
       this.$emit('close');
     },
