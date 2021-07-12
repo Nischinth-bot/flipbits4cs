@@ -52,15 +52,15 @@ export default {
   methods: {
     updateUnits(newUnits) {
       this.selectedUnits = newUnits;
-      console.log(newUnits);
     },
     addToCartContinueShopping() {
-      const itemsToAdd = {
+      const addedToCart = {
         color: this.selectedColor,
         units: this.selectedUnits,
         size: this.selectedSize,
       };
-      this.$emit('itemsAddedToCart', itemsToAdd);
+      console.log(addedToCart);
+      this.$emit('itemsAddedToCart', addedToCart);
       this.$emit('close');
     },
   },

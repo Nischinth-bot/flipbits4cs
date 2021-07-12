@@ -7,10 +7,10 @@
       />
     </head>
     <div class="the-header">
-      <the-header></the-header>
+      <the-header :numItems="numItems"></the-header>
     </div>
     <div class="router-view">
-      <router-view> </router-view>
+      <router-view @updateCartCount="updateCartCount()"> </router-view>
     </div>
   </div>
 </template>
@@ -18,22 +18,18 @@
 <script>
 import TheHeader from './components/layout/TheHeader.vue';
 export default {
-  components: {
-    TheHeader,
-  },
-  data() {
+  data(){
     return {
-      donorList: [],
-    };
+      numItems : 0,
+    }
   },
   methods: {
-    updateDonorList(newDonorList) {
-      this.donorList = newDonorList;
-      console.log(this.donorList[1]);
+    updateCartCount(){
+      this.numItems = this.$store.state.cart_stuff.cartItems.length;
     },
   },
-  created() {
-    this.donorList = [];
+  components: {
+    TheHeader,
   },
 };
 </script>

@@ -1,8 +1,8 @@
 <template>
-  <div class="header" >
+  <div class="header">
     <div id="company-name" @click="goToHomePage()">
       <h1><strong> FlipBits </strong></h1>
-      <img src="./asu_logo.png"/>
+      <img src="./asu_logo.png" />
     </div>
     <div class="right">
       <div class="login-signup">
@@ -15,7 +15,7 @@
           class="fa fa-shopping-cart"
           style="font-size: 24px; color: gold"
         ></i>
-        <strong> {{ this.cart.itemCount }} </strong>
+        <strong> {{ numItems }} </strong>
       </div>
     </div>
   </div>
@@ -25,16 +25,8 @@
 <script>
 import BaseButton from '../ui/BaseButton.vue';
 export default {
+  props: ['numItems'],
   components: { BaseButton },
-  data() {
-    return {
-      cart: {
-        itemCount: 0,
-        items: [],
-        empty: true,
-      },
-    };
-  },
   methods: {
     goToSignupPage() {
       this.$router.push('/signup');

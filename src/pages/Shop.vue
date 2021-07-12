@@ -11,6 +11,7 @@
         :price="item.price"
         :itemName="item.name"
         :description="item.description"
+        @updateCartCount="$emit('updateCartCount')"
       >
       </shop-item>
     </div>
@@ -20,6 +21,7 @@
 <script>
 import ShopItem from '../components/shop/ShopItem.vue';
 export default {
+  emits: ['updateCartCount'],
   components: { ShopItem },
   data() {
     return {

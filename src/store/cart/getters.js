@@ -2,7 +2,7 @@ export default {
     getCartItems(){
         return this.$store.cartItems;
     },
-    getNumberOfCartItems(){
+    getNumCartItems(){
         return this.$store.cartItems.length;
     }
 }

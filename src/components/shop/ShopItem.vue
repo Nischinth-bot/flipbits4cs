@@ -25,6 +25,7 @@
 <script>
 import ClothesForm from '../ui/forms/ClothesForm.vue';
 export default {
+  emits: ['updateCartCount'],
   components: { ClothesForm },
   props: ['imgLink', 'price', 'description'],
   data() {
@@ -59,7 +60,9 @@ export default {
         });
         i += 1;
       }
-      console.log(this.$store.state.cart_stuff.cartItems);
+      console.log("Here");
+      this.$emit('updateCartCount');
+      // console.log(this.$store.state.cart_stuff.cartItems);
     },
     wishlist() {
       this.changecolor();
