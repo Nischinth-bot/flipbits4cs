@@ -1,15 +1,9 @@
-import actions from './bit_patterns/actions.js';
-import mutations from './bit_patterns/mutations.js';
-import getters from './bit_patterns/getters.js';
+import bit_patterns from '../store/bit_patterns/index.js';
+import cart from '../store/cart/index.js';
 
 export default {
-    state() {
-        return {
-            donations: [{number:-1}],
-            goal: 800000,
-        };
-    },
-    actions,
-    mutations,
-    getters
-};
+    modules: {
+        bits: bit_patterns,
+        cart_stuff: cart,
+    }
+}

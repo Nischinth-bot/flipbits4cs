@@ -6,8 +6,15 @@
     </div>
     <div class="cart-wishlist">
       <base-button @click="showItemModal()"> Add to Cart </base-button>
-      <base-modal title="Please Confirm" :open="showDialog" @close="closeItemModal()">
-        <clothes-form @itemsAddedToCart="updateCart" @close="closeItemModal()"></clothes-form>
+      <base-modal
+        title="Please Confirm"
+        :open="showDialog"
+        @close="closeItemModal()"
+      >
+        <clothes-form
+          @itemsAddedToCart="updateCart"
+          @close="closeItemModal()"
+        ></clothes-form>
       </base-modal>
       <div @click="wishlist()" :class="heartColor">&hearts;</div>
       <div class="price">$ {{ price }}</div>
@@ -18,8 +25,8 @@
 <script>
 import ClothesForm from '../ui/forms/ClothesForm.vue';
 export default {
-  components: {ClothesForm},
-  props: ['itemName', 'imgLink', 'price', 'description'],
+  components: { ClothesForm },
+  props: ['imgLink', 'price', 'description'],
   data() {
     return {
       heartColor: 'heart-black',
@@ -40,6 +47,20 @@ export default {
       this.heartColor = 'heart-red';
       return;
     },
+    updateCart(newItems) {
+      // console.log(newItems);
+      const numItems = newItems.units;
+      var i = 0;
+      while (i < numItems) {
+        this.$store.state.cart_stuff.cartItems.push({
+          description: this.description,
+          price: this.price,
+          img: this.imgLink,
+        });
+        i += 1;
+      }
+      console.log(this.$store.state.cart_stuff.cartItems);
+    },
     wishlist() {
       this.changecolor();
     },
@@ -47,7 +68,6 @@ export default {
       this.showDialog = true;
     },
     closeItemModal() {
-      console.log('Closing dialogue');
       this.showDialog = false;
     },
   },
