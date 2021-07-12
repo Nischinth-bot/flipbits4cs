@@ -3,7 +3,8 @@
   <transition name="modal">
     <dialog open v-if="open">
       <div class="x-bar">
-        <div class="x" @click="$emit('close')">x</div>
+        <h3 class="title">{{ title }}</h3>
+        <x class="x" @click="$emit('close')">x</x>
       </div>
       <slot> </slot>
     </dialog>
@@ -12,7 +13,7 @@
 
 <script>
 export default {
-  props: ['open'],
+  props: ['open', 'title'],
   emits: ['close'],
 };
 </script>
@@ -33,6 +34,7 @@ dialog {
   position: fixed;
   top: 30vh;
   width: 30rem;
+  height: 26rem;
   left: calc(50% - 15rem);
   margin: 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
@@ -44,9 +46,13 @@ dialog {
   /* animation: modal 0.3s ease-out forwards; */
 }
 
+.x-bar * {
+  padding: 1rem;
+}
 .x-bar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  background: black;
 }
 .modal-enter-active {
   animation: modal 0.3s ease-out;

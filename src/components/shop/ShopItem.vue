@@ -6,21 +6,23 @@
     </div>
     <div class="cart-wishlist">
       <base-button @click="showItemModal()"> Add to Cart </base-button>
-      <base-modal :open="showDialog" @close="closeItemModal()">
-        Please Confirm
+      <base-modal title="Please Confirm" :open="showDialog" @close="closeItemModal()">
+        <clothes-form @itemsAddedToCart="updateCart" @close="closeItemModal()"></clothes-form>
       </base-modal>
-      <div @click="wishlist()" :class="color">&hearts;</div>
+      <div @click="wishlist()" :class="heartColor">&hearts;</div>
       <div class="price">$ {{ price }}</div>
     </div>
   </div>
 </template>
 
 <script>
+import ClothesForm from '../ui/forms/ClothesForm.vue';
 export default {
+  components: {ClothesForm},
   props: ['itemName', 'imgLink', 'price', 'description'],
   data() {
     return {
-      color: 'heart-black',
+      heartColor: 'heart-black',
       showDialog: false,
     };
   },
@@ -29,13 +31,13 @@ export default {
       return require('@/assets/' + this.imgLink);
     },
     changecolor() {
-      if (this.color === 'heart-red') {
+      if (this.heartColor === 'heart-red') {
         // console.log('Chaning to black');
-        this.color = 'heart-black';
+        this.heartColor = 'heart-black';
         return;
       }
       // console.log('Chaning to red');
-      this.color = 'heart-red';
+      this.heartColor = 'heart-red';
       return;
     },
     wishlist() {
@@ -45,7 +47,7 @@ export default {
       this.showDialog = true;
     },
     closeItemModal() {
-      console.log("Closing dialogue");
+      console.log('Closing dialogue');
       this.showDialog = false;
     },
   },
@@ -85,6 +87,7 @@ img {
 .heart-red {
   margin-top: 5%;
   color: red;
+  /* animation: heart-swell 0.75s ease-in-out; */
 }
 
 .shop-item .cart-wishlist {
@@ -96,5 +99,14 @@ img {
 
 .shop-item .price {
   margin-top: 5%;
+}
+
+@keyframes heart-swell {
+  0% {
+    font-size: inherit;
+  }
+  100% {
+    font-size: 25px;
+  }
 }
 </style>
