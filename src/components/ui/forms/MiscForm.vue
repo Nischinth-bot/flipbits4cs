@@ -10,15 +10,6 @@
         </select>
       </li>
       <li>
-        <label for="size"> Choose a size </label><br />
-        <select id="size" name="size" v-model="selectedSize">
-          <option value="Small">S</option>
-          <option value="Medium">M</option>
-          <option value="XLarge">XL</option>
-          <option value="XXLarge">XXL</option>
-        </select>
-      </li>
-      <li>
         <label for="units"> Number </label>
         <div class="number-picker">
           <number-picker id="units" @update="updateUnits"></number-picker>

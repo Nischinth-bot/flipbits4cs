@@ -12,9 +12,15 @@
         @close="closeItemModal()"
       >
         <clothes-form
-          @itemsAddedToCart="updateCart"
+          v-if="type === 'clothing'"
+          @itemsAddedToCart="$emit('updateCartCount')"
           @close="closeItemModal()"
         ></clothes-form>
+        <misc-form
+          v-else-if="type === 'misc'"
+          @itemsAddedToCart="$emit('updateCartCount')"
+          @close="closeItemModal()"
+        ></misc-form>
       </base-modal>
       <div @click="wishlist()" :class="heartColor">&hearts;</div>
       <div class="price">$ {{ price }}</div>
@@ -24,10 +30,12 @@
 
 <script>
 import ClothesForm from '../ui/forms/ClothesForm.vue';
+import MiscForm from '../ui/forms/MiscForm.vue';
+
 export default {
   emits: ['updateCartCount'],
-  components: { ClothesForm },
-  props: ['imgLink', 'price', 'description'],
+  components: { ClothesForm, MiscForm },
+  props: ['imgLink', 'price', 'description', 'type'],
   data() {
     return {
       heartColor: 'heart-black',
@@ -47,16 +55,6 @@ export default {
       // console.log('Chaning to red');
       this.heartColor = 'heart-red';
       return;
-    },
-    updateCart(newItems) {
-      this.$store.state.cart_stuff.cartItems.push({
-        description: this.description,
-        price: this.price,
-        size: newItems.size,
-        imgLink: this.imgLink,
-        units: newItems.units,
-      });
-      this.$emit('updateCartCount');
     },
     wishlist() {
       this.changecolor();

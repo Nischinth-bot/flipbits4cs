@@ -1,8 +1,8 @@
 export default {
-    getCartItems(){
-        return this.$store.cartItems;
+    cartItems(state){
+        return state.cartItems;
     },
-    getNumCartItems(){
-        return this.$store.cartItems.length;
+    numCartItems(state){
+        return state.cartItems.length;
     }
 }

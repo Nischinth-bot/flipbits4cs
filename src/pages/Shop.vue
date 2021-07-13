@@ -9,8 +9,8 @@
         :key="item.key"
         :imgLink="item.link"
         :price="item.price"
-        :itemName="item.name"
         :description="item.description"
+        :type="item.type"
         @updateCartCount="$emit('updateCartCount')"
       >
       </shop-item>
@@ -29,20 +29,9 @@ export default {
     };
   },
   mounted() {
-    this.shop_items.push({
-      link: 'burberry.png',
-      name: 'CS T-Shirt',
-      description: 'App State Unisex M/F Black Computer Science T-shirt',
-      key: 't-shirt',
-      price: 25,
-    });
-    this.shop_items.push({
-      link: 'mug.png',
-      name: 'CS Department Mug',
-      description: 'App State FlipBits Coffee Mug',
-      key: 'mug',
-      price: 15,
-    });
+    this.shop_items = this.$store.getters.inventory;
+
+    console.log(this.$store.getters);
   },
 };
 </script>
