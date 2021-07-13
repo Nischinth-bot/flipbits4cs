@@ -13,11 +13,15 @@
       >
         <clothes-form
           v-if="type === 'clothing'"
+          :description="description"
+          :price="price"
           @itemsAddedToCart="$emit('updateCartCount')"
           @close="closeItemModal()"
         ></clothes-form>
         <misc-form
           v-else-if="type === 'misc'"
+          :description="description"
+          :price="price"
           @itemsAddedToCart="$emit('updateCartCount')"
           @close="closeItemModal()"
         ></misc-form>

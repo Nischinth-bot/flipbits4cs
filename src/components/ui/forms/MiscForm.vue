@@ -31,13 +31,13 @@
 import BaseButton from '../BaseButton.vue';
 import NumberPicker from '../utils/NumberPicker.vue';
 export default {
+  props: ['description', 'price'],
   components: { BaseButton, NumberPicker },
   emits: ['itemsAddedToCart', 'close'],
   data() {
     return {
       selectedColor: 'Black',
       selectedUnits: 1,
-      selectedSize: 'Small',
     };
   },
   methods: {
@@ -47,20 +47,20 @@ export default {
     addToCartContinueShopping() {
       // This would be the CartItem object if this was TypeScript.
       const addedToCart = {
-        type: 'misc',
+        description: this.description,
+        units: this.selectedUnits,
+        price: this.price,
         opts: {
           color: this.selectedColor,
-          units: this.selectedUnits,
           size: this.selectedSize,
         },
       };
-      //Add the CartItem object to cartItems in Vuex Store and then le
+      //Add the CartItem object to cartItems in Vuex Store and then close the modal.
       this.$store.state.cart_stuff.cartItems.push(addedToCart);
       this.$emit('itemsAddedToCart');
       this.$emit('close');
     },
   },
-
 };
 </script>
 

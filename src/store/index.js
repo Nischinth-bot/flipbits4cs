@@ -1,6 +1,6 @@
-import bit_patterns from '../store/bit_patterns/index.js';
-import cart from '../store/cart/index.js';
-import shop from '../store/shop/index.js';
+import bit_patterns from './bit_patterns/index.js';
+import cart from './user/cart/index.js';
+import shop from './shop/index.js';
 
 export default {
     modules: {

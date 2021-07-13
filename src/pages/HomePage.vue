@@ -4,9 +4,9 @@
       <h1>Welcome!</h1>
       <br />
       <ul>
-        <li>Our Mission</li>
+        <!-- <li>Our Mission</li>
         <li>Make a Pledge</li>
-        <li @click="goToProgressPage()">Our Progress</li>
+        <li @click="goToProgressPage()">Our Progress</li> -->
         <li @click="goToShopPage()">AppState CS Merch</li>
       </ul>
     </div>

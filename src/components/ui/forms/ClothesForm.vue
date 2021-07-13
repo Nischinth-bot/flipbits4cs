@@ -41,6 +41,7 @@ import BaseButton from '../BaseButton.vue';
 import NumberPicker from '../utils/NumberPicker.vue';
 export default {
   components: { BaseButton, NumberPicker },
+  props: ['description', 'price'],
   emits: ['itemsAddedToCart', 'close'],
   data() {
     return {
@@ -56,10 +57,11 @@ export default {
     addToCartContinueShopping() {
       // This would be the CartItem object if this was TypeScript.
       const addedToCart = {
-        type: 'clothing',
+        description: this.description,
+        units: this.selectedUnits,
+        price: this.price,
         opts: {
           color: this.selectedColor,
-          units: this.selectedUnits,
           size: this.selectedSize,
         },
       };
@@ -69,7 +71,6 @@ export default {
       this.$emit('close');
     },
   },
-
 };
 </script>
 
