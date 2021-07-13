@@ -1,12 +1,13 @@
 <template>
   <div class="cart-alpha">
-    <div class="cart-header">
+    <h1>Your Cart</h1>
+    <!-- <div class="cart-header">
       <h3 class="name">Item Name</h3>
       <h3 class="desc">Description</h3>
-      <h3 class="number">Units</h3>
-      <h3 class="price">Price</h3>
-      <h3 class="total">Total</h3>
-    </div>
+      <h3 class="number">Units</h3> -->
+      <!-- <h3 class="price">Price</h3>
+      <h3 class="total">Total</h3> -->
+    <!-- </div> -->
     <cart-item
       v-for="item in cartItems"
       :key="item.description"
@@ -35,10 +36,10 @@ export default {
   display: flex;
   flex-direction: column;
   width: 50%;
-  margin-left:auto;
-  margin-right:auto;
+  margin-left: auto;
+  margin-right: auto;
   padding-top: 1rem;
-  border: 1px solid gold;
+  animation: fade 1.0s ease-in-out;
 }
 
 .cart-header {
@@ -57,5 +58,9 @@ ul {
 }
 
 .item-list {
+}
+
+h1 {
+  text-align: center;
 }
 </style>

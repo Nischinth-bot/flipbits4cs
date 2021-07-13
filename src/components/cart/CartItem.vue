@@ -12,12 +12,8 @@
       <div class="units">
         {{ units }}
       </div>
-      <div class="cart-item-price">
-        ${{ price }}
-      </div>
-      <div class="total">
-        ${{ total }}
-      </div>
+      <!-- <div class="cart-item-price">${{ price }}</div>
+      <div class="total">${{ total }}</div> -->
     </div>
   </div>
 </template>
@@ -42,7 +38,6 @@ export default {
   justify-content: space-evenly;
   /* align-items: center; */
   border: 1px solid black;
-  animation: fade 0.5s ease-in-out;
 }
 
 .cart-item {
@@ -50,17 +45,16 @@ export default {
   font-size: 20px;
   justify-content: space-around;
   margin: 1rem;
+  background: rgb(51, 49, 49);
 }
 
 .cart-item * {
   width: 20%;
   text-align: center;
-  justify-content: center;
-  align-items: center;
 }
 
-.cart-item .description{
-    width: 35%;
+.cart-item .description {
+  width: 35%;
 }
 
 .opts {
