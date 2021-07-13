@@ -30,8 +30,6 @@ export default {
   },
   mounted() {
     this.shop_items = this.$store.getters.inventory;
-
-    console.log(this.$store.getters);
   },
 };
 </script>

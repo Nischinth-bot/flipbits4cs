@@ -13,7 +13,7 @@
 export default {
   computed:{
     cartItems(){
-      return this.$store.getters.cart_stuff.cartItems;
+      return this.$store.getters.cartItems;
     }
   }
 };
