@@ -12,20 +12,26 @@
       <div class="units">
         {{ units }}
       </div>
-      <!-- <div class="cart-item-price">${{ price }}</div>
-      <div class="total">${{ total }}</div> -->
+      <button @click="removeItemFromCart(description)" class="remove-button">
+        Remove
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-// import NumberPicker from '../ui/utils/NumberPicker.vue';
 export default {
+  data() {
+    return {
+      clickedRemove: false,
+    };
+  },
+  emits: ['updateCartCount'],
   props: ['description', 'opts', 'price', 'units'],
-  computed: {
-    total() {
-      console.log(this.price * this.units);
-      return this.price * this.units;
+  methods: {
+    removeItemFromCart() {
+      this.$store.commit('removeItemFromCart', this.description);
+      this.$emit('updateCartCount');
     },
   },
 };
@@ -38,6 +44,7 @@ export default {
   justify-content: space-evenly;
   /* align-items: center; */
   border: 1px solid black;
+  background: white;
 }
 
 .cart-item {
@@ -45,12 +52,16 @@ export default {
   font-size: 20px;
   justify-content: space-around;
   margin: 1rem;
-  background: rgb(51, 49, 49);
 }
-
 .cart-item * {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 20%;
   text-align: center;
+}
+
+.units {
 }
 
 .cart-item .description {
@@ -62,5 +73,33 @@ export default {
   flex-direction: column;
   list-style: none;
   padding-bottom: 10px;
+}
+
+.remove-button {
+  background-color: wheat;
+  border-radius: 20px;
+  height: 100%;
+  width: 20%;
+  color: black;
+  font-size: 20px;
+  height: 50px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.remove-button:hover {
+  cursor: pointer;
+}
+
+.modal-details {
+  display: flex;
+  width: 100%;
+}
+
+.modal-details .buttons {
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  border: 1px solid black;
 }
 </style>

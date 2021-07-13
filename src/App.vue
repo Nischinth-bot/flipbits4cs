@@ -25,9 +25,9 @@ export default {
   },
   methods: {
     updateCartCount(){
-      this.numItems = this.$store.state.cart_stuff.cartItems.length;
+      this.numItems = this.$store.getters.numCartItems;
     },
-  },
+  },  
   components: {
     TheHeader,
   },

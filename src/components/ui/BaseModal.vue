@@ -54,6 +54,11 @@ dialog {
   justify-content: space-between;
   background: black;
 }
+
+.x-bar:hover {
+  cursor: pointer;
+}
+
 .modal-enter-active {
   animation: modal 0.3s ease-out;
 }

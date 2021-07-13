@@ -1,4 +1,5 @@
 <template>
+<div class="container">
   <div class="cart-alpha">
     <h1>Your Cart</h1>
     <!-- <div class="cart-header">
@@ -15,7 +16,9 @@
       :opts="item.opts"
       :price="item.price"
       :units="item.units"
+      @updateCartCount="$emit('updateCartCount')"
     />
+  </div>
   </div>
 </template>
 
@@ -32,6 +35,11 @@ export default {
 </script>
 
 <style scoped>
+
+.container{
+  display: flex;
+
+}
 .cart-alpha {
   display: flex;
   flex-direction: column;

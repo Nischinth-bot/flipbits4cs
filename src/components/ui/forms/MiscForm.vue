@@ -56,7 +56,7 @@ export default {
         },
       };
       //Add the CartItem object to cartItems in Vuex Store and then close the modal.
-      this.$store.state.cart_stuff.cartItems.push(addedToCart);
+      this.$store.commit('addItemToCart',addedToCart);
       this.$emit('itemsAddedToCart');
       this.$emit('close');
     },
