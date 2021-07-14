@@ -48,7 +48,6 @@ export default {
 }
 
 .shop-alpha {
-  border: 1px solid black;
   display: flex;
 }
 /* 
