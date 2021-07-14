@@ -28,6 +28,9 @@
         :imgLink="item.imgLink"
         @updateCartCount="$emit('updateCartCount')"
       />
+      <div class="button">
+        <base-button> Proceed to Checkout </base-button>
+      </div>
     </div>
   </div>
 </template>
@@ -57,6 +60,7 @@ export default {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 5rem;
   padding-top: 1rem;
   animation: fade 1s ease-in-out;
 }
