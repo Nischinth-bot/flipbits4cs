@@ -60,7 +60,8 @@ img {
   align-items: center;
   justify-content: space-between;
   height: 50px;
-  background: rgb(167, 165, 165);
+  /* background: rgb(167, 165, 165); */
+  background: black;
   color: gold;
   padding: 10px 10px;
 }

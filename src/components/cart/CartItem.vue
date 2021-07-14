@@ -52,7 +52,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  border: 1px solid black;
   background: white;
 }
 
@@ -95,13 +94,9 @@ export default {
 .remove-button {
   background-color: wheat;
   border-radius: 20px;
-  height: 100%;
-  width: 20%;
-  color: black;
   font-size: 20px;
-  height: 50px;
   margin-top: auto;
-  margin-bottom: auto;
+  margin-sottom: auto;
 }
 
 .remove-button:hover {
@@ -117,6 +112,5 @@ export default {
   flex-direction: row;
   justify-content: space-around;
   width: 100%;
-  border: 1px solid black;
 }
 </style>

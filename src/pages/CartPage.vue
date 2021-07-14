@@ -2,6 +2,7 @@
   <div class="container">
     <div class="cart-alpha">
       <h1>Your Cart</h1>
+      <hr>
       <div class="empty-cart" v-if="cartItems.length === 0">
         <h2>Hmm... looks like your cart is empty</h2>
         <div class="button">
@@ -17,17 +18,20 @@
       <!-- <h3 class="price">Price</h3>
       <h3 class="total">Total</h3> -->
       <!-- </div> -->
-      <cart-item
-        v-for="item in cartItems"
-        :key="item.key"
-        :key__="item.key"
-        :description="item.description"
-        :opts="item.opts"
-        :price="item.price"
-        :units="item.units"
-        :imgLink="item.imgLink"
-        @updateCartCount="$emit('updateCartCount')"
-      />
+      <div>
+        <cart-item
+          class="cart-items"
+          v-for="item in cartItems"
+          :key="item.key"
+          :key__="item.key"
+          :description="item.description"
+          :opts="item.opts"
+          :price="item.price"
+          :units="item.units"
+          :imgLink="item.imgLink"
+          @updateCartCount="$emit('updateCartCount')"
+        />
+      </div>
       <div class="button">
         <base-button> Proceed to Checkout </base-button>
       </div>
@@ -53,23 +57,21 @@ export default {
 <style scoped>
 .container {
   display: flex;
+  width: 100%;
+  background: white;
+}
+
+.cart-items {
+  height: 120px;
 }
 .cart-alpha {
   display: flex;
   flex-direction: column;
-  width: 50%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 5rem;
   padding-top: 1rem;
   animation: fade 1s ease-in-out;
-}
-
-.cart-header {
-  display: flex;
-  justify-content: space-evenly;
-  background: black;
-  color: gold;
 }
 
 .cart-header * {

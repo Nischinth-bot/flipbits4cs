@@ -46,12 +46,13 @@ export default {
 html,
 body {
   font-family: Tahoma, sans-serif;
-  background: rgb(233, 233, 228);
+  /* background: rgb(233, 233, 228); */
   height: 100%;
 }
 
 .router-view {
-  min-height: 100%;
+  position: absolute;
+  width: 100%;
   color: rgb(204, 178, 28);
 }
 
