@@ -1,7 +1,9 @@
 <template>
   <div class="cart-item-alpha">
     <div class="cart-item">
-      <div class="item-img">img</div>
+      <div class="item-img">
+        <img :src="getImgUrl(imgLink)" />
+      </div>
       <div class="description">
         {{ description }}
       </div>
@@ -31,12 +33,16 @@ export default {
   props: ['description', 'opts', 'price', 'key__', 'units', 'imgLink'],
   methods: {
     removeItemFromCart() {
-      console.log(this.key__);
+      // console.log(this.key__);
       this.$store.commit('removeItemFromCart', this.key__);
       this.$emit('updateCartCount');
     },
   },
+  // getImgUrl() {
+  //   return require('@/assets/' + this.imgLink);
+  // },
   mounted() {
+    console.log(this.imgLink);
   },
 };
 </script>
@@ -46,7 +52,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* align-items: center; */
   border: 1px solid black;
   background: white;
 }
@@ -64,6 +69,14 @@ export default {
   width: 20%;
   text-align: center;
 }
+
+.cart-item .img-item{
+}
+.cart-item img {
+  width: 100px;
+  height: 100px;
+}
+
 
 .units {
 }

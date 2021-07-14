@@ -41,7 +41,7 @@ import BaseButton from '../BaseButton.vue';
 import NumberPicker from '../utils/NumberPicker.vue';
 export default {
   components: { BaseButton, NumberPicker },
-  props: ['description', 'price'],
+  props: ['description', 'price', 'imgLink'],
   emits: ['itemsAddedToCart', 'close'],
   data() {
     return {
@@ -60,6 +60,7 @@ export default {
         description: this.description,
         units: this.selectedUnits,
         price: this.price,
+        imgLink: this.imgLink,
         key: this.randomizedKey(this.description),
         opts: {
           color: this.selectedColor,

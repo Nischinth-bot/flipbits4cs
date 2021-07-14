@@ -25,6 +25,7 @@
         :opts="item.opts"
         :price="item.price"
         :units="item.units"
+        :imgLink="item.imgLink"
         @updateCartCount="$emit('updateCartCount')"
       />
     </div>

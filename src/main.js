@@ -34,8 +34,10 @@ app.mixin({
           ) % 127
         );
       }
-      console.log(res);
       return res;
+    },
+    getImgUrl(imgLink) {
+      return require('@/assets/' + imgLink);
     }
   }
 });

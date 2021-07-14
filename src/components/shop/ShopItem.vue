@@ -1,6 +1,6 @@
 <template>
   <div class="shop-item">
-    <img :src="getImgUrl()" />
+    <img :src="getImgUrl(imgLink)">
     <div class="item-desc">
       {{ description }}
     </div>
@@ -15,12 +15,14 @@
           v-if="type === 'clothing'"
           :description="description"
           :price="price"
+          :imgLink="imgLink"
           @itemsAddedToCart="$emit('updateCartCount')"
           @close="closeItemModal()"
         ></clothes-form>
         <misc-form
           v-else-if="type === 'misc'"
           :description="description"
+          :imgLink="imgLink"
           :price="price"
           @itemsAddedToCart="$emit('updateCartCount')"
           @close="closeItemModal()"
@@ -47,9 +49,6 @@ export default {
     };
   },
   methods: {
-    getImgUrl() {
-      return require('@/assets/' + this.imgLink);
-    },
     changecolor() {
       if (this.heartColor === 'heart-red') {
         // console.log('Chaning to black');
