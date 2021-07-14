@@ -1,12 +1,12 @@
 import { createApp } from 'vue';
 import { createStore } from 'vuex';
 import App from './App.vue';
-import BaseCard from './components/ui/BaseCard.vue';
-import BaseButton from './components/ui/BaseButton.vue';
-import BaseBadge from './components/ui/BaseBadge.vue';
-import BaseSpinner from './components/ui/BaseSpinner.vue';
-import BaseDialog from './components/ui/BaseDialog.vue';
-import BaseModal from './components/ui/BaseModal.vue';
+import BaseCard from './components/ui/wrappers/BaseCard.vue';
+import BaseButton from './components/ui/wrappers/BaseButton.vue';
+import BaseBadge from './components/ui/wrappers/BaseBadge.vue';
+import BaseSpinner from './components/ui/wrappers/BaseSpinner.vue';
+import BaseDialog from './components/ui/wrappers/BaseDialog.vue';
+import BaseModal from './components/ui/wrappers/BaseModal.vue';
 import store__ from './store/index.js';
 import router from './router.js';
 

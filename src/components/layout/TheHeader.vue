@@ -1,32 +1,32 @@
 <template>
-  <div class="header">
-    <div id="company-name" @click="goToHomePage()">
-      <h1><strong> FlipBits </strong></h1>
-      <img src="./asu_logo.png" />
-    </div>
-    <div class="right">
-      <div class="login-signup">
-        <base-button @click="goToLoginPage()"> Login </base-button>
-        <base-button @click="goToSignupPage()"> Signup </base-button>
+  <div class="header-meta">
+    <div class="header">
+      <div id="company-name" @click="goToHomePage()">
+        <h1><strong> FlipBits </strong></h1>
       </div>
-      <div class="cart" @click="goToCartPage()">
-        <i
-          id="cart"
-          class="fa fa-shopping-cart"
-          style="font-size: 24px; color: gold"
-        ></i>
-        <strong> {{ numItems }} </strong>
+      <div class="right">
+        <div class="login-signup">
+          <base-button @click="goToLoginPage()"> Login </base-button>
+          <base-button @click="goToSignupPage()"> Signup </base-button>
+        </div>
+        <div class="cart" @click="goToCartPage()">
+          <i
+            id="cart"
+            class="fa fa-shopping-cart"
+            style="font-size: 24px; color: gold"
+          ></i>
+          <strong> {{ numItems }} </strong>
+        </div>
       </div>
     </div>
+    <div class="logo"><img src="./asu_logo.png" /></div>
   </div>
 </template>
 
 
 <script>
-import BaseButton from '../ui/BaseButton.vue';
 export default {
   props: ['numItems'],
-  components: { BaseButton },
   methods: {
     goToSignupPage() {
       this.$router.push('/signup');
@@ -37,14 +37,18 @@ export default {
     goToHomePage() {
       this.$router.push('/home');
     },
-    goToCartPage(){
+    goToCartPage() {
       this.$router.push('/cart');
-    }
+    },
   },
 };
 </script>
 
 <style>
+.header-meta {
+  display: flex;
+  flex-direction: column;
+}
 .right {
   display: flex;
   justify-content: space-around;

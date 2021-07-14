@@ -28,11 +28,10 @@
 </template>
 
 <script>
-import BaseButton from '../BaseButton.vue';
 import NumberPicker from '../utils/NumberPicker.vue';
 export default {
   props: ['description', 'price', 'imgLink'],
-  components: { BaseButton, NumberPicker },
+  components: { NumberPicker },
   emits: ['itemsAddedToCart', 'close'],
   data() {
     return {

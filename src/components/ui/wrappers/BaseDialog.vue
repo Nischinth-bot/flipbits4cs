@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import BaseButton from './BaseButton.vue';
 export default {
   data() {
     return {
@@ -57,7 +56,6 @@ export default {
   watch: {
     isAlumini() {},
   },
-  components: { BaseButton },
   props: {
     show: {
       type: Boolean,
