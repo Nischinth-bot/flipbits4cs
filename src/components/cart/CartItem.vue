@@ -1,6 +1,7 @@
 <template>
   <div class="cart-item-alpha">
     <div class="cart-item">
+      <div class="item-img">img</div>
       <div class="description">
         {{ description }}
       </div>
@@ -12,7 +13,7 @@
       <div class="units">
         {{ units }}
       </div>
-      <button @click="removeItemFromCart(description)" class="remove-button">
+      <button @click="removeItemFromCart()" class="remove-button">
         Remove
       </button>
     </div>
@@ -27,12 +28,15 @@ export default {
     };
   },
   emits: ['updateCartCount'],
-  props: ['description', 'opts', 'price', 'units'],
+  props: ['description', 'opts', 'price', 'key__', 'units', 'imgLink'],
   methods: {
     removeItemFromCart() {
-      this.$store.commit('removeItemFromCart', this.description);
+      console.log(this.key__);
+      this.$store.commit('removeItemFromCart', this.key__);
       this.$emit('updateCartCount');
     },
+  },
+  mounted() {
   },
 };
 </script>

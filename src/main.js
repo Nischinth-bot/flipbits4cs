@@ -23,4 +23,21 @@ app.component('base-modal', BaseModal);
 app.use(store);
 app.use(router);
 
+app.mixin({
+  methods: {
+    randomizedKey(description) {
+      var res = '';
+      for (var i = 0; i < description.length; i++) {
+        res += String.fromCharCode(
+          Math.floor(
+            ((description.charCodeAt(i) + Math.random() * 10) >> 1) + 32
+          ) % 127
+        );
+      }
+      console.log(res);
+      return res;
+    }
+  }
+});
+
 app.mount('#app');

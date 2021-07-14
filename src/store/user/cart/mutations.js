@@ -3,17 +3,14 @@ export default {
     state.cartItems.push(item);
     state.numItems += 1;
   },
-  removeItemFromCart(state, desc) {
+  removeItemFromCart(state, key) {
     for (const item of state.cartItems) {
-      console.log(item);
-      console.log(desc === item.description);
-      if (item.description === desc) {
+      if (item.key === key) {
         const idx = state.cartItems.indexOf(item);
-        console.log(idx);
         state.cartItems.splice(idx, 1);
+        state.numItems -= 1;
+        return;
       }
-      console.log(state.cartItems);
-      state.numItems -= 1;
     }
   }
 };

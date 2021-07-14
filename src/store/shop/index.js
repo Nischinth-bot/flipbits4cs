@@ -13,32 +13,16 @@ export default {
           type: 'clothing',
           price: 25,
           link: 'burberry.png',
-          units_remaining: 100
+          units_remaining: 10
         },
         {
           description: 'App State FlipBits Coffee Mug',
-          key: 'mug',
+          key: 'App State FlipBits Coffee Mug',
           type: 'misc',
           price: 15,
           link: 'mug.png',
-          units_remaining: 100
+          units_remaining: 15
         },
-        {
-          description: 'App State Unisex M/F Computer Science T-shirt',
-          key: 'App State Unisex M/F Computer Science T-shirt',
-          type: 'clothing',
-          price: 25,
-          link: 'burberry.png',
-          units_remaining: 100
-        },
-        {
-          description: 'App State FlipBits Coffee Mug',
-          key: 'mug',
-          type: 'misc',
-          price: 15,
-          link: 'mug.png',
-          units_remaining: 100
-        }
       ]
     };
   },

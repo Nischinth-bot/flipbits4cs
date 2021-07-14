@@ -60,13 +60,14 @@ export default {
         description: this.description,
         units: this.selectedUnits,
         price: this.price,
+        key: this.randomizedKey(this.description),
         opts: {
           color: this.selectedColor,
           size: this.selectedSize,
         },
       };
       //Add the CartItem object to cartItems in Vuex Store and then le
-      this.$store.commit('addItemToCart',addedToCart);
+      this.$store.commit('addItemToCart', addedToCart);
       this.$emit('itemsAddedToCart');
       this.$emit('close');
     },

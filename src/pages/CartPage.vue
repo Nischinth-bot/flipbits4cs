@@ -1,24 +1,33 @@
 <template>
-<div class="container">
-  <div class="cart-alpha">
-    <h1>Your Cart</h1>
-    <!-- <div class="cart-header">
+  <div class="container">
+    <div class="cart-alpha">
+      <h1>Your Cart</h1>
+      <div class="empty-cart" v-if="cartItems.length === 0">
+        <h2>Hmm... looks like your cart is empty</h2>
+        <div class="button">
+          <base-button @click="$router.push('/shop')">
+            Back to Shop
+          </base-button>
+        </div>
+      </div>
+      <!-- <div class="cart-header">
       <h3 class="name">Item Name</h3>
       <h3 class="desc">Description</h3>
       <h3 class="number">Units</h3> -->
       <!-- <h3 class="price">Price</h3>
       <h3 class="total">Total</h3> -->
-    <!-- </div> -->
-    <cart-item
-      v-for="item in cartItems"
-      :key="item.description"
-      :description="item.description"
-      :opts="item.opts"
-      :price="item.price"
-      :units="item.units"
-      @updateCartCount="$emit('updateCartCount')"
-    />
-  </div>
+      <!-- </div> -->
+      <cart-item
+        v-for="item in cartItems"
+        :key="item.key"
+        :key__="item.key"
+        :description="item.description"
+        :opts="item.opts"
+        :price="item.price"
+        :units="item.units"
+        @updateCartCount="$emit('updateCartCount')"
+      />
+    </div>
   </div>
 </template>
 
@@ -30,15 +39,16 @@ export default {
     cartItems() {
       return this.$store.getters.cartItems;
     },
+    cartIsEmpty() {
+      return this.$store.getters.cartIsEmpty;
+    },
   },
 };
 </script>
 
 <style scoped>
-
-.container{
+.container {
   display: flex;
-
 }
 .cart-alpha {
   display: flex;
@@ -47,7 +57,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
   padding-top: 1rem;
-  animation: fade 1.0s ease-in-out;
+  animation: fade 1s ease-in-out;
 }
 
 .cart-header {
@@ -65,10 +75,25 @@ ul {
   list-style: none;
 }
 
-.item-list {
-}
-
 h1 {
   text-align: center;
+}
+
+.empty-cart h2 {
+  margin: 1rem;
+}
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+  width: 500px;
+  animation: fade 1s ease-in-out;
+}
+
+.button {
+  margin-top: 2rem;
 }
 </style>
