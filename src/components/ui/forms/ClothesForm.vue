@@ -56,6 +56,7 @@ export default {
     addToCartContinueShopping() {
       // This would be the CartItem object if this was TypeScript.
       const addedToCart = {
+        type: "clothing",
         description: this.description,
         units: this.selectedUnits,
         price: this.price,

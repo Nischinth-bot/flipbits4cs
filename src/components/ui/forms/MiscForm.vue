@@ -46,13 +46,13 @@ export default {
     addToCartContinueShopping() {
       // This would be the CartItem object if this was TypeScript.
       const addedToCart = {
+        type: "misc",
         description: this.description,
         units: this.selectedUnits,
         price: this.price,
         imgLink: this.imgLink,
         opts: {
           color: this.selectedColor,
-          size: this.selectedSize,
         },
       };
       //Add the CartItem object to cartItems in Vuex Store and then close the modal.

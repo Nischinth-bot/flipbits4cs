@@ -28,6 +28,7 @@
           :price="item.price"
           :units="item.units"
           :imgLink="item.imgLink"
+          :type="item.type"
           @updateCartCount="$emit('updateCartCount')"
         />
       </div>
@@ -60,8 +61,8 @@ export default {
   background: white;
 }
 
-.cart-items-alpha{
-  display:flex;
+.cart-items-alpha {
+  display: flex;
   flex-direction: column;
 }
 
