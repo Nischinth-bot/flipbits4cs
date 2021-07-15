@@ -67,7 +67,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-top: 10rem;
+  padding-top: 2rem;
 }
 
 h1{

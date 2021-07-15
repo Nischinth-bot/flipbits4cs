@@ -9,7 +9,12 @@
           <base-button @click="goToLoginPage()"> Login </base-button>
           <base-button @click="goToSignupPage()"> Signup </base-button>
         </div>
-        <div class="cart" @click="goToCartPage()">
+        <div
+          @mouseenter="cartHover = true"
+          @mouseleave="cartHover = false"
+          @click="goToCartPage()"
+          class="cart"
+        >
           <i
             id="cart"
             class="fa fa-shopping-cart"
@@ -19,13 +24,23 @@
         </div>
       </div>
     </div>
-    <div class="logo"><img src="./asu_logo.png" /></div>
+    <div class="logo">
+      <img src="../../assets/asu_logo.png" />
+      <!-- <div v-if="cartHover === true" class="msg">
+        <h2>Hovering..</h2>
+      </div> -->
+    </div>
   </div>
 </template>
 
 
 <script>
 export default {
+  data() {
+    return {
+      cartHover: false,
+    };
+  },
   props: ['numItems'],
   methods: {
     goToSignupPage() {
@@ -48,15 +63,35 @@ export default {
 .header-meta {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 .right {
   display: flex;
   justify-content: space-around;
 }
+
 img {
+  width: 25%;
   width: 200px;
   height: 50px;
 }
+.logo {
+  display:flex;
+  margin-top: 2rem;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.logo img {
+  margin-left : auto;
+  margin-right: auto;
+}
+
+.logo h2 {
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
 
 .header {
   display: flex;

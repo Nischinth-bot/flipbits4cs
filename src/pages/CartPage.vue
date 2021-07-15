@@ -2,7 +2,6 @@
   <div class="container">
     <div class="cart-alpha">
       <h1>Your Cart</h1>
-      <hr>
       <div class="empty-cart" v-if="cartItems.length === 0">
         <h2>Hmm... looks like your cart is empty</h2>
         <div class="button">
@@ -18,7 +17,7 @@
       <!-- <h3 class="price">Price</h3>
       <h3 class="total">Total</h3> -->
       <!-- </div> -->
-      <div>
+      <div class="cart-items-alpha">
         <cart-item
           class="cart-items"
           v-for="item in cartItems"
@@ -32,7 +31,7 @@
           @updateCartCount="$emit('updateCartCount')"
         />
       </div>
-      <div class="button">
+      <div class="button" v-if="cartItems.length > 0">
         <base-button> Proceed to Checkout </base-button>
       </div>
     </div>
@@ -61,8 +60,18 @@ export default {
   background: white;
 }
 
+.cart-items-alpha{
+  display:flex;
+  flex-direction: column;
+}
+
 .cart-items {
   height: 120px;
+}
+
+.cart-items .button {
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 .cart-alpha {
   display: flex;
@@ -101,6 +110,7 @@ h1 {
 }
 
 .button {
-  margin-top: 2rem;
+  margin-top: 3rem;
+  margin-left: auto;
 }
 </style>

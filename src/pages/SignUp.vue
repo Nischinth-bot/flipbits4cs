@@ -62,7 +62,6 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 10rem;
   animation: fade 1s ease-in-out;
 }
 

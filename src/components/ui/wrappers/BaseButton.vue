@@ -37,7 +37,7 @@ a {
   font: inherit;
   background-color: black;
   color: gold;
-  border: 1px solid black;
+  border: 1px solid white;
   color: white;
   cursor: pointer;
   border-radius: 30px;
