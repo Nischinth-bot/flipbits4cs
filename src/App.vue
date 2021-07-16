@@ -12,22 +12,23 @@
     <div class="router-view">
       <router-view @updateCartCount="updateCartCount()"> </router-view>
     </div>
+    <div class="footer"></div>
   </div>
 </template>
 
 <script>
 import TheHeader from './components/layout/TheHeader.vue';
 export default {
-  data(){
+  data() {
     return {
-      numCartItems : 0,
-    }
+      numCartItems: 0,
+    };
   },
   methods: {
-    updateCartCount(){
+    updateCartCount() {
       this.numCartItems = this.$store.getters.numCartItems;
     },
-  },  
+  },
   components: {
     TheHeader,
   },
@@ -59,6 +60,10 @@ body {
 .app {
   min-height: 100%;
   color: black;
+}
+
+.footer{
+  height: 75px;
 }
 
 @keyframes fade {

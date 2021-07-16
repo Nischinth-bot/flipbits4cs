@@ -10,18 +10,32 @@
         <div class="units">
           {{ item.units }}
         </div>
-        <div class="total-price">${{ item.units * item.price }}</div>
+        <div class="price">${{ item.units * item.price }}</div>
       </span>
     </p>
+    <div class="total-price">
+      <h3>Total:   ${{ totalPrice }}</h3>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      totalPrice: 0,
+    };
+  },
   computed: {
     cartItems() {
       return this.$store.getters.cartItems;
     },
+  },
+  mounted() {
+    for (const item of this.cartItems) {
+      console.log(item.price);
+      this.totalPrice += item.price;
+    }
   },
 };
 </script>
@@ -32,7 +46,6 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 1px solid black;
   padding: 20px;
   margin: 10px;
 }
@@ -46,6 +59,13 @@ img {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.total-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 50%;
 }
 </style>
 
