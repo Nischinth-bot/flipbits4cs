@@ -7,7 +7,7 @@
       />
     </head>
     <div class="the-header">
-      <the-header :numItems="numItems"></the-header>
+      <the-header :numItems="numCartItems"></the-header>
     </div>
     <div class="router-view">
       <router-view @updateCartCount="updateCartCount()"> </router-view>
@@ -20,12 +20,12 @@ import TheHeader from './components/layout/TheHeader.vue';
 export default {
   data(){
     return {
-      numItems : 0,
+      numCartItems : 0,
     }
   },
   methods: {
     updateCartCount(){
-      this.numItems = this.$store.getters.numCartItems;
+      this.numCartItems = this.$store.getters.numCartItems;
     },
   },  
   components: {

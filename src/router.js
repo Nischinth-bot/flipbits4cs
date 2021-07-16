@@ -5,6 +5,7 @@ import SignUp from './pages/SignUp.vue';
 import LoginPage from './pages/LoginPage.vue';
 import ShopPage from './pages/ShopPage.vue';
 import CartPage from './pages/CartPage.vue';
+import CheckoutPage from './pages/CheckoutPage.vue';
 
 const routes = [
   { path: '/', redirect: '/home' },
@@ -12,7 +13,12 @@ const routes = [
   { path: '/signup', component: SignUp },
   { path: '/login', component: LoginPage },
   { path: '/shop', component: ShopPage },
-  { path: '/cart', component: CartPage},
+  { path: '/cart', component: CartPage },
+  {
+    path: '/checkout',
+    name: 'checkout',
+    component: CheckoutPage
+  },
   { path: '/:notFound(.*)', component: NotFound }
 ];
 

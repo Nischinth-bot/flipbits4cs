@@ -33,7 +33,7 @@
         />
       </div>
       <div class="button" v-if="cartItems.length > 0">
-        <base-button> Proceed to Checkout </base-button>
+        <base-button @click="$router.push('/checkout')"> Proceed to Checkout </base-button>
       </div>
     </div>
   </div>
