@@ -14,7 +14,7 @@
       </span>
     </p>
     <div class="total-price">
-      <h3>Total:   ${{ totalPrice }}</h3>
+      <h3>Total: ${{ totalPrice }}</h3>
     </div>
   </div>
 </template>
@@ -33,8 +33,7 @@ export default {
   },
   mounted() {
     for (const item of this.cartItems) {
-      console.log(item.price);
-      this.totalPrice += item.price;
+      this.totalPrice += item.price * item.units;
     }
   },
 };
@@ -65,7 +64,9 @@ img {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  width: 50%;
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: 25%;
 }
 </style>
 
