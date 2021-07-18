@@ -1,8 +1,5 @@
 <template>
-  <div class="shop-alpha">
-    <!-- <div class="sidebar">
-      <h1>Sidebar</h1>
-      </div> -->
+  <div :class="getStyle" @click="goToShopPage()">
     <div class="shop-items">
       <shop-item
         v-for="item in shop_items"
@@ -21,6 +18,7 @@
 <script>
 import ShopItem from '../components/shop/ShopItem.vue';
 export default {
+  props: ['modalMode'],
   emits: ['updateCartCount'],
   components: { ShopItem },
   data() {
@@ -28,8 +26,20 @@ export default {
       shop_items: [],
     };
   },
+  methods: {
+    goToShopPage() {
+      if (this.modalMode == true){
+        this.$router.push('/shop');
+      }
+    },
+  },
   mounted() {
     this.shop_items = this.$store.getters.inventory;
+  },
+  computed: {
+    getStyle() {
+      return this.modalMode == true ? 'shop-alpha-modal' : 'shop-alpha';
+    },
   },
 };
 </script>
@@ -43,12 +53,23 @@ export default {
   flex-wrap: wrap;
   padding-bottom: 10%;
   padding-top: 5%;
-  margin-left: 10%;
+  /* margin-left: 10%; */
   animation: fade 1s ease-in-out;
 }
+.shop-alpha-modal:hover {
+  height: 100vh;
+  width: 100vh;
+  opacity: 100%;
+  background: gold;
+  opacity: 20%;
+  cursor: pointer;
+}
 
-.shop-alpha {
+.shop-alpha,
+.shop-alpha-modal {
   display: flex;
+  overflow: auto;
+  border: 1px solid black;
 }
 /* 
 .sidebar{

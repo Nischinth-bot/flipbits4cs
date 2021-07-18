@@ -16,24 +16,12 @@
         {{ units }}
       </div>
       <div class="buttons">
-        <button @click="removeItemFromCart()" class="cart-button">
-          Remove
-        </button>
-        <button class="cart-button" @click="clickedEdit = true">
-          Edit item
-        </button>
-        <!-- <base-modal
-          :open="clickedEdit === true"
-          title="Please Confirm"
-          @close="clickedEdit = false"
-        >
-          <clothes-form
-            v-if="type === 'clothing'"
-            @close="$emit('close')"
-          >
-          </clothes-form>
-          <misc-form v-else> </misc-form>
-        </base-modal> -->
+        <base-button @click="removeItemFromCart()" class="cart-button">
+          <div class="button">Remove</div>
+        </base-button>
+        <base-button class="cart-button" @click="clickedEdit = true">
+          <div class="button">Edit item</div>
+        </base-button>
       </div>
     </div>
   </div>
@@ -51,14 +39,11 @@ export default {
   props: ['description', 'opts', 'type', 'price', 'key__', 'units', 'imgLink'],
   methods: {
     removeItemFromCart() {
-      // console.log(this.key__);
+      console.log('Here');
       this.$store.commit('removeItemFromCart', this.key__);
       this.$emit('updateCartCount');
     },
   },
-  // getImgUrl() {
-  //   return require('@/assets/' + this.imgLink);
-  // },
   mounted() {
     console.log(this.imgLink);
   },
@@ -72,7 +57,6 @@ export default {
   justify-content: space-evenly;
   background: white;
 }
-
 .cart-item {
   display: flex;
   font-size: 20px;
@@ -86,17 +70,10 @@ export default {
   width: 20%;
   text-align: center;
 }
-
-.cart-item .img-item {
-}
 .cart-item img {
   width: 100px;
   height: 100px;
 }
-
-.units {
-}
-
 .cart-item .description {
   width: 35%;
 }
@@ -108,7 +85,7 @@ export default {
   padding-bottom: 10px;
 }
 
-.cart-button {
+/* .cart-button {
   background-color: wheat;
   font-size: 20px;
   margin-top: auto;
@@ -116,25 +93,17 @@ export default {
   width: 100%;
   border: 1px solid black;
   border-radius: 25px;
-}
+} */
 
 .cart-button:hover {
   cursor: pointer;
 }
 
-.modal-details {
-  display: flex;
-  width: 100%;
-}
-
-.modal-details .buttons {
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100%;
-}
-
 .buttons {
   display: flex;
   flex-direction: column;
+}
+.button {
+  font-size: 12px;
 }
 </style>

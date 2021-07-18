@@ -71,10 +71,9 @@ export default {
 <style scoped>
 .list-inline {
   display:flex;
-  flex-direction: row;
   list-style: none;
 }
 li {
-  margin: -7.8px;
+  margin: -8px;
 }
 </style>

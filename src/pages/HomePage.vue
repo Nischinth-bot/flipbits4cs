@@ -1,20 +1,33 @@
 <template>
-  <div class="welcome-page-alpha">
-    <div class="welcome-page">
-      <h1>Welcome!</h1>
-      <br />
-      <ul>
-        <!-- <li>Our Mission</li>
-        <li>Make a Pledge</li>
-        <li @click="goToProgressPage()">Our Progress</li> -->
-        <li @click="goToShopPage()">AppState CS Merch</li>
-      </ul>
+  <div class="home-page">
+    <div class="flipbits-apphack">
+      <div class="flipbits">
+        <h1>Flip Bits campaign</h1>
+        <bit-pattern number="800000" random="false"> </bit-pattern>
+        <h2>For endowed professorship</h2>
+      </div>
+      <div class="apphack">
+        <h1>App Hack</h1>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum ipsam
+          soluta dolore natus nesciunt tenetur distinctio aliquam nisi
+          necessitatibus cupiditate sed deserunt ducimus, quidem itaque tempore
+          omnis, veritatis perspiciatis nihil!
+        </p>
+      </div>
     </div>
+    <shop-page :modalMode="true" @updateCartCount="$emit('updateCartCount')"> </shop-page>
   </div>
 </template>
 
 <script>
+import ShopPage from '../pages/ShopPage.vue';
+import BitPattern from '../components/bits/BitPattern.vue';
 export default {
+  components: {
+    ShopPage,
+    BitPattern,
+  },
   methods: {
     goToProgressPage() {
       this.$router.push('/progress');
@@ -27,25 +40,44 @@ export default {
 </script>
 
 <style scoped>
-.welcome-page-alpha {
+.home-page {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  animation: fade 1s ease-in-out;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.welcome-page {
+
+.transparent-modal{
+  height: 100%;
+  background: gold;
+}
+.flipbits-apphack {
+  height: 100%;
+  width: 100%;
+  margin: 2rem;
+}
+
+.flipbits-apphack:hover {
+  cursor: pointer;
+}
+
+.flipbits {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  padding-top: 10%;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  height: 25rem;
+  padding: 2rem;
+  margin: 2rem;
 }
 
-.welcome-page ul {
-  list-style: none;
-}
-
-.welcome-page ul li:hover {
-  /* font-size: 25px; */
-  animation: slide-zoom 0.5s forwards;
-  cursor: pointer;
+.apphack {
+  border: 1px solid black;
+  margin-bottom: 10rem;
+  padding: 5rem;
+  background: black;
+  color: gold;
+  margin: 2rem;
 }
 </style>

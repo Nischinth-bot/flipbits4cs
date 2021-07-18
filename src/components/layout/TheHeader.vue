@@ -24,12 +24,12 @@
         </div>
       </div>
     </div>
-    <div class="logo">
-      <img src="../../assets/asu_logo.png" />
+    <!-- <div class="logo">
+      <img src="../../assets/asu_logo.png" /> -->
       <!-- <div v-if="cartHover === true" class="msg">
         <h2>Hovering..</h2>
       </div> -->
-    </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -76,10 +76,10 @@ img {
   height: 50px;
 }
 .logo {
-  display:flex;
+  /* display:flex;
   margin-top: 2rem;
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid black; */
 }
 
 .logo img {
