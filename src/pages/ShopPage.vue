@@ -1,16 +1,27 @@
 <template>
-  <div :class="getStyle" @click="goToShopPage()">
-    <div class="shop-items">
-      <shop-item
-        v-for="item in shop_items"
-        :key="item.key"
-        :imgLink="item.link"
-        :price="item.price"
-        :description="item.description"
-        :type="item.type"
-        @updateCartCount="$emit('updateCartCount')"
-      >
-      </shop-item>
+  <div class="wrapper">
+    <!-- <h1 v-if="modalMode != true" class="banner">CS Storefront</h1> -->
+    <div
+      :class="getStyle"
+      @click="goToShopPage()"
+      @mouseover="hovering = true"
+      @mouseleave="hovering = false"
+    >
+      <div class="shop-items">
+        <h1 class="msg" v-if="modalMode === true && hovering === true">
+          GO 2 STORE
+        </h1>
+        <shop-item
+          v-for="item in shop_items"
+          :key="item.key"
+          :imgLink="item.link"
+          :price="item.price"
+          :description="item.description"
+          :type="item.type"
+          @updateCartCount="$emit('updateCartCount')"
+        >
+        </shop-item>
+      </div>
     </div>
   </div>
 </template>
@@ -24,11 +35,12 @@ export default {
   data() {
     return {
       shop_items: [],
+      hovering: false,
     };
   },
   methods: {
     goToShopPage() {
-      if (this.modalMode == true){
+      if (this.modalMode == true) {
         this.$router.push('/shop');
       }
     },
@@ -45,6 +57,17 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  width: 100%;
+}
+
+.banner {
+  background: black;
+  color: gold;
+  margin-top: 5rem;
+  text-align: center;
+}
+
 .shop-items {
   display: flex;
   flex-direction: row;
@@ -69,7 +92,15 @@ export default {
 .shop-alpha-modal {
   display: flex;
   overflow: auto;
-  border: 1px solid black;
+}
+
+.msg {
+  color: black;
+  opacity: 45%;
+  text-align: center;
+}
+
+.msg:hover {
 }
 /* 
 .sidebar{

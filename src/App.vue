@@ -52,6 +52,8 @@ export default {
 
 html,
 body {
+  margin: 0;
+  padding: 0;
   font-family: Tahoma, sans-serif;
 }
 
@@ -75,17 +77,15 @@ body {
 }
 
 .sidebar {
-  display: flex;
+  width: 10%;
   height: 100%;
-  width: 15%;
-  justify-content: center;
-  align-items: center;
   margin-top: 1.5rem;
 }
 
 .router-view {
   margin-top: 2rem;
-  width: 85%;
+  margin-left: 2rem;
+  width: 80%;
   height: 100%;
 }
 

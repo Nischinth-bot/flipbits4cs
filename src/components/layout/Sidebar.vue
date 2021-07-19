@@ -1,13 +1,18 @@
 <template>
   <div class="sidebar">
     <ul class="list">
-      <li @click="$router.push('/shop')">
+      <li class="listItem" @click="$router.push('/shop')">
+        <div>Shop</div>
         <img :src="getImgUrl('shop.png')" />
       </li>
-      <li @click="$router.push('/home')">
+      <li class="listItem" @click="$router.push('/home')">
+        <div>Home</div>
         <img :src="getImgUrl('home.png')" />
       </li>
-      <li><img :src="getImgUrl('faq.png')" /></li>
+      <li class="listItem">
+        <div>Mission</div>
+        <img :src="getImgUrl('faq.png')" />
+      </li>
     </ul>
   </div>
 </template>
@@ -15,22 +20,36 @@
 <style scoped>
 .sidebar {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: gold;
   color: black;
-  width: 15%;
   height: 100%;
   position: fixed;
   margin-top: 1.5rem;
 }
 
-img {
-  width: 20px;
-  height: 20px;
+.sidebar:hover {
+  cursor: pointer;
 }
 
-ul {
+img {
+  width: 20%;
+  height: 20%;
+}
+
+.listItem:hover{
+  color: orange;
+}
+
+.list {
   list-style: none;
+}
+
+.listItem {
+  width: 125px;
+  display: flex;
+  justify-content: space-between;
 }
 </style>

@@ -16,7 +16,8 @@
         </p>
       </div>
     </div>
-    <shop-page :modalMode="true" @updateCartCount="$emit('updateCartCount')"> </shop-page>
+    <shop-page :modalMode="true" @updateCartCount="$emit('updateCartCount')">
+    </shop-page>
   </div>
 </template>
 
@@ -47,7 +48,7 @@ export default {
   justify-content: space-between;
 }
 
-.transparent-modal{
+.transparent-modal {
   height: 100%;
   background: gold;
 }
@@ -66,18 +67,21 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
   height: 25rem;
   padding: 2rem;
   margin: 2rem;
 }
 
 .apphack {
-  border: 1px solid black;
   margin-bottom: 10rem;
   padding: 5rem;
   background: black;
   color: gold;
   margin: 2rem;
+}
+
+.flipbits:hover,
+.apphack:hover {
+  border: gold 1px solid;
 }
 </style>

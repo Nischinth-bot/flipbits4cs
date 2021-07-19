@@ -16,12 +16,12 @@
         {{ units }}
       </div>
       <div class="buttons">
-        <base-button @click="removeItemFromCart()" class="cart-button">
-          <div class="button">Remove</div>
-        </base-button>
-        <base-button class="cart-button" @click="clickedEdit = true">
+        <button @click="removeItemFromCart()" class="cart-button">
+          Remove
+        </button>
+        <!-- <base-button class="cart-button" @click="clickedEdit = true">
           <div class="button">Edit item</div>
-        </base-button>
+        </base-button> -->
       </div>
     </div>
   </div>
@@ -85,7 +85,7 @@ export default {
   padding-bottom: 10px;
 }
 
-/* .cart-button {
+.cart-button {
   background-color: wheat;
   font-size: 20px;
   margin-top: auto;
@@ -93,7 +93,7 @@ export default {
   width: 100%;
   border: 1px solid black;
   border-radius: 25px;
-} */
+}
 
 .cart-button:hover {
   cursor: pointer;
