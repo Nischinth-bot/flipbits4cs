@@ -1,6 +1,6 @@
 <template>
   <div class="shop-item">
-    <img :src="getImgUrl(imgLink)">
+    <img :src="getImgUrl(imgLink)" />
     <div class="item-desc">
       {{ description }}
     </div>
@@ -81,6 +81,7 @@ export default {
   align-items: center;
   margin: 2rem;
   box-shadow: gray;
+  border:2px solid gold;
 }
 
 .shop-item h2 {

@@ -99,16 +99,4 @@ export default {
   opacity: 45%;
   text-align: center;
 }
-
-.msg:hover {
-}
-/* 
-.sidebar{
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  color:black;
-  width: 15%;
-  border: 1px solid black;
-} */
 </style>
