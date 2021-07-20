@@ -1,11 +1,9 @@
 <template>
   <div class="home-page">
     <div class="flipbits-apphack">
-      <div class="flipbits" @click="$router.push('/campaign')">
-        <h1>Flip Bits campaign</h1>
-        <bit-pattern number="800000" random="false"> </bit-pattern>
-        <h2>For endowed professorship</h2>
-      </div>
+      <base-card class="flipbits-card">
+        <flip-bits-home-page></flip-bits-home-page>
+      </base-card>
       <div class="apphack">
         <h1>App Hack Sponsorship</h1>
         <p>
@@ -16,18 +14,14 @@
         </p>
       </div>
     </div>
-    <shop-page :modalMode="true" @updateCartCount="$emit('updateCartCount')">
-    </shop-page>
   </div>
 </template>
 
 <script>
-import ShopPage from '../pages/ShopPage.vue';
-import BitPattern from '../components/bits/BitPattern.vue';
+import FlipBitsHomePage from '../components/campaign/FlipBitsHomePage.vue';
 export default {
   components: {
-    ShopPage,
-    BitPattern,
+    FlipBitsHomePage,
   },
   methods: {
     goToProgressPage() {
@@ -53,27 +47,16 @@ export default {
   background: gold;
 }
 .flipbits-apphack {
-  height: 50%;
-  width: 50%;
+  display: flex;
+  flex-direction: column;
   margin: 2rem;
+  padding: 2rem;
 }
 
 .flipbits-apphack:hover {
   cursor: pointer;
 }
-
-.flipbits {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 25rem;
-  padding: 2rem;
-  margin: 2rem;
-}
-
 .apphack {
-  margin-bottom: 10rem;
   padding: 5rem;
   background: black;
   color: gold;

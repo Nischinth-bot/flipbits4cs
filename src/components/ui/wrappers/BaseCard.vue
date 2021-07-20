@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <div :class='goldOrWhiteBG'>
+    <div class='base-card'>
       <slot> </slot>
     </div>
   </div>
@@ -10,14 +10,6 @@
 <script>
 export default {
   props: ['background'],
-  computed: {
-    goldOrWhiteBG() {
-      if (this.background) {
-        return 'base-card-gold';
-      }
-      return 'base-card';
-    },
-  },
 };
 </script>
 
@@ -39,18 +31,16 @@ export default {
   background: white;
   color: rgb(204, 183, 63);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  padding: 1rem;
   margin: 0.5rem;
-  max-width: 40rem;
+  width: 50rem;
   animation: fade 1s ease-in-out;
 }
 
 .base-card h1 {
-  margin: 0;
-  background-color: black;
-  text-align: center;
   width:100%;
+  background: black;
   color: gold;
+  text-align: center;
 }
 
 p strong {
