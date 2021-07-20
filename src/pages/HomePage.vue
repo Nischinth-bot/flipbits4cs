@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <div class="flipbits-apphack">
-      <div class="flipbits">
+      <div class="flipbits" @click="$router.push('/campaign')">
         <h1>Flip Bits campaign</h1>
         <bit-pattern number="800000" random="false"> </bit-pattern>
         <h2>For endowed professorship</h2>

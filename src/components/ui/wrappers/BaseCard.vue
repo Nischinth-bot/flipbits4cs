@@ -36,8 +36,8 @@ export default {
 .base-card {
   border-radius: 12px;
   border-color: white;
-  background: rgb(202, 199, 199);
-  color: black;
+  background: white;
+  color: rgb(204, 183, 63);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   padding: 1rem;
   margin: 0.5rem;
@@ -48,6 +48,8 @@ export default {
 .base-card h1 {
   margin: 0;
   background-color: black;
+  text-align: center;
+  width:100%;
   color: gold;
 }
 

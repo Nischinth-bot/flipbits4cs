@@ -1,42 +1,47 @@
 <template>
-  <base-card>
-    <h1>FLIP BITS</h1>
-    <p>
-      The current bit value is : <strong> <input v-model.number="bitValue" type="string" /> </strong>. Click on
-      individual bits to get your unique bit pattern.
-    </p>
-    <bit-pattern
-      :interactive="true"
-      :key="bitValue"
-      :number="bitValue"
-      @update-bit-value="update"
-    >
-    </bit-pattern>
-    <span>
-      <base-button @click="checkValue"> Check for availability </base-button>
-      <base-button @click="randomize"> Randomize </base-button>
-      <base-button @click="claimPattern" v-if="available">
-        Claim this pattern!
-      </base-button>
-    </span>
-    <p v-if="checked && available" class="green">{{ availableMessage }}</p>
-    <p v-if="checked && !available" class="red">{{ availableMessage }}</p>
-    <base-dialog
-      title="Confirm Your Donation"
-      :show="showDialog"
-      @close="closeDialog"
-    >
-    </base-dialog>
-  </base-card>
+  <div class="container">
+    <base-card>
+      <div class="content">
+        <h1>FLIP BITS</h1>
+        <p>
+          The current bit value is :
+          <strong> <input v-model.number="bitValue" type="string" /> </strong>.
+          Click on individual bits to get your unique bit pattern.
+        </p>
+        <bit-pattern
+          :interactive="true"
+          :key="bitValue"
+          :number="bitValue"
+          @update-bit-value="update"
+        >
+        </bit-pattern>
+        <span>
+          <base-button @click="checkValue">
+            Check for availability
+          </base-button>
+          <base-button @click="randomize"> Randomize </base-button>
+          <base-button @click="claimPattern" v-if="available">
+            Claim this pattern!
+          </base-button>
+        </span>
+        <p v-if="checked && available" class="green">{{ availableMessage }}</p>
+        <p v-if="checked && !available" class="red">{{ availableMessage }}</p>
+        <base-dialog
+          title="Confirm Your Donation"
+          :show="showDialog"
+          @close="closeDialog"
+        >
+        </base-dialog>
+      </div>
+    </base-card>
+  </div>
 </template>
 
 <script>
 import BitPattern from '../bits/BitPattern.vue';
-import BaseButton from '../ui/BaseButton.vue';
-import BaseDialog from '../ui/BaseDialog.vue';
 export default {
   emits: ['update-donors'],
-  components: { BitPattern, BaseButton, BaseDialog },
+  components: { BitPattern },
   data() {
     return {
       bitValue: 0,
@@ -100,22 +105,15 @@ export default {
 </script>
 
 <style scoped>
-.left {
-  position: absolute;
-  left: 0px;
-  width: 200px;
-  padding: 10px;
-}
-
 a:active,
 a:hover,
 a.router-link-active {
   border: 1px solid #f391e3;
 }
 
-input{
+input {
   font-size: 20px;
-  width:100px;
+  width: 100px;
   border: 0px solid black;
 }
 
@@ -130,5 +128,23 @@ h1 a.router-link-active {
 }
 .red {
   color: red;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content * {
+  margin: 0.25rem;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 </style>

@@ -16,7 +16,6 @@
 
 <script>
 import BitPattern from '../bits/BitPattern.vue';
-import BaseCard from '../ui/BaseCard.vue';
 export default {
   data() {},
   computed: {
@@ -24,13 +23,11 @@ export default {
       return this.$store.getters.goal - this.$store.getters.donorCount * 25;
     },
   },
-  components: { BaseCard, BitPattern },
+  components: { BitPattern },
 };
 </script>
 
 <style scoped>
-
-
 .left {
   position: absolute;
   left: 0px;
