@@ -1,19 +1,19 @@
 <template>
-  <div class="bit-pattern">
-    <ul class="list-inline">
-      <li v-for="idx in maxBits - 1" :key="idx">
-        <bit
-          :interactive="interactive"
-          :bit="bits[idx]"
-          :key="idx"
-          :index="idx"
-          :maxBits="maxBits"
-          :random="random"
-          :donorList="donorList"
-          @flipped-bit="updateBitValue"
-        ></bit>
-      </li>
-    </ul>
+  <div class="container">
+    <div class="bit-pattern">
+      <bit
+        v-for="idx in maxBits - 1"
+        :key="idx"
+        :interactive="interactive"
+        :bit="bits[idx]"
+        :index="idx"
+        :maxBits="maxBits"
+        :random="random"
+        :donorList="donorList"
+        @flipped-bit="updateBitValue"
+        class="bit"
+      ></bit>
+    </div>
   </div>
 </template>
 
@@ -31,8 +31,7 @@ export default {
     };
   },
   watch: {
-    bitValue(){
-    }
+    bitValue() {},
   },
   methods: {
     parseBits(number) {
@@ -47,9 +46,9 @@ export default {
       }
     },
     updateBitValue(payload) {
-      if (payload.op == 'sub'){
+      if (payload.op == 'sub') {
         this.bitValue -= payload.value;
-      }else{
+      } else {
         this.bitValue += payload.value;
       }
       this.$emit('update-bit-value', this.bitValue);
@@ -69,11 +68,10 @@ export default {
 </script>
 
 <style scoped>
-.list-inline {
-  display:flex;
-  list-style: none;
+.bit-pattern {
+  margin: 2rem;
 }
-li {
-  margin: -8px;
+.bit {
+  display:inline;
 }
 </style>

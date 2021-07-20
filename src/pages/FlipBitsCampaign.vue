@@ -5,9 +5,7 @@
       <li>
         <flip-bits></flip-bits>
       </li>
-      <li>
-          
-      </li>
+      <li></li>
     </ul>
   </div>
 </template>

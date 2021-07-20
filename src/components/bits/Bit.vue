@@ -24,22 +24,9 @@ export default {
     //   This method returns one of 4 CSS classes. The interactive bit patterns will have a hand icon upon hover.
     getClassForBit() {
       if (this.bit_copy == 0) {
-        if (this.interactive) {
-          return 'zero-hand';
-        }
-        if (this.donorList) {
-          return 'zero-small';
-        }
-        return 'zero';
+        return 'bit-zero';
       }
-      if (this.interactive) {
-        return 'one-hand';
-      }
-      if (this.donorList) {
-        return 'one-small';
-      }
-
-      return 'one';
+      return 'bit-one';
     },
   },
   methods: {
@@ -68,7 +55,6 @@ export default {
 </script>
 
 <style scoped>
-
 html {
 }
 @keyframes gold-to-black {
@@ -93,55 +79,26 @@ html {
   }
 }
 
-.zero {
-  color: gold;
-  background-color: black;
-  font-size: 200%;
-  padding: 5%;
+.bit-zero {
+  font-size: 30px;
+  border: 1px solid black;
+  color: black;
+  background: gold;
   border: 1px solid gold;
-}
-.zero-small {
-  color: gold;
-  background-color: black;
-  font-size: 100%;
-  padding: 5%;
-  border: 1px solid gold;
+
+  padding: 5px;
 }
 
-.zero-hand {
-  /* animation-name: black-to-gold;
-  animation-duration: 1s; */
+.bit-one {
+  font-size: 30px;
+  background: black;
+  border: 1px solid black;
+
   color: gold;
-  background-color: black;
-  font-size: 200%;
-  padding: 5%;
-  border: 1px solid gold;
-  cursor: pointer;
+  padding: 5px;
 }
 
-.one {
-  color: black;
-  background-color: gold;
-  font-size: 200%;
-  padding: 5%;
-  border: 1px solid gold;
-}
-.one-small {
-  color: black;
-  background-color: gold;
-  font-size: 100%;
-  padding: 5%;
-  border: 1px solid gold;
-}
-
-.one-hand {
-  /* animation-name: gold-to-black;
-  animation-duration: 1s; */
-  color: black;
-  background-color: gold;
-  font-size: 200%;
-  padding: 5%;
-  border: 1px solid gold;
+.bit:hover {
   cursor: pointer;
 }
 </style>

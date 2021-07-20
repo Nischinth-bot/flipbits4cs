@@ -82,6 +82,5 @@ export default {
 
 .flipbits:hover,
 .apphack:hover {
-  border: gold 1px solid;
 }
 </style>

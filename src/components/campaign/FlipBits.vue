@@ -2,7 +2,13 @@
   <div class="container">
     <base-card>
       <div class="content">
-        <h1>FLIP BITS</h1>
+        <h1 class="flipbits-header">FLIP BITS</h1>
+        <strong>
+          <p class="description">
+            Claim your unique pattern and commit a pledge towards the endowed
+            professorship.
+          </p>
+        </strong>
         <p>
           The current bit value is :
           <strong> <input v-model.number="bitValue" type="string" /> </strong>.
@@ -141,10 +147,9 @@ h1 a.router-link-active {
   margin: 0.25rem;
 }
 
-.container{
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 </style>

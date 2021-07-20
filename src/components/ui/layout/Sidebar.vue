@@ -23,11 +23,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: gold;
+  background: white;
+  border-right: 1px solid black;
   color: black;
+  background:gold;
   height: 100%;
   position: fixed;
-  margin-top: 1.5rem;
+  margin-top: 1.70rem;
 }
 
 .sidebar:hover {
