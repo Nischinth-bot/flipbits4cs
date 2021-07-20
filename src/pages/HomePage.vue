@@ -7,7 +7,7 @@
         <h2>For endowed professorship</h2>
       </div>
       <div class="apphack">
-        <h1>App Hack</h1>
+        <h1>App Hack Sponsorship</h1>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum ipsam
           soluta dolore natus nesciunt tenetur distinctio aliquam nisi
@@ -53,8 +53,8 @@ export default {
   background: gold;
 }
 .flipbits-apphack {
-  height: 100%;
-  width: 100%;
+  height: 50%;
+  width: 50%;
   margin: 2rem;
 }
 
