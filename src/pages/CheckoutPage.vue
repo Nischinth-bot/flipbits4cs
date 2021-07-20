@@ -58,15 +58,15 @@ img {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  animation: fade 0.5s ease-in-out;
 }
 
 .total-price {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  max-width: 50%;
   margin-left: auto;
-  margin-right: 25%;
+  margin-right:20%;
 }
 </style>
 

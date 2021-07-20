@@ -81,7 +81,7 @@ export default {
   align-items: center;
   margin: 2rem;
   box-shadow: gray;
-  border:2px solid gold;
+  /* border:2px solid gold; */
 }
 
 .shop-item h2 {
