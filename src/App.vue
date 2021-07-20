@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import TheHeader from './components/layout/TheHeader.vue';
-import Sidebar from './components/layout/Sidebar.vue';
+import TheHeader from './components/ui/layout/TheHeader.vue';
+import Sidebar from './components/ui/layout/Sidebar.vue';
 
 export default {
   data() {
