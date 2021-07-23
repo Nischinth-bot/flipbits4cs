@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import BitPattern from '../../components/bits/BitPattern.vue';
+import BitPattern from '../bits/BitPattern.vue';
 export default {
   components: { BitPattern },
 };

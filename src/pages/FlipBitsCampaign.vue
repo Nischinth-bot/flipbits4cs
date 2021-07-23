@@ -1,12 +1,7 @@
 <template>
   <div class="campaign">
     <h1 class="campaign-header">Flip Bits Campaign</h1>
-    <ul class="campaign-dashboard">
-      <li>
-        <flip-bits></flip-bits>
-      </li>
-      <li></li>
-    </ul>
+    <flip-bits></flip-bits>
   </div>
 </template>
 

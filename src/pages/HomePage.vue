@@ -1,27 +1,23 @@
 <template>
   <div class="home-page">
     <div class="flipbits-apphack">
-      <base-card class="flipbits-card">
-        <flip-bits-home-page></flip-bits-home-page>
+      <base-card class="flipbits-tile">
+        <flip-bits-tile></flip-bits-tile>
       </base-card>
-      <div class="apphack">
-        <h1>App Hack Sponsorship</h1>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum ipsam
-          soluta dolore natus nesciunt tenetur distinctio aliquam nisi
-          necessitatibus cupiditate sed deserunt ducimus, quidem itaque tempore
-          omnis, veritatis perspiciatis nihil!
-        </p>
-      </div>
+      <base-card class="apphack-tile">
+        <app-hack-tile></app-hack-tile>
+      </base-card>
     </div>
   </div>
 </template>
 
 <script>
-import FlipBitsHomePage from '../components/campaign/FlipBitsHomePage.vue';
+import FlipBitsTile from '../components/campaign/FlipBitsTile.vue';
+import AppHackTile from '../components/campaign/AppHackTile.vue';
 export default {
   components: {
-    FlipBitsHomePage,
+    FlipBitsTile,
+    AppHackTile,
   },
   methods: {
     goToProgressPage() {
@@ -53,17 +49,9 @@ export default {
   padding: 2rem;
 }
 
-.flipbits-apphack:hover {
-  cursor: pointer;
-}
-.apphack {
-  padding: 5rem;
-  background: black;
-  color: gold;
-  margin: 2rem;
-}
 
 .flipbits:hover,
 .apphack:hover {
+  cursor: pointer;
 }
 </style>

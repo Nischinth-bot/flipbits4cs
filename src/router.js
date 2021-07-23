@@ -7,9 +7,11 @@ import ShopPage from './pages/ShopPage.vue';
 import CartPage from './pages/CartPage.vue';
 import CheckoutPage from './pages/CheckoutPage.vue';
 import FlipBitsCampaign from './pages/FlipBitsCampaign.vue';
+import HelloWorld from './pages/HelloWorld.vue';
 
 const routes = [
   { path: '/', redirect: '/home' },
+  { path: '/auth', component: HelloWorld },
   { path: '/home', component: HomePage },
   { path: '/signup', component: SignUp },
   { path: '/login', component: LoginPage },
