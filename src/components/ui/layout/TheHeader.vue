@@ -1,18 +1,40 @@
 <template>
   <div class="header-meta">
     <div class="header">
-      <div id="company-name" @click="goToHomePage()">
+      <div id="company-name" @click="$router.push('/home')">
         <h1><strong> FlipBits </strong></h1>
       </div>
       <div class="right">
         <div class="login-signup">
-          <base-button @click="goToLoginPage()"> Login </base-button>
-          <base-button @click="goToSignupPage()"> Signup </base-button>
+          <img
+            src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
+            width="20"
+            height="20"
+            class="logo"
+            alt="google logo png suite everything you need know about google newest"
+          />
+          <base-button
+            class="login"
+            @click="handleClickSignIn"
+            :disabled="!Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized"
+            v-if="!Vue3GoogleOauth.isAuthorized"
+          >
+            Sign in with Google
+          </base-button>
+
+          <base-button
+            @click="handleClickSignOut"
+            :disabled="!Vue3GoogleOauth.isAuthorized"
+            v-if="Vue3GoogleOauth.isAuthorized"
+            class="login"
+          >
+            Sign out
+          </base-button>
         </div>
         <div
           @mouseenter="cartHover = true"
           @mouseleave="cartHover = false"
-          @click="goToCartPage()"
+          @click="$router.push('/cart')"
           class="cart"
         >
           <i
@@ -26,7 +48,7 @@
     </div>
     <!-- <div class="logo">
       <img src="../../assets/asu_logo.png" /> -->
-      <!-- <div v-if="cartHover === true" class="msg">
+    <!-- <div v-if="cartHover === true" class="msg">
         <h2>Hovering..</h2>
       </div> -->
     <!-- </div> -->
@@ -35,31 +57,53 @@
 
 
 <script>
+import { inject, toRefs } from 'vue';
+
 export default {
   data() {
     return {
       cartHover: false,
+      user: '',
     };
   },
   props: ['numItems'],
   methods: {
-    goToSignupPage() {
-      this.$router.push('/signup');
+    async handleClickSignIn() {
+      try {
+        const googleUser = await this.$gAuth.signIn();
+        if (!googleUser) {
+          return null;
+        }
+        this.user = googleUser.getBasicProfile().getEmail();
+      } catch (error) {
+        console.error(error);
+        return null;
+      }
     },
-    goToLoginPage() {
-      this.$router.push('/login');
+    async handleClickSignOut() {
+      try {
+        await this.$gAuth.signOut();
+        this.user = '';
+      } catch (error) {
+        console.error(error);
+      }
     },
-    goToHomePage() {
-      this.$router.push('/home');
-    },
-    goToCartPage() {
-      this.$router.push('/cart');
-    },
+
+  },
+  setup(props) {
+    const { isSignIn } = toRefs(props);
+    const Vue3GoogleOauth = inject('Vue3GoogleOauth');
+    const handleClickLogin = () => {};
+    return {
+      Vue3GoogleOauth,
+      handleClickLogin,
+      isSignIn,
+    };
   },
 };
 </script>
 
-<style>
+<style scoped>
 .header-meta {
   display: flex;
   flex-direction: column;
@@ -70,11 +114,6 @@ export default {
   justify-content: space-around;
 }
 
-img {
-  width: 25%;
-  width: 200px;
-  height: 50px;
-}
 .logo {
   /* display:flex;
   margin-top: 2rem;
@@ -83,7 +122,7 @@ img {
 }
 
 .logo img {
-  margin-left : auto;
+  margin-left: auto;
   margin-right: auto;
 }
 
@@ -91,7 +130,6 @@ img {
   justify-content: flex-end;
   margin-left: auto;
 }
-
 
 .header {
   display: flex;
@@ -117,6 +155,20 @@ img {
   justify-content: space-around;
   align-items: center;
   width: 90px;
+}
+
+.login {
+}
+
+.login-signup{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+img{
+  margin: 1rem;
 }
 </style>
 

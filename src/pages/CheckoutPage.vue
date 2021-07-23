@@ -48,7 +48,9 @@ export default {
   padding: 20px;
   margin: 10px;
 }
-
+h1 {
+  margin-bottom: 3rem;
+}
 img {
   width: 100px;
   height: 100px;
@@ -59,6 +61,7 @@ img {
   align-items: center;
   flex-direction: column;
   animation: fade 0.5s ease-in-out;
+  margin-top: 5rem;
 }
 
 .total-price {
@@ -66,7 +69,7 @@ img {
   flex-direction: row;
   justify-content: flex-end;
   margin-left: auto;
-  margin-right:20%;
+  margin-right: 20%;
 }
 </style>
 

@@ -88,6 +88,10 @@ export default {
   padding: 1rem;
 }
 
+h1 {
+  margin: 3rem;
+}
+
 ul {
   list-style: none;
 }

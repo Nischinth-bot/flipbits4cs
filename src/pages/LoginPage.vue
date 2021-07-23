@@ -1,84 +1,120 @@
 <template>
-  <div class="login-page">
-    <div class="main">
-      <h1>Welcome back!</h1>
-      <p>Please enter your login details</p>
-      <br>
-      <form @submit.prevent="submitForm">
-        <div class="login-form">
-          <label for="username"> Username </label>
-          <input type="text" id="username" v-model.trim="userName" />
-          <label for="password"> Password </label>
-          <input type="password" id="password" v-model.trim="password" />
-        </div>
-        <br />
-        <p class="warning" v-if="!valid">
-          Oops... your username and/or password is incorrect
-        </p>
-      </form>
-      <base-button @click="submitForm()"> Submit </base-button>
-    </div>
+  <div class="container">
+    <h3 class="title"> Sign in with Google to view your account </h3>
+    <button
+      class="icon"
+      @click="handleClickSignIn"
+      :disabled="!Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized"
+    >
+      <button
+        @click="handleClickSignOut"
+        :disabled="!Vue3GoogleOauth.isAuthorized"
+        v-if="Vue3GoogleOauth.isAuthorized"
+      >
+        sign out
+      </button>
+      <img
+        src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
+        width="200"
+        alt="google logo png suite everything you need know about google newest"
+      />
+    </button>
   </div>
 </template>
 
-
 <script>
+import { inject, toRefs } from 'vue';
+
 export default {
-  components: {},
-  // Emits the user name and password in an object upon clicking the submit button.
-  emits: ['userInfo'],
   data() {
     return {
-      userName: null,
-      password: null,
-      valid: true,
+      user: '',
     };
   },
+
   methods: {
-    submitForm() {
-      if (
-        this.userName == null ||
-        this.password == null ||
-        this.userName.length < 5 ||
-        this.password.length < 5
-      ) {
-        this.valid = false;
-        return;
+    async handleClickSignIn() {
+      try {
+        const googleUser = await this.$gAuth.signIn();
+        if (!googleUser) {
+          return null;
+        }
+        console.log('googleUser', googleUser);
+        this.user = googleUser.getBasicProfile().getEmail();
+        console.log('getId', this.user);
+        console.log('getBasicProfile', googleUser.getBasicProfile());
+        console.log('getAuthResponse', googleUser.getAuthResponse());
+        console.log(
+          'getAuthResponse',
+          this.$gAuth.instance.currentUser.get().getAuthResponse()
+        );
+      } catch (error) {
+        //on fail do something
+        console.error(error);
+        return null;
       }
-      const userInfo = { userName: this.userName, password: this.password };
-      this.$emit('userInfo', userInfo);
-      this.valid = true;
+    },
+
+    async handleClickGetAuthCode() {
+      try {
+        const authCode = await this.$gAuth.getAuthCode();
+        console.log('authCode', authCode);
+      } catch (error) {
+        //on fail do something
+        console.error(error);
+        return null;
+      }
+    },
+
+    async handleClickSignOut() {
+      try {
+        await this.$gAuth.signOut();
+        console.log('isAuthorized', this.Vue3GoogleOauth.isAuthorized);
+        this.user = '';
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    handleClickDisconnect() {
+      window.location.href = `https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=${window.location.href}`;
     },
   },
-  mounted() {},
+  setup(props) {
+    const { isSignIn } = toRefs(props);
+    const Vue3GoogleOauth = inject('Vue3GoogleOauth');
+    const handleClickLogin = () => {};
+    return {
+      Vue3GoogleOauth,
+      handleClickLogin,
+      isSignIn,
+    };
+  },
 };
 </script>
 
-
-
-<style>
-
-.login-page {
-  animation: fade 1s ease-in-out;
-}
-
-.main {
+<style scoped>
+.container {
+  margin-top: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-top: 2rem;
+  color: black;
+
+}
+.icon {
+  margin: 2rem;
 }
 
-h1{
-  padding: 2rem;
+img {
+  width: 150px;
+  height: 150px;
 }
 
-li{
-  padding: 0.5rem;
-}
-.warning {
-  color: red;
+button:disabled {
+  background: #fff;
+  color: #ddd;
+  cursor: not-allowed;
 }
 </style>
-
