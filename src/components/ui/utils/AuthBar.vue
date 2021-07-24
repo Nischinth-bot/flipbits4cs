@@ -1,0 +1,83 @@
+<template>
+  <div class="signin-signout">
+    <img
+      src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png"
+      width="20"
+      height="20"
+      class="logo"
+      alt="google logo png suite everything you need know about google newest"
+    />
+    <base-button
+      class="login"
+      @click="handleClickSignIn"
+      :disabled="!Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized"
+      v-if="!Vue3GoogleOauth.isAuthorized"
+    >
+      Sign in with Google
+    </base-button>
+
+    <base-button
+      @click="handleClickSignOut"
+      :disabled="!Vue3GoogleOauth.isAuthorized"
+      v-if="Vue3GoogleOauth.isAuthorized"
+      class="login"
+    >
+      Sign out
+    </base-button>
+  </div>
+</template>
+
+<script>
+import { inject, toRefs } from 'vue';
+export default {
+  methods: {
+    async handleClickSignIn() {
+      try {
+        const googleUser = await this.$gAuth.signIn();
+        if (!googleUser) {
+          return null;
+        }
+        console.log(this.user);
+        // console.log(googleUser.isSignedIn());
+        this.user = googleUser.getBasicProfile().getEmail();
+      } catch (error) {
+        console.error(error);
+        return null;
+      }
+      this.$store.commit('signIn');
+      console.log(this.$store.getters.isAuthorized)
+    },
+    async handleClickSignOut() {
+      try {
+        await this.$gAuth.signOut();
+        this.user = '';
+      } catch (error) {
+        console.error(error);
+      }
+      this.$store.commit('signOut');
+    },
+  },
+  setup(props) {
+    const { isSignIn } = toRefs(props);
+    const Vue3GoogleOauth = inject('Vue3GoogleOauth');
+    const handleClickLogin = () => {};
+    return {
+      Vue3GoogleOauth,
+      handleClickLogin,
+      isSignIn,
+    };
+  },
+};
+</script>
+
+<style scoped>
+.signin-signout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+img{
+  margin: 1rem;
+}
+</style>
