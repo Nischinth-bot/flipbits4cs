@@ -31,6 +31,14 @@
             Sign out
           </base-button>
         </div>
+        <div class="user-icon">
+          <i
+            id="user"
+            class="fa fa-user"
+            style="font-size: 24px; color: gold"
+            @click="$router.push('/user')"
+          ></i>
+        </div>
         <div
           @mouseenter="cartHover = true"
           @mouseleave="cartHover = false"
@@ -46,12 +54,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="logo">
-      <img src="../../assets/asu_logo.png" /> -->
-    <!-- <div v-if="cartHover === true" class="msg">
-        <h2>Hovering..</h2>
-      </div> -->
-    <!-- </div> -->
   </div>
 </template>
 
@@ -75,7 +77,7 @@ export default {
           return null;
         }
         console.log(this.user);
-        console.log(googleUser.isSignedIn());
+        // console.log(googleUser.isSignedIn());
         this.user = googleUser.getBasicProfile().getEmail();
       } catch (error) {
         console.error(error);
@@ -90,7 +92,6 @@ export default {
         console.error(error);
       }
     },
-
   },
   setup(props) {
     const { isSignIn } = toRefs(props);
@@ -114,13 +115,15 @@ export default {
 .right {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
-.logo {
-  /* display:flex;
-  margin-top: 2rem;
-  width: 100%;
-  border: 1px solid black; */
+#user {
+  margin-right: 1rem;
+}
+
+#cart {
+  margin: 0.25rem;
 }
 
 .logo img {
@@ -157,19 +160,20 @@ export default {
   justify-content: space-around;
   align-items: center;
   width: 90px;
+  color: gold;
 }
 
 .login {
 }
 
-.login-signup{
+.login-signup {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 2rem;
 }
 
-img{
+img {
   margin: 1rem;
 }
 </style>
