@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import FlipBitsTile from '../components/campaign/FlipBitsTile.vue';
-import AppHackTile from '../components/campaign/AppHackTile.vue';
+import FlipBitsTile from '../../components/campaign/FlipBitsTile.vue';
+import AppHackTile from '../../components/campaign/AppHackTile.vue';
 export default {
   components: {
     FlipBitsTile,

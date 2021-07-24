@@ -1,34 +1,35 @@
 <template>
   <div class="cart-item-alpha">
-    <div class="cart-item">
-      <div class="item-img">
-        <img :src="getImgUrl(imgLink)" />
-      </div>
-      <div class="description">
-        {{ description }}
-      </div>
-      <div class="opts">
-        <li v-for="opt in opts" :key="opt">
-          {{ opt }}
-        </li>
-      </div>
-      <div class="units">
-        {{ units }}
-      </div>
-      <div class="buttons">
-        <button @click="removeItemFromCart()" class="cart-button">
-          Remove
-        </button>
-        <!-- <base-button class="cart-button" @click="clickedEdit = true">
+      <div class="cart-item">
+        <div class="item-img">
+          <img :src="getImgUrl(imgLink)" />
+        </div>
+        <div class="description">
+          {{ description }}
+        </div>
+        <div class="opts">
+          <li v-for="opt in opts" :key="opt">
+            {{ opt }}
+          </li>
+        </div>
+        <div class="units">
+          {{ units }}
+        </div>
+        <div class="buttons">
+          <button @click="removeItemFromCart()" class="cart-button">
+            Remove
+          </button>
+          <!-- <base-button class="cart-button" @click="clickedEdit = true">
           <div class="button">Edit item</div>
         </base-button> -->
+        </div>
       </div>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
+  components: {  },
   data() {
     return {
       clickedRemove: false,
@@ -87,12 +88,11 @@ export default {
 
 .cart-button {
   background-color: wheat;
-  font-size: 20px;
+  font-size: 15px;
   margin-top: auto;
   margin-bottom: auto;
   width: 100%;
   border: 1px solid black;
-  border-radius: 25px;
 }
 
 .cart-button:hover {

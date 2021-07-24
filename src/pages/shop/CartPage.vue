@@ -9,7 +9,7 @@
             Back to Shop
           </base-button>
         </div>
-      </div>
+      </div> 
       <!-- <div class="cart-header">
       <h3 class="name">Item Name</h3>
       <h3 class="desc">Description</h3>
@@ -18,29 +18,33 @@
       <h3 class="total">Total</h3> -->
       <!-- </div> -->
       <div class="cart-items-alpha">
-        <cart-item
-          class="cart-items"
-          v-for="item in cartItems"
-          :key="item.key"
-          :key__="item.key"
-          :description="item.description"
-          :opts="item.opts"
-          :price="item.price"
-          :units="item.units"
-          :imgLink="item.imgLink"
-          :type="item.type"
-          @updateCartCount="$emit('updateCartCount')"
-        />
+        <base-card>
+          <cart-item
+            class="cart-items"
+            v-for="item in cartItems"
+            :key="item.key"
+            :key__="item.key"
+            :description="item.description"
+            :opts="item.opts"
+            :price="item.price"
+            :units="item.units"
+            :imgLink="item.imgLink"
+            :type="item.type"
+            @updateCartCount="$emit('updateCartCount')"
+          />
+        </base-card>
       </div>
       <div class="button" v-if="cartItems.length > 0">
-        <base-button @click="$router.push('/checkout')"> Proceed to Checkout </base-button>
+        <base-button @click="$router.push('/checkout')">
+          Proceed to Checkout
+        </base-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import CartItem from '../components/cart/CartItem.vue';
+import CartItem from '../../components/cart/CartItem.vue';
 export default {
   components: { CartItem },
   computed: {
@@ -49,7 +53,7 @@ export default {
     },
     cartIsEmpty() {
       return this.$store.getters.cartIsEmpty;
-    },
+    },  
   },
 };
 </script>

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import ShopItem from '../components/shop/ShopItem.vue';
+import ShopItem from '../../components/shop/ShopItem.vue';
 export default {
   props: ['modalMode'],
   emits: ['updateCartCount'],

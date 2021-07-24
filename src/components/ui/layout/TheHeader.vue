@@ -74,6 +74,8 @@ export default {
         if (!googleUser) {
           return null;
         }
+        console.log(this.user);
+        console.log(googleUser.isSignedIn());
         this.user = googleUser.getBasicProfile().getEmail();
       } catch (error) {
         console.error(error);

@@ -1,12 +1,12 @@
 <template>
   <div class="campaign">
-    <h1 class="campaign-header">Flip Bits Campaign</h1>
+    <h1 class="campaign-header"></h1>
     <flip-bits></flip-bits>
   </div>
 </template>
 
 <script>
-import FlipBits from '../components/campaign/FlipBits.vue';
+import FlipBits from '../../components/campaign/FlipBits.vue';
 export default {
   components: { FlipBits },
 };
