@@ -37,15 +37,14 @@ export default {
         if (!googleUser) {
           return null;
         }
-        console.log(this.user);
-        // console.log(googleUser.isSignedIn());
         this.user = googleUser.getBasicProfile().getEmail();
+        console.log(this.user);
       } catch (error) {
         console.error(error);
         return null;
       }
+      //Get the auth state and put it in Vuex for global visibility
       this.$store.commit('signIn');
-      console.log(this.$store.getters.isAuthorized)
     },
     async handleClickSignOut() {
       try {
@@ -54,6 +53,7 @@ export default {
       } catch (error) {
         console.error(error);
       }
+      //Get the auth state and put it in Vuex for global visibility
       this.$store.commit('signOut');
     },
   },
@@ -77,7 +77,7 @@ export default {
   align-items: center;
 }
 
-img{
+img {
   margin: 1rem;
 }
 </style>
