@@ -9,7 +9,7 @@ export default {
       inventory: [
         {
           description: 'App State Unisex M/F Computer Science T-shirt',
-          key: 'App State Unisex M/F Computer Science T-shirt',
+          key: '0xABCDEF',
           type: 'clothing',
           price: 25,
           link: 'burberry.png',
@@ -17,7 +17,7 @@ export default {
         },
         {
           description: 'App State FlipBits Coffee Mug',
-          key: 'App State FlipBits Coffee Mug',
+          key: '0XABCDEF',
           type: 'misc',
           price: 15,
           link: 'mug.png',

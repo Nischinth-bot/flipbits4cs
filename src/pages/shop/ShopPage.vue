@@ -28,6 +28,7 @@
 
 <script>
 import ShopItem from '../../components/shop/ShopItem.vue';
+import { getInventory } from '@/firebase';
 export default {
   props: ['modalMode'],
   emits: ['updateCartCount'],
@@ -45,8 +46,16 @@ export default {
       }
     },
   },
-  mounted() {
-    this.shop_items = this.$store.getters.inventory;
+  async mounted() {
+    try {
+      const inventory = await getInventory();
+      this.shop_items = inventory;
+      console.log(this.shop_items);
+    } catch (error) {
+      console.log('Error @ mounted', error);
+    }
+    // console.log(this.shop_items);
+    console.log('Hello from ShopItem.mounted()');
   },
   computed: {
     getStyle() {
