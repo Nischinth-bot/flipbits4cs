@@ -11,13 +11,14 @@ const firebaseConfig = {
 };
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 var db = firebaseApp.database();
-console.log(db);
+// console.log(db);
 
 /** Should return a JSON representation of the current inventory */
 export const getInventory = async () => {
   try {
-    const inventory =  await db.ref().get('inventory');
-    return inventory.toJSON();
+    const inventory = (await db.ref('inventory').get()).toJSON();
+    // console.log(inventory);
+    return inventory;
   } catch (error) {
     console.log('Error @ getInventory', error);
   }

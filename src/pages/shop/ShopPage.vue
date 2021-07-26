@@ -7,6 +7,7 @@
       @mouseover="hovering = true"
       @mouseleave="hovering = false"
     >
+      <base-spinner v-if="isLoading"> </base-spinner>
       <div class="shop-items">
         <h1 class="msg" v-if="modalMode === true && hovering === true">
           GO 2 STORE
@@ -14,7 +15,7 @@
         <shop-item
           v-for="item in shop_items"
           :key="item.key"
-          :imgLink="item.link"
+          :imgLink="item.img"
           :price="item.price"
           :description="item.description"
           :type="item.type"
@@ -36,6 +37,7 @@ export default {
   data() {
     return {
       shop_items: [],
+      isLoading: false,
       hovering: false,
     };
   },
@@ -47,15 +49,18 @@ export default {
     },
   },
   async mounted() {
+    this.isLoading = true;
     try {
       const inventory = await getInventory();
-      this.shop_items = inventory;
-      console.log(this.shop_items);
+      console.log(inventory);
+      for (const item in inventory) {
+        this.shop_items.push(inventory[item]);
+      }
     } catch (error) {
-      console.log('Error @ mounted', error);
+      console.log('Error @ ShopPage.mounted()', error);
     }
-    // console.log(this.shop_items);
     console.log('Hello from ShopItem.mounted()');
+    this.isLoading = false;
   },
   computed: {
     getStyle() {
@@ -75,6 +80,10 @@ export default {
   color: gold;
   margin-top: 5rem;
   text-align: center;
+}
+
+.spinner {
+  margin-top: 50%;
 }
 
 .shop-items {
