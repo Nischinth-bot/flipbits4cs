@@ -1,29 +1,28 @@
 <template>
   <div class="wrapper">
-    <base-button @click="refresh()">Click me</base-button>
-    <!-- <h1 v-if="modalMode != true" class="banner">CS Storefront</h1> -->
     <base-spinner v-if="isLoading"> </base-spinner>
     <div v-if="ready">
-      <shop-item v-for="item in shop_items" :key="item"> </shop-item>
-      <ul>
-        <li v-for="item in shop_items" :key="item">
-          {{ item }}
-        </li>
-      </ul>
+      <shop-item
+        v-for="item in shop_items"
+        :key="item.key"
+        :description="item.description"
+        :price="item.price"
+        :type="item.type"
+        :imgLink="item.imgLink"
+      >
+      </shop-item>
     </div>
   </div>
 </template>
 
 <script>
-// import ShopItem from '../../components/shop/ShopItem.vue';
-
 import { getInventory } from '@/firebase';
 import ShopItem from '../../components/shop/ShopItem.vue';
 
 export default {
   props: ['modalMode'],
   emits: ['updateCartCount'],
-  components: {},
+  components: { ShopItem },
   data() {
     ShopItem;
     return {
@@ -42,14 +41,19 @@ export default {
       console.log(this.shop_items);
     },
   },
+  /**
+   * Load the Firebase inventory locally into shop_items
+   * Store shop_items in Vuex.
+   */
   async mounted() {
+    this.isLoading = true;
     const inventory = await getInventory().catch((error) => {
       console.log('Error @ ShopPage.mounted()', error);
     });
-    for (const key in inventory) {
-      const item = inventory[key];
-      this.shop_items.push({ item });
+    for (const item in inventory) {
+     this.shop_items.push(inventory[item]);
     }
+    this.isLoading = false;
     this.$store.dispatch('setInventory', this.shop_items);
   },
 

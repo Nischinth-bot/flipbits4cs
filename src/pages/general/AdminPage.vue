@@ -24,6 +24,8 @@
           <input type="string" id="img" v-model="imgLink" />
           <label for="units"> Item units remaining </label>
           <input type="number" id="units" v-model="units" />
+          <label for="type"> Item type </label>
+          <input type="string" id="type" v-model="type" />
           <button>Submit</button>
           <h3 v-if="inventoryUpdated" class="popup" style="color: green">
             YOUR ITEM HAS BEEN SUBMITTED
@@ -50,6 +52,7 @@ export default {
       price: null,
       imgLink: null,
       units: null,
+      type: null,
       shop_items: [],
       isLoading: false,
       inventoryUpdated: false,
@@ -65,6 +68,7 @@ export default {
         price: this.price,
         imgLink: this.imgLink,
         units: this.units,
+        type: this.type,
         key: this.desc,
       };
       /** If somethings not truthy, show an error and return */
