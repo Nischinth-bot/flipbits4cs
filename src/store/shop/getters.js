@@ -1,5 +1,5 @@
 export default {
-  inventory(state) {
+  getInventory(state) {
     return state.inventory;
   }
 };

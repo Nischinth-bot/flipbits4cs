@@ -29,6 +29,7 @@ export default {
   data() {
     return {
       numCartItems: 0,
+      shop_items: [],
     };
   },
   methods: {
@@ -40,6 +41,7 @@ export default {
     TheHeader,
     Sidebar,
   },
+  /** Set the global inventory list in Vuex by loading from Firebase */
 };
 </script>
 

@@ -17,9 +17,17 @@ var db = firebaseApp.database();
 export const getInventory = async () => {
   try {
     const inventory = (await db.ref('inventory').get()).toJSON();
-    // console.log(inventory);
     return inventory;
   } catch (error) {
-    console.log('Error @ getInventory', error);
+    console.log('Error @ firebase/getInventory', error);
+  }
+};
+
+export const addItemToInventory = async shop_item => {
+  try {
+    console.log(shop_item);
+    await db.ref('inventory/' + shop_item.key).set(shop_item);
+  } catch (error) {
+    console.log('Error @ firebase/addItemToInventory', error);
   }
 };

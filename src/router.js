@@ -5,6 +5,7 @@ import ShopPage from './pages/shop/ShopPage.vue';
 import CartPage from './pages/shop/CartPage.vue';
 import CheckoutPage from './pages/shop/CheckoutPage.vue';
 import FlipBitsCampaign from './pages/campaign/FlipBitsCampaign.vue';
+import AdminPage from './pages/general/AdminPage.vue';
 
 const routes = [
   { path: '/', redirect: '/home' },
@@ -17,7 +18,8 @@ const routes = [
     name: 'checkout',
     component: CheckoutPage
   },
-  { path: '/:notFound(.*)', component: NotFound }
+  { path: '/:notFound(.*)', component: NotFound },
+  { path: '/admin', component: AdminPage }
 ];
 
 const router = createRouter({

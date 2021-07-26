@@ -1,44 +1,35 @@
 <template>
   <div class="wrapper">
+    <base-button @click="refresh()">Click me</base-button>
     <!-- <h1 v-if="modalMode != true" class="banner">CS Storefront</h1> -->
-    <div
-      :class="getStyle"
-      @click="goToShopPage()"
-      @mouseover="hovering = true"
-      @mouseleave="hovering = false"
-    >
-      <base-spinner v-if="isLoading"> </base-spinner>
-      <div class="shop-items">
-        <h1 class="msg" v-if="modalMode === true && hovering === true">
-          GO 2 STORE
-        </h1>
-        <shop-item
-          v-for="item in shop_items"
-          :key="item.key"
-          :imgLink="item.img"
-          :price="item.price"
-          :description="item.description"
-          :type="item.type"
-          @updateCartCount="$emit('updateCartCount')"
-        >
-        </shop-item>
-      </div>
+    <base-spinner v-if="isLoading"> </base-spinner>
+    <div v-if="ready">
+      <shop-item v-for="item in shop_items" :key="item"> </shop-item>
+      <ul>
+        <li v-for="item in shop_items" :key="item">
+          {{ item }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
-import ShopItem from '../../components/shop/ShopItem.vue';
+// import ShopItem from '../../components/shop/ShopItem.vue';
+
 import { getInventory } from '@/firebase';
+import ShopItem from '../../components/shop/ShopItem.vue';
+
 export default {
   props: ['modalMode'],
   emits: ['updateCartCount'],
-  components: { ShopItem },
+  components: {},
   data() {
+    ShopItem;
     return {
       shop_items: [],
       isLoading: false,
-      hovering: false,
+      dataReady: true,
     };
   },
   methods: {
@@ -47,24 +38,25 @@ export default {
         this.$router.push('/shop');
       }
     },
+    refresh() {
+      console.log(this.shop_items);
+    },
   },
   async mounted() {
-    this.isLoading = true;
-    try {
-      const inventory = await getInventory();
-      console.log(inventory);
-      for (const item in inventory) {
-        this.shop_items.push(inventory[item]);
-      }
-    } catch (error) {
+    const inventory = await getInventory().catch((error) => {
       console.log('Error @ ShopPage.mounted()', error);
+    });
+    for (const key in inventory) {
+      const item = inventory[key];
+      this.shop_items.push({ item });
     }
-    console.log('Hello from ShopItem.mounted()');
-    this.isLoading = false;
+    this.$store.dispatch('setInventory', this.shop_items);
   },
+
   computed: {
-    getStyle() {
-      return this.modalMode == true ? 'shop-alpha-modal' : 'shop-alpha';
+    ready() {
+      console.log('ready - ', this.shop_items.length > 0);
+      return this.shop_items.length > 0;
     },
   },
 };
