@@ -81,7 +81,7 @@ body {
 }
 
 .sidebar {
-  width: 10%;
+  min-width: 10%;
   height: 100%;
   margin-top: 1.5rem;
 }
