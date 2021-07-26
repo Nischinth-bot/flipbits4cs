@@ -77,7 +77,7 @@ body {
   display: flex;
   justify-content: flex-start;
   height: 100%;
-  width: 100%;
+  min-width: 100%;
 }
 
 .sidebar {

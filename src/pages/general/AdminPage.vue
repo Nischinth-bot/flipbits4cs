@@ -25,6 +25,12 @@
           <label for="units"> Item units remaining </label>
           <input type="number" id="units" v-model="units" />
           <button>Submit</button>
+          <h3 v-if="inventoryUpdated" class="popup" style="color: green">
+            YOUR ITEM HAS BEEN SUBMITTED
+          </h3>
+          <h3 v-if="errorExists" class="popup" style="color: red">
+            Please check all fields and try again
+          </h3>
         </form>
       </div>
     </div>
@@ -47,11 +53,13 @@ export default {
       shop_items: [],
       isLoading: false,
       inventoryUpdated: false,
+      errorExists: false,
     };
   },
   methods: {
     /** Construct a new object from the form and add it to Firebase inventory */
     async submitForm() {
+      this.errorExists = false;
       const newItem = {
         description: this.desc,
         price: this.price,
@@ -59,17 +67,35 @@ export default {
         units: this.units,
         key: this.desc,
       };
+      /** If somethings not truthy, show an error and return */
+      for (const key in newItem) {
+        if (!newItem[key]) {
+          this.errorExists = true;
+          return;
+        }
+      }
       this.isLoading = true;
       await addItemToInventory(newItem);
       this.isLoading = false;
+
+      /** Successful update results in confirmatory message that goes away after 3 seconds  */
       this.inventoryUpdated = true;
+      await setTimeout(() => {
+        this.inventoryUpdated = false;
+      }, 3000);
+
+      /** Call loadInventory() to refresh shop_items */
+      await this.loadInventory();
+    },
+    async loadInventory() {
+      this.isLoading = true;
+      this.shop_items = await getInventory();
+      this.isLoading = false;
     },
   },
   /** Populate local shop_items with Firebase inventory */
   async created() {
-    this.isLoading = true;
-    this.shop_items = await getInventory();
-    this.isLoading = false;
+      this.loadInventory();
   },
 };
 </script>
@@ -79,9 +105,15 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+}
+
+.inventory {
+  min-width: 45%;
+}
+
+.update-form {
 }
 
 h1 {
@@ -98,5 +130,9 @@ form {
 
 button {
   margin: 1rem;
+}
+
+.popup {
+  animation: fade 0.5s ease-in-out;
 }
 </style>
