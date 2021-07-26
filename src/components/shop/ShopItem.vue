@@ -29,7 +29,7 @@
         ></misc-form>
       </base-modal>
       <div @click="wishlist()" :class="heartColor">&hearts;</div>
-      <div class="price">$ {{ price }}</div>
+      <div class="price">${{ price }}</div>
     </div>
   </div>
 </template>
@@ -81,6 +81,9 @@ export default {
   align-items: center;
   margin: 2rem;
   box-shadow: gray;
+  border: 2px gold solid;
+  border-radius: 22px;
+  width:30%;
   /* border:2px solid gold; */
 }
 
@@ -94,17 +97,17 @@ export default {
 }
 
 img {
-  width: 500px;
-  height: 500px;
+  width: 250px;
+  height: 250px;
 }
 
 .heart-black {
-  margin-top: 5%;
+  margin: 1rem;
   color: black;
 }
 
 .heart-red {
-  margin-top: 5%;
+  margin: 1rem;
   color: red;
   /* animation: heart-swell 0.75s ease-in-out; */
 }
@@ -112,7 +115,6 @@ img {
 .shop-item .cart-wishlist {
   display: flex;
   justify-content: space-around;
-  width: 50%;
   margin: 5%;
 }
 

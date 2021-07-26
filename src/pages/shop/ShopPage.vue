@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <base-spinner v-if="isLoading"> </base-spinner>
-    <div v-if="ready">
+    <div v-if="ready" class="shop-items">
       <shop-item
         v-for="item in shop_items"
         :key="item.key"

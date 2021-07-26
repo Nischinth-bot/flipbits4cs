@@ -45,9 +45,6 @@ export default {
       this.$emit('updateCartCount');
     },
   },
-  mounted() {
-    console.log(this.imgLink);
-  },
 };
 </script>
 
