@@ -63,13 +63,6 @@ export default {
 .wrapper {
 }
 
-.banner {
-  background: black;
-  color: gold;
-  margin-top:5rem;
-  text-align: center;
-}
-
 .spinner {
   margin-top: 50%;
 }

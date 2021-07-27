@@ -85,6 +85,12 @@ body {
   height: 100%;
   margin-top: 1.5rem;
 }
+.banner {
+  background: black;
+  color: gold;
+  margin-top: 5rem;
+  text-align: center;
+}
 
 .router-view {
   width: 100%;
