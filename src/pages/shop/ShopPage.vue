@@ -9,6 +9,7 @@
         :price="item.price"
         :type="item.type"
         :imgLink="item.imgLink"
+        @updateCartCount="$emit('updateCartCount')"
       >
       </shop-item>
     </div>
@@ -75,10 +76,7 @@ export default {
 
 .shop-items {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: space-between;
   padding-bottom: 10%;
   padding-top: 5%;
   /* margin-left: 10%; */

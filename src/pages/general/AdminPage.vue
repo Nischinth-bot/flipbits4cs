@@ -3,7 +3,7 @@
     <div class="header">
       <h1>
         Admin
-        <i class="fas fa-user-tie"></i>
+        <img :src="getImgUrl('admin.png')" />
       </h1>
     </div>
     <div class="container">
@@ -107,10 +107,7 @@ export default {
     },
     async loadInventory() {
       this.isLoading = true;
-      const temp = await getInventory();
-      for (const item in temp) {
-        this.shop_items.push(item);
-      }
+      this.shop_items = await getInventory();
       this.isLoading = false;
     },
   },
@@ -128,11 +125,14 @@ export default {
   align-items: center;
 }
 
-.inventory {
-  width: 45%;
+.header{
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.update-form {
+.inventory {
+  width: 45%;
 }
 
 h2,
