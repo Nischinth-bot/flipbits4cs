@@ -2,6 +2,8 @@
   <div class="container">
     <div class="delete">
       <button @click="deleteSelf()">Delete</button>
+      <!-- <base-dialog :open="showDialog" @close="showDialog = false">
+      </base-dialog> -->
     </div>
     <div class="headers">
       <div class="header-item">Pic</div>
@@ -25,11 +27,17 @@ import { removeItemFromInventory } from '@/firebase';
 export default {
   props: ['description', 'type', 'price', 'units', 'imgLink', 'hashKey'],
   emits: ['inventoryChanged'],
+  data() {
+    return {
+      showDialog: false,
+    };
+  },
   methods: {
     async deleteSelf() {
-        console.log('Hashkey...', this.hashKey);
-        await removeItemFromInventory(this.hashKey);
-        this.$emit('inventoryChanged');
+      this.showDialog = true;
+      console.log('Hashkey...', this.hashKey);
+      await removeItemFromInventory(this.hashKey);
+      this.$emit('inventoryChanged');
     },
   },
 };
@@ -85,5 +93,6 @@ button {
 
 button:hover {
   cursor: pointer;
+  background: rgb(133, 26, 26);
 }
 </style>

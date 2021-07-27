@@ -87,9 +87,7 @@ body {
 }
 
 .router-view {
-  margin-top: 2rem;
-  margin-left: 2rem;
-  width: 80%;
+  width: 100%;
   height: 100%;
 }
 

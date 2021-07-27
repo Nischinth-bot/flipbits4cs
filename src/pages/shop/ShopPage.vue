@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+    <h1 class="banner"> STOREFRONT  </h1>
     <base-spinner v-if="isLoading"> </base-spinner>
     <div v-if="ready" class="shop-items">
       <shop-item
@@ -60,13 +61,12 @@ export default {
 
 <style scoped>
 .wrapper {
-  width: 100%;
 }
 
 .banner {
   background: black;
   color: gold;
-  margin-top: 5rem;
+  margin-top:5rem;
   text-align: center;
 }
 
@@ -76,7 +76,7 @@ export default {
 
 .shop-items {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding-bottom: 10%;
   padding-top: 5%;
   /* margin-left: 10%; */

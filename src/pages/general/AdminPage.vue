@@ -38,12 +38,12 @@
             <label for="type"> Item type </label>
             <input type="string" id="type" v-model="type" />
             <button>Submit</button>
-            <h3 v-if="inventoryUpdated" class="popup" style="color: green">
+            <p v-if="inventoryUpdated" class="popup" style="color: green">
               YOUR ITEM HAS BEEN SUBMITTED
-            </h3>
-            <h3 v-if="errorExists" class="popup" style="color: red">
+            </p>
+            <p v-if="errorExists" class="popup" style="color: red">
               Please check all fields and try again
-            </h3>
+            </p>
           </form>
         </div>
       </div>
@@ -75,6 +75,10 @@ export default {
     /** Construct a new object from the form and add it to Firebase inventory */
     async submitForm() {
       this.errorExists = false;
+      if (!this.formValid()) {
+        this.errorExists = true;
+        return;
+      }
       const newItem = {
         description: this.desc,
         price: this.price,
@@ -85,13 +89,6 @@ export default {
         hashKey: this.hashKey(this.desc),
       };
       /** If somethings not truthy, show an error and return */
-      for (const key in newItem) {
-        if (!newItem[key]) {
-          this.errorExists = true;
-          return;
-        }
-      }
-      console.log(newItem);
       this.isLoading = true;
       await addItemToInventory(newItem);
       this.isLoading = false;
@@ -110,6 +107,17 @@ export default {
       this.shop_items = await getInventory();
       this.isLoading = false;
     },
+
+    /** Helper method to check if the update-form fields are valid. */
+    formValid() {
+      return !(
+        this.desc === null ||
+        this.price === null ||
+        this.imgLink === null ||
+        this.units === null ||
+        this.type === null
+      );
+    },
   },
   /** Populate local shop_items with Firebase inventory */
   async created() {
@@ -119,20 +127,29 @@ export default {
 </script>
 
 <style scoped>
+.meta {
+  margin-top: 3rem;
+}
 .container {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.header{
-  display:flex;
+.header {
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .inventory {
   width: 45%;
+}
+
+.update-form {
+  border: 1px solid brown;
+  border-radius: 20px;
+  margin-bottom: auto;
 }
 
 h2,
@@ -151,9 +168,18 @@ form {
 
 button {
   margin: 1rem;
+  background: brown;
+  color: white;
+  padding: 15px;
+}
+
+button:hover {
+  cursor: pointer;
+  background: rgb(133, 25, 25);
 }
 
 .popup {
+  font-size: 15px;
   animation: fade 0.5s ease-in-out;
 }
 </style>
