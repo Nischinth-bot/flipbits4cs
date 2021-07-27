@@ -1,41 +1,51 @@
 <template>
-  <div class="container">
-    <div class="inventory">
-      <h2>Current inventory</h2>
-      <base-spinner v-if="isLoading"> </base-spinner>
-      <inventory-item
-        v-for="item in shop_items"
-        :key="item.key"
-        :description="item.description"
-        :imgLink="item.imgLink"
-        :price="item.price"
-        :type="item.type"
-        :units="item.units"
-      >
-      </inventory-item>
+  <div class="meta">
+    <div class="header">
+      <h1>
+        Admin
+        <i class="fas fa-user-tie"></i>
+      </h1>
     </div>
-    <div class="update-form">
-      <h2>Update inventory</h2>
-      <div class="form">
-        <form @submit.prevent="submitForm()">
-          <label for="desc"> Item description </label>
-          <input type="string" id="desc" v-model="desc" />
-          <label for="price"> Item Price </label>
-          <input type="string" id="price" v-model="price" />
-          <label for="img"> Item img </label>
-          <input type="string" id="img" v-model="imgLink" />
-          <label for="units"> Item units remaining </label>
-          <input type="number" id="units" v-model="units" />
-          <label for="type"> Item type </label>
-          <input type="string" id="type" v-model="type" />
-          <button>Submit</button>
-          <h3 v-if="inventoryUpdated" class="popup" style="color: green">
-            YOUR ITEM HAS BEEN SUBMITTED
-          </h3>
-          <h3 v-if="errorExists" class="popup" style="color: red">
-            Please check all fields and try again
-          </h3>
-        </form>
+    <div class="container">
+      <div class="inventory">
+        <h2>Current inventory</h2>
+        <base-spinner v-if="isLoading"> </base-spinner>
+        <inventory-item
+          v-for="item in shop_items"
+          :key="item.key"
+          :hashKey="item.hashKey"
+          :description="item.description"
+          :imgLink="item.imgLink"
+          :price="item.price"
+          :type="item.type"
+          :units="item.units"
+          @inventoryChanged="loadInventory()"
+        >
+        </inventory-item>
+      </div>
+      <div class="update-form">
+        <h2>Update inventory</h2>
+        <div class="form">
+          <form @submit.prevent="submitForm()">
+            <label for="desc"> Item description </label>
+            <input type="string" id="desc" v-model="desc" />
+            <label for="price"> Item Price </label>
+            <input type="string" id="price" v-model="price" />
+            <label for="img"> Item img </label>
+            <input type="string" id="img" v-model="imgLink" />
+            <label for="units"> Item units remaining </label>
+            <input type="number" id="units" v-model="units" />
+            <label for="type"> Item type </label>
+            <input type="string" id="type" v-model="type" />
+            <button>Submit</button>
+            <h3 v-if="inventoryUpdated" class="popup" style="color: green">
+              YOUR ITEM HAS BEEN SUBMITTED
+            </h3>
+            <h3 v-if="errorExists" class="popup" style="color: red">
+              Please check all fields and try again
+            </h3>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -72,6 +82,7 @@ export default {
         units: this.units,
         type: this.type,
         key: this.hashKey(this.desc),
+        hashKey: this.hashKey(this.desc),
       };
       /** If somethings not truthy, show an error and return */
       for (const key in newItem) {
@@ -80,6 +91,7 @@ export default {
           return;
         }
       }
+      console.log(newItem);
       this.isLoading = true;
       await addItemToInventory(newItem);
       this.isLoading = false;
@@ -95,13 +107,16 @@ export default {
     },
     async loadInventory() {
       this.isLoading = true;
-      this.shop_items = await getInventory();
+      const temp = await getInventory();
+      for (const item in temp) {
+        this.shop_items.push(item);
+      }
       this.isLoading = false;
     },
   },
   /** Populate local shop_items with Firebase inventory */
   async created() {
-      this.loadInventory();
+    this.loadInventory();
   },
 };
 </script>
@@ -120,7 +135,9 @@ export default {
 .update-form {
 }
 
-h2 {
+h2,
+h1 {
+  text-align: center;
   color: black;
   margin: 2rem;
 }

@@ -23,11 +23,27 @@ export const getInventory = async () => {
   }
 };
 
+/**
+ * Helper method to add item to Firebase inventory.
+ * Takes a Javascript Object as argument.
+ */
 export const addItemToInventory = async shop_item => {
   try {
     console.log(shop_item);
     await db.ref('inventory/' + shop_item.key).set(shop_item);
   } catch (error) {
     console.log('Error @ firebase/addItemToInventory', error);
+  }
+};
+
+/**
+ * Helper method to remove an item from the inventory.
+ * @param {*} item_key : The unique inventory key of the item you want to remove from the Firebase inventory.
+ */
+export const removeItemFromInventory = async item_key => {
+  try {
+    await db.ref('inventory/' + item_key).remove();
+  } catch (error) {
+    console.log('Error @firebase/removeItemFromInventory', error);
   }
 };

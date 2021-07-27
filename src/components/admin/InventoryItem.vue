@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <div class="delete">
-      <button>Delete</button>
+      <button @click="deleteSelf()">Delete</button>
     </div>
     <div class="headers">
       <div class="header-item">Pic</div>
       <div class="header-item">Desc</div>
-      <div class="header-item">Units </div>
+      <div class="header-item">Units</div>
       <div class="header-item">Type</div>
       <div class="header-item">Price</div>
     </div>
@@ -21,8 +21,17 @@
 </template>
 
 <script>
+import { removeItemFromInventory } from '@/firebase';
 export default {
-  props: ['description', 'type', 'price', 'units', 'imgLink'],
+  props: ['description', 'type', 'price', 'units', 'imgLink', 'hashKey'],
+  emits: ['inventoryChanged'],
+  methods: {
+    async deleteSelf() {
+        console.log('Hashkey...', this.hashKey);
+        await removeItemFromInventory(this.hashKey);
+        this.$emit('inventoryChanged');
+    },
+  },
 };
 </script>
 
@@ -31,6 +40,7 @@ export default {
   display: flex;
   width: 100%;
   flex-direction: column;
+  margin: 2rem;
 }
 .headers {
   display: flex;
@@ -70,7 +80,7 @@ button {
   border-bottom: none;
   color: white;
   font-size: 12px;
-  padding:12px;
+  padding: 12px;
 }
 
 button:hover {
