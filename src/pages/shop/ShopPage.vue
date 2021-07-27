@@ -31,16 +31,6 @@ export default {
       dataReady: true,
     };
   },
-  methods: {
-    goToShopPage() {
-      if (this.modalMode == true) {
-        this.$router.push('/shop');
-      }
-    },
-    refresh() {
-      console.log(this.shop_items);
-    },
-  },
   /**
    * Load the Firebase inventory locally into shop_items
    * Store shop_items in Vuex.
@@ -51,15 +41,16 @@ export default {
       console.log('Error @ ShopPage.mounted()', error);
     });
     for (const item in inventory) {
-     this.shop_items.push(inventory[item]);
+     this.shop_items.push(inventory[item]); // Gotta use push for making changes to arrays rerender lists in Vue. 
     }
     this.isLoading = false;
     this.$store.dispatch('setInventory', this.shop_items);
+    console.log(this.shop_items);
   },
 
   computed: {
     ready() {
-      console.log('ready - ', this.shop_items.length > 0);
+      // console.log('ready - ', this.shop_items.length > 0);
       return this.shop_items.length > 0;
     },
   },

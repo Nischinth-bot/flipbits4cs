@@ -1,19 +1,21 @@
 <template>
   <div class="container">
     <div class="inventory">
-      <h1>Current inventory</h1>
+      <h2>Current inventory</h2>
       <base-spinner v-if="isLoading"> </base-spinner>
-      <cart-item
+      <inventory-item
         v-for="item in shop_items"
         :key="item.key"
         :description="item.description"
         :imgLink="item.imgLink"
         :price="item.price"
+        :type="item.type"
+        :units="item.units"
       >
-      </cart-item>
+      </inventory-item>
     </div>
     <div class="update-form">
-      <h1>Update inventory</h1>
+      <h2>Update inventory</h2>
       <div class="form">
         <form @submit.prevent="submitForm()">
           <label for="desc"> Item description </label>
@@ -41,10 +43,10 @@
 
 <script>
 import { addItemToInventory, getInventory } from '@/firebase';
-import CartItem from '../../components/cart/CartItem.vue';
+import InventoryItem from '../../components/admin/InventoryItem.vue';
 export default {
   components: {
-    CartItem,
+    InventoryItem,
   },
   data() {
     return {
@@ -69,7 +71,7 @@ export default {
         imgLink: this.imgLink,
         units: this.units,
         type: this.type,
-        key: this.desc,
+        key: this.hashKey(this.desc),
       };
       /** If somethings not truthy, show an error and return */
       for (const key in newItem) {
@@ -106,21 +108,19 @@ export default {
 
 <style scoped>
 .container {
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
 .inventory {
-  min-width: 45%;
+  width: 45%;
 }
 
 .update-form {
 }
 
-h1 {
+h2 {
   color: black;
   margin: 2rem;
 }

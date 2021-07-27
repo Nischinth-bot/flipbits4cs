@@ -48,6 +48,18 @@ app.mixin({
       }
       return res;
     },
+    /**
+     * Hash function that isn't randomized. Used to generate alphanumeric keys for the Firebase backend.
+     */
+    hashKey(description) {
+      var res = '';
+      for (var i = 0; i < description.length; i++) {
+        res += String.fromCharCode(
+          Math.floor((description.charCodeAt(i) >> 1) + 32) % 127
+        );
+      }
+      return res;
+    },
     getImgUrl(imgLink) {
       return require('@/assets/' + imgLink);
     }
