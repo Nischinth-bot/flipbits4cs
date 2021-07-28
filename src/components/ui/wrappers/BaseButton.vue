@@ -38,7 +38,7 @@ a {
   background-color: black;
   color: gold;
   border: 1px solid white;
-  color: white;
+  color:  white;
   cursor: pointer;
   border-radius: 30px;
   margin-right: 0.5rem;

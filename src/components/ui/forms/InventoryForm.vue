@@ -14,12 +14,12 @@
         <label for="type"> Item type </label>
         <input type="string" id="type" v-model="type" />
         <button>Submit</button>
-        <p v-if="inventoryUpdated" class="popup" style="color: green">
+        <div v-if="inventoryUpdated" class="popup" style="color: green">
           YOUR ITEM HAS BEEN SUBMITTED
-        </p>
-        <p v-if="errorExists" class="popup" style="color: red">
+        </div>
+        <div v-if="errorExists" class="popup" style="color: red">
           Please check all fields and try again
-        </p>
+        </div>
       </form>
     </div>
   </div>
@@ -89,6 +89,7 @@ export default {
   border: 1px solid brown;
   border-radius: 20px;
   margin-bottom: auto;
+  color: black;
 }
 
 .form {
@@ -96,5 +97,24 @@ export default {
   font-size: 25px;
   flex-direction: column;
   margin: 1rem;
+}
+
+button {
+  color: white;
+  background: brown;
+  border: 1px solid black;
+  border-radius: 25px;
+  font-size: 15px;
+  margin: 2rem;
+}
+
+button:hover{
+    cursor: pointer;
+    background: rgb(135, 28, 28);
+}
+
+h2{
+    text-align: center;
+    margin: 2rem;
 }
 </style>

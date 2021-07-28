@@ -15,25 +15,15 @@ export default {
 
 
 
-<style>
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
+<style scoped>
 .base-card {
   border-radius: 12px;
-  border-color: white;
+  border-color: gray;
   background: white;
   color: rgb(204, 183, 63);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin: 0.5rem;
   width: 50rem;
-  animation: fade 1s ease-in-out;
 }
 
 .base-card h1 {

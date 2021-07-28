@@ -73,7 +73,6 @@ export default {
   padding-bottom: 10%;
   padding-top: 5%;
   /* margin-left: 10%; */
-  animation: fade 1s ease-in-out;
 }
 .shop-alpha-modal:hover {
   height: 100vh;

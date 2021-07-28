@@ -10,13 +10,6 @@
           </base-button>
         </div>
       </div> 
-      <!-- <div class="cart-header">
-      <h3 class="name">Item Name</h3>
-      <h3 class="desc">Description</h3>
-      <h3 class="number">Units</h3> -->
-      <!-- <h3 class="price">Price</h3>
-      <h3 class="total">Total</h3> -->
-      <!-- </div> -->
       <div class="cart-items-alpha">
         <base-card>
           <cart-item
@@ -85,7 +78,6 @@ export default {
   margin-right: auto;
   margin-bottom: 5rem;
   padding-top: 1rem;
-  animation: fade 1s ease-in-out;
 }
 
 .cart-header * {
@@ -115,7 +107,6 @@ h1 {
   margin-right: auto;
   justify-content: space-between;
   width: 500px;
-  animation: fade 1s ease-in-out;
 }
 
 .button {

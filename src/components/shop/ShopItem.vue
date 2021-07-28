@@ -5,7 +5,7 @@
       {{ description }}
     </div>
     <div class="cart-wishlist">
-      <base-button @click="showItemModal()"> Add to Cart </base-button>
+      <button @click="showItemModal()">Add to Cart</button>
       <base-modal
         title="Please Confirm"
         :open="showDialog"
@@ -83,7 +83,8 @@ export default {
   box-shadow: gray;
   border: 2px gold solid;
   border-radius: 22px;
-  width:30%;
+  width: 30%;
+  padding: 0.5rem;
   /* border:2px solid gold; */
 }
 
@@ -97,8 +98,8 @@ export default {
 }
 
 img {
-  width: 250px;
-  height: 250px;
+  width: 150px;
+  height: 150px;
 }
 
 .heart-black {
@@ -122,6 +123,19 @@ img {
   margin-top: 5%;
 }
 
+button {
+  color: white;
+  background: brown;
+  width: 100%;
+  text-align: center;
+  margin: 1rem;
+  padding:0.25rem;
+}
+
+button:hover {
+  background: rgb(123, 29, 29);
+  cursor: pointer;
+}
 @keyframes heart-swell {
   0% {
     font-size: inherit;

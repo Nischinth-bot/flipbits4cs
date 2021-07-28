@@ -53,6 +53,7 @@ dialog {
   display: flex;
   justify-content: space-between;
   background: black;
+  color: gold;
 }
 
 .x-bar:hover {

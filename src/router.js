@@ -8,7 +8,7 @@ import FlipBitsCampaign from './pages/campaign/FlipBitsCampaign.vue';
 import AdminPage from './pages/general/AdminPage.vue';
 
 const routes = [
-  { path: '/', redirect: '/home' },
+  { path: '/', redirect: '/shop' },
   { path: '/home', component: HomePage },
   { path: '/shop', component: ShopPage },
   { path: '/cart', component: CartPage },

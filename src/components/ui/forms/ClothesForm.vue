@@ -87,6 +87,7 @@ export default {
 
 h3 {
   background: black;
+  color: gold;
   width: 100%;
 }
 .form {
