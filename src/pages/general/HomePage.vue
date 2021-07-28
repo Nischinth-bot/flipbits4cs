@@ -1,31 +1,27 @@
 <template>
   <div class="home-page">
-    <div class="flipbits-apphack">
+    <h1 class="banner">HOME</h1>
+    <div class="body">
+      <img :src="getImgUrl('under_construction.png')" />
+      <!-- <div class="flipbits-apphack">
       <base-card class="flipbits-tile">
         <flip-bits-tile></flip-bits-tile>
       </base-card>
       <base-card class="apphack-tile">
         <app-hack-tile></app-hack-tile>
-      </base-card>
+      </base-card> -->
+      <!-- </div> -->
     </div>
   </div>
 </template>
 
 <script>
-import FlipBitsTile from '../../components/campaign/FlipBitsTile.vue';
-import AppHackTile from '../../components/campaign/AppHackTile.vue';
+// import FlipBitsTile from '../../components/campaign/FlipBitsTile.vue';
+// import AppHackTile from '../../components/campaign/AppHackTile.vue';
 export default {
   components: {
-    FlipBitsTile,
-    AppHackTile,
-  },
-  methods: {
-    goToProgressPage() {
-      this.$router.push('/progress');
-    },
-    goToShopPage() {
-      this.$router.push('/shop');
-    },
+    // FlipBitsTile,
+    // AppHackTile,
   },
 };
 </script>
@@ -34,21 +30,22 @@ export default {
 .home-page {
   width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
-.transparent-modal {
-  height: 100%;
-  background: gold;
+.body {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
+
 .flipbits-apphack {
   display: flex;
   flex-direction: column;
   margin: 2rem;
   padding: 2rem;
 }
-
 
 .flipbits:hover,
 .apphack:hover {

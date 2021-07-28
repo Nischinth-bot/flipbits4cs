@@ -1,13 +1,13 @@
 <template>
   <div class="sidebar">
     <ul class="list">
-      <li class="listItem" @click="$router.push('/shop')">
-        <div>Shop</div>
-        <img :src="getImgUrl('shop.png')" />
-      </li>
       <li class="listItem" @click="$router.push('/home')">
         <div>Home</div>
         <img :src="getImgUrl('home.png')" />
+      </li>
+      <li class="listItem" @click="$router.push('/shop')">
+        <div>Shop</div>
+        <img :src="getImgUrl('shop.png')" />
       </li>
       <li class="listItem">
         <div>Mission</div>
@@ -26,10 +26,10 @@
   background: white;
   border-right: 1px solid black;
   color: black;
-  background:gold;
+  background: gold;
   height: 100%;
   position: fixed;
-  margin-top: 1.70rem;
+  margin-top: 1.7rem;
 }
 
 .sidebar:hover {
@@ -41,7 +41,7 @@ img {
   height: 20%;
 }
 
-.listItem:hover{
+.listItem:hover {
   color: orange;
 }
 
@@ -50,8 +50,9 @@ img {
 }
 
 .listItem {
-  width: 125px;
   display: flex;
   justify-content: space-between;
+  margin: 1rem;
+  font-size: 1.25rem;
 }
 </style>
