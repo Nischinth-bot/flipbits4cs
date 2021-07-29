@@ -128,5 +128,5 @@ body {
   100% {
     opacity: 1;
   }
-}
+} 
 </style>
