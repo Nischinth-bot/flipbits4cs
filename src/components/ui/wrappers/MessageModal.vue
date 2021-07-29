@@ -1,14 +1,8 @@
 <template>
   <div v-if="open" class="backdrop" @click="$emit('close')"></div>
   <transition name="modal">
-    <dialog open v-if="open">
-      <div class="x-bar">
-        <h3 class="title">{{ title }}</h3>
-        <div class="x" @click="$emit('close')">x</div>
-      </div>
-      <div class="slot">
-        <slot> </slot>
-      </div>
+    <dialog open v-if="open" class="message">
+      <slot> </slot>
     </dialog>
   </transition>
 </template>
@@ -35,17 +29,21 @@ export default {
 dialog {
   position: fixed;
   top: 30vh;
-  width: 30rem;
-  height: 26rem;
-  left: calc(50% - 15rem);
-  margin: 0;
+  width: 20rem;
+  height: 6rem;
+  margin-top: 8%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 12px;
   padding: 1rem;
   background-color: white;
   z-index: 100;
   border: none;
-  /* animation: modal 0.3s ease-out forwards; */
+}
+
+.message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .x-bar * {
@@ -53,9 +51,11 @@ dialog {
 }
 .x-bar {
   display: flex;
-  justify-content: space-between;
-  background: black;
-  color: gold;
+  height: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+  background: gold;
+  color: green;
 }
 
 .x-bar:hover {

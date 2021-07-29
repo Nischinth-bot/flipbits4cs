@@ -5,11 +5,11 @@
       {{ description }}
     </div>
     <div class="cart-wishlist">
-      <button @click="showItemModal()">Add to Cart</button>
+      <button class="brown-button" @click="showItemDialog = true">Add to Cart</button>
       <base-modal
         title="Please Confirm"
-        :open="showDialog"
-        @close="closeItemModal()"
+        :open="showItemDialog"
+        @close="showItemDialog = false"
       >
         <clothes-form
           v-if="type === 'clothing'"
@@ -17,7 +17,7 @@
           :price="price"
           :imgLink="imgLink"
           @itemsAddedToCart="$emit('updateCartCount')"
-          @close="closeItemModal()"
+          @close="showItemDialog = false"
         ></clothes-form>
         <misc-form
           v-else-if="type === 'misc'"
@@ -25,10 +25,17 @@
           :imgLink="imgLink"
           :price="price"
           @itemsAddedToCart="$emit('updateCartCount')"
-          @close="closeItemModal()"
+          @close="showItemDialog = false"
         ></misc-form>
       </base-modal>
-      <div @click="wishlist()" :class="heartColor">&hearts;</div>
+      <div @click="wishlist()" :class="heartColor">&hearts;
+      <message-modal
+        :open="showWishListedDialog"
+        @close="showWishListedDialog = false"
+      >
+        <div style="color:green">Your item has been wishlisted.</div>
+      </message-modal>
+      </div>
       <div class="price">${{ price }}</div>
     </div>
   </div>
@@ -37,36 +44,41 @@
 <script>
 import ClothesForm from '../ui/forms/ClothesForm.vue';
 import MiscForm from '../ui/forms/MiscForm.vue';
+import MessageModal from '../../components/ui/wrappers/MessageModal.vue';
 
 export default {
   emits: ['updateCartCount'],
-  components: { ClothesForm, MiscForm },
+  components: { ClothesForm, MiscForm, MessageModal },
   props: ['imgLink', 'price', 'description', 'type'],
   data() {
     return {
-      heartColor: 'heart-black',
-      showDialog: false,
+      heartColor: 'black',
+      showItemDialog: false,
+      showWishListedDialog: false,
+      wishlisted: false,
     };
   },
   methods: {
     changecolor() {
-      if (this.heartColor === 'heart-red') {
-        // console.log('Chaning to black');
-        this.heartColor = 'heart-black';
+      if (this.heartColor === 'red') {
+        this.heartColor = 'black';
         return;
       }
-      // console.log('Chaning to red');
-      this.heartColor = 'heart-red';
+      this.heartColor = 'red';
       return;
     },
     wishlist() {
       this.changecolor();
-    },
-    showItemModal() {
-      this.showDialog = true;
-    },
-    closeItemModal() {
-      this.showDialog = false;
+      if (this.wishlisted === false) {
+        this.wishlisted = true;
+        this.showWishListedDialog = true;
+        setTimeout(() => {
+          this.showWishListedDialog = false;
+        }, 2000);
+      } else {
+        this.wishlisted = false;
+        return;
+      }
     },
   },
 };
@@ -102,12 +114,12 @@ img {
   height: 150px;
 }
 
-.heart-black {
+.black {
   margin: 1rem;
   color: black;
 }
 
-.heart-red {
+.red {
   margin: 1rem;
   color: red;
   /* animation: heart-swell 0.75s ease-in-out; */
@@ -116,26 +128,25 @@ img {
 .shop-item .cart-wishlist {
   display: flex;
   justify-content: space-around;
-  margin: 5%;
+  align-items: center;
+  margin: 1rem;
 }
 
-.shop-item .price {
-  margin-top: 5%;
-}
 
-button {
+.brown-button {
   color: white;
   background: brown;
   width: 100%;
   text-align: center;
   margin: 1rem;
-  padding:0.25rem;
+  padding: 0.25rem;
 }
 
-button:hover {
+.brown-button:hover {
   background: rgb(123, 29, 29);
   cursor: pointer;
 }
+
 @keyframes heart-swell {
   0% {
     font-size: inherit;

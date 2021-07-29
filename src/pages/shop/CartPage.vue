@@ -1,7 +1,7 @@
 <template>
   <div class="container">
+    <h1 class="banner">CART</h1>
     <div class="cart-alpha">
-      <h1>Your Cart</h1>
       <div class="empty-cart" v-if="cartItems.length === 0">
         <h2>Hmm... looks like your cart is empty</h2>
         <div class="button">
@@ -9,7 +9,7 @@
             Back to Shop
           </base-button>
         </div>
-      </div> 
+      </div>
       <div class="cart-items-alpha">
         <base-card>
           <cart-item
@@ -46,7 +46,7 @@ export default {
     },
     cartIsEmpty() {
       return this.$store.getters.cartIsEmpty;
-    },  
+    },
   },
 };
 </script>
@@ -54,6 +54,7 @@ export default {
 <style scoped>
 .container {
   display: flex;
+  flex-direction: column;
   width: 100%;
   background: white;
 }
@@ -74,6 +75,8 @@ export default {
 .cart-alpha {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 5rem;
@@ -84,8 +87,9 @@ export default {
   padding: 1rem;
 }
 
-h1 {
+.cart-alpha .banner {
   margin: 3rem;
+  width: 100%;
 }
 
 ul {
@@ -110,7 +114,7 @@ h1 {
 }
 
 .button {
-  margin-top: 3rem;
+  justify-content: flex-end;
   margin-left: auto;
 }
 </style>

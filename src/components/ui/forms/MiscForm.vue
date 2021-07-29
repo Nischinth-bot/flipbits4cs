@@ -5,8 +5,7 @@
         <label for="color"> Choose a color </label><br />
         <select id="color" name="color" v-model="selectedColor">
           <option value="Black">Black</option>
-          <option value="Purple">Purple</option>
-          <option value="Burgundy">Burgundy</option>
+          <option value="Burgundy">White</option>
         </select>
       </li>
       <li>

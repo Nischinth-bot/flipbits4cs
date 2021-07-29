@@ -79,6 +79,7 @@ export default {
 <style scoped>
 .clothes-form {
   display: flex;
+  height:100%;
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
