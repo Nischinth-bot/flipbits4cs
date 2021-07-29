@@ -97,6 +97,19 @@ body {
   width: 100%;
   height: 100%;
 }
+.brown-button {
+  color: white;
+  background: brown;
+  width: 100%;
+  text-align: center;
+  margin: 1rem;
+  padding: 0.25rem;
+}
+
+.brown-button:hover {
+  background: rgb(123, 29, 29);
+  cursor: pointer;
+}
 
 @keyframes slide-zoom {
   0% {

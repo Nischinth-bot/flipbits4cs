@@ -132,21 +132,6 @@ img {
   margin: 1rem;
 }
 
-
-.brown-button {
-  color: white;
-  background: brown;
-  width: 100%;
-  text-align: center;
-  margin: 1rem;
-  padding: 0.25rem;
-}
-
-.brown-button:hover {
-  background: rgb(123, 29, 29);
-  cursor: pointer;
-}
-
 @keyframes heart-swell {
   0% {
     font-size: inherit;
