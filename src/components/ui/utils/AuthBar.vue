@@ -10,20 +10,18 @@
     <base-button
       class="login"
       @click="handleClickSignIn"
-      :disabled="!Vue3GoogleOauth.isInit || Vue3GoogleOauth.isAuthorized"
       v-if="!Vue3GoogleOauth.isAuthorized"
     >
-      Sign in with Google
+      <div class="message">Sign in with Google</div>
     </base-button>
 
-    <base-button
+    <button
       @click="handleClickSignOut"
-      :disabled="!Vue3GoogleOauth.isAuthorized"
       v-if="Vue3GoogleOauth.isAuthorized"
       class="login"
     >
       Sign out
-    </base-button>
+    </button>
   </div>
 </template>
 
