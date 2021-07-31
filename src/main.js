@@ -1,5 +1,4 @@
 import { createApp } from 'vue';
-import { createStore } from 'vuex';
 import App from './App.vue';
 import GAuth from 'vue3-google-oauth2';
 import BaseCard from './components/ui/wrappers/BaseCard.vue';
@@ -9,11 +8,10 @@ import BaseSpinner from './components/ui/wrappers/BaseSpinner.vue';
 import BaseDialog from './components/ui/wrappers/BaseDialog.vue';
 import BaseModal from './components/ui/wrappers/BaseModal.vue';
 
-import store__ from './store/index.js';
+import store from './store/index.js';
 import router from './router.js';
 
 const app = createApp(App);
-const store = createStore(store__);
 const gAuthOptions = {
   clientId:
     '769265671912-5kvb32tmmeros1d7mi5kop55ln2e6nss.apps.googleusercontent.com',

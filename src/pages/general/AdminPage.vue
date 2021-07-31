@@ -36,6 +36,7 @@
 import { getInventory } from '@/firebase';
 import InventoryForm from '../../components/ui/forms/InventoryForm.vue';
 import InventoryItem from '../../components/admin/InventoryItem.vue';
+import store from '../../store/index.js';
 export default {
   components: {
     InventoryItem,
@@ -69,6 +70,11 @@ export default {
         this.inventoryUpdated = false;
       }
     },
+  },
+  // Validate the authentication status and email id of the user
+  beforeRouteEnter(to, from, next) {
+    if (store.isAuthenticated && store.userId === 'nischinth.murari@gmail.com') next();
+    else next('/restricted');
   },
 };
 </script>

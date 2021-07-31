@@ -19,9 +19,9 @@ const routes = [
     name: 'checkout',
     component: CheckoutPage
   },
-  { path: '/:notFound(.*)', component: NotFound },
   { path: '/admin', component: AdminPage },
-  { path: '/restricted', component: ForbiddenResource }
+  { path: '/restricted', component: ForbiddenResource },
+  { path: '/:notFound(.*)', component: NotFound }
 ];
 
 const router = createRouter({

@@ -42,7 +42,7 @@ export default {
         return null;
       }
       //Get the auth state and put it in Vuex for global visibility
-      this.$store.commit('signIn');
+      this.$store.commit('signIn', this.user);
     },
     async handleClickSignOut() {
       try {
