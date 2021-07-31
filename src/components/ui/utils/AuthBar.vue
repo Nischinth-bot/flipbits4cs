@@ -15,13 +15,13 @@
       <div class="message">Sign in with Google</div>
     </base-button>
 
-    <button
+    <base-button
       @click="handleClickSignOut"
       v-if="Vue3GoogleOauth.isAuthorized"
       class="login"
     >
       Sign out
-    </button>
+    </base-button>
   </div>
 </template>
 

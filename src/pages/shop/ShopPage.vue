@@ -64,7 +64,7 @@ export default {
 }
 
 .spinner {
-  margin-top: 50%;
+  margin-top: 25%;
 }
 
 .shop-items {

@@ -6,6 +6,7 @@ import CartPage from './pages/shop/CartPage.vue';
 import CheckoutPage from './pages/shop/CheckoutPage.vue';
 import FlipBitsCampaign from './pages/campaign/FlipBitsCampaign.vue';
 import AdminPage from './pages/general/AdminPage.vue';
+import ForbiddenResource from './pages/general/ForbiddenResource.vue';
 
 const routes = [
   { path: '/', redirect: '/shop' },
@@ -19,7 +20,8 @@ const routes = [
     component: CheckoutPage
   },
   { path: '/:notFound(.*)', component: NotFound },
-  { path: '/admin', component: AdminPage }
+  { path: '/admin', component: AdminPage },
+  { path: '/restricted', component: ForbiddenResource }
 ];
 
 const router = createRouter({
