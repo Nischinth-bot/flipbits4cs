@@ -47,12 +47,10 @@ export default {
     }
     this.isLoading = false;
     this.$store.dispatch('setInventory', this.shop_items);
-    console.log(this.shop_items);
   },
 
   computed: {
     ready() {
-      // console.log('ready - ', this.shop_items.length > 0);
       return this.shop_items.length > 0;
     },
   },

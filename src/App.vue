@@ -100,7 +100,6 @@ body {
 .brown-button {
   color: white;
   background: brown;
-  width: 100%;
   text-align: center;
   margin: 1rem;
   padding: 0.25rem;

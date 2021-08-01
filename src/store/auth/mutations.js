@@ -1,8 +1,10 @@
 export default {
-  signIn(state) {
-      state.isAuthorized = true;
+  signIn(state, userId){
+    state.signedIn = true;
+    state.userId = userId;
   },
   signOut(state){
-      state.isAuthorized = false;
+    state.signedIn = false;
+    state.userId = '';
   }
 };

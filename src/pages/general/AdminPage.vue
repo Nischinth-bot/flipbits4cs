@@ -34,9 +34,10 @@
 
 <script>
 import { getInventory } from '@/firebase';
+import { mapGetters } from 'vuex';
+// import store from '@/store/index.js';
 import InventoryForm from '../../components/ui/forms/InventoryForm.vue';
 import InventoryItem from '../../components/admin/InventoryItem.vue';
-import store from '../../store/index.js';
 export default {
   components: {
     InventoryItem,
@@ -48,6 +49,9 @@ export default {
       isLoading: false,
       inventoryUpdated: false,
     };
+  },
+  computed: {
+    ...mapGetters(['isAuthenticated', 'userId']),
   },
   methods: {
     /** Construct a new object from the form and add it to Firebase inventory */
@@ -71,10 +75,13 @@ export default {
       }
     },
   },
-  // Validate the authentication status and email id of the user
-  beforeRouteEnter(to, from, next) {
-    if (store.isAuthenticated && store.userId === 'nischinth.murari@gmail.com') next();
-    else next('/restricted');
+  mounted() {
+    // console.log(store.auth.state);
+    console.log(this.$store.state.auth);
+    if(this.$store.state.auth.isAuthenticated && this.$store.state.auth.userId === 'nischinth.murari@gmail.com'){
+      console.log("Authenticated!");
+    }
+    // else next('/restricted');
   },
 };
 </script>

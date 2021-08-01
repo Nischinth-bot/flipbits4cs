@@ -5,7 +5,8 @@ import cart from './user/cart/index.js';
 import shop from './shop/index.js';
 import auth from './auth/index.js';
 
-const store = createStore({
+// Store is of type var because creating it as a const kills reactivity and Vuex as a whole.
+var store = createStore({
   modules: {
     bits: bit_patterns,
     cart_stuff: cart,
@@ -14,4 +15,4 @@ const store = createStore({
   }
 });
 
-export default { store };
+export default store;

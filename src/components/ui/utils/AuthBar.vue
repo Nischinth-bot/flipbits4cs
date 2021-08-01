@@ -36,13 +36,15 @@ export default {
           return null;
         }
         this.user = googleUser.getBasicProfile().getEmail();
-        console.log(this.user);
+        // console.log(this.user);
       } catch (error) {
         console.error(error);
         return null;
       }
       //Get the auth state and put it in Vuex for global visibility
       this.$store.commit('signIn', this.user);
+      console.log(this.$store.getters.isAuthenticated);
+      console.log(this.$store.getters.userId);
     },
     async handleClickSignOut() {
       try {

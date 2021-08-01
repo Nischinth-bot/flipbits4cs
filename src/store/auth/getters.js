@@ -1,5 +1,8 @@
 export default {
-    isAuthorized(state){
-        return state.isAuthorized;
-    }
+  isAuthenticated(state) {
+    return state.signedIn;
+  },
+  userId(state) {
+    return state.userId;
+  }
 };
