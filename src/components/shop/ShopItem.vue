@@ -95,7 +95,7 @@ export default {
   box-shadow: gray;
   border: 2px gold solid;
   border-radius: 22px;
-  width: 30%;
+  width: 25%;
   padding: 0.5rem;
   /* border:2px solid gold; */
 }

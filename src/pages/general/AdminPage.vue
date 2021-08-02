@@ -23,11 +23,7 @@
         >
         </inventory-item>
       </div>
-      <inventory-form
-        class="inv-form"
-        @inventoryChanged="this.inventoryUpdated = true"
-      >
-      </inventory-form>
+      <inventory-form class="inv-form"> </inventory-form>
     </div>
   </div>
 </template>
@@ -35,7 +31,7 @@
 <script>
 import { getInventory } from '@/firebase';
 import { mapGetters } from 'vuex';
-// import store from '@/store/index.js';
+import store from '@/store/index.js';
 import InventoryForm from '../../components/ui/forms/InventoryForm.vue';
 import InventoryItem from '../../components/admin/InventoryItem.vue';
 export default {
@@ -54,17 +50,12 @@ export default {
     ...mapGetters(['isAuthenticated', 'userId']),
   },
   methods: {
-    /** Construct a new object from the form and add it to Firebase inventory */
+    /** Load the inventory from Firebase and update the state to display a spinner. */
     async loadInventory() {
       this.isLoading = true;
       this.shop_items = await getInventory();
       this.isLoading = false;
     },
-    /** Helper method to check if the update-form fields are valid. */
-  },
-  /** Populate local shop_items with Firebase inventory */
-  async created() {
-    this.loadInventory();
   },
   watch: {
     inventoryUpdated(is, was) {
@@ -75,13 +66,18 @@ export default {
       }
     },
   },
-  mounted() {
-    // console.log(store.auth.state);
-    console.log(this.$store.state.auth);
-    if(this.$store.state.auth.isAuthenticated && this.$store.state.auth.userId === 'nischinth.murari@gmail.com'){
-      console.log("Authenticated!");
+  beforeRouteEnter(to, from, next) {
+    if (
+      store.getters.isAuthenticated &&
+      store.getters.userId === 'nischinth.murari@gmail.com'
+    ) {
+      next();
+    } else {
+      next('/restricted');
     }
-    // else next('/restricted');
+  },
+  async mounted() {
+    await this.loadInventory();
   },
 };
 </script>

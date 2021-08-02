@@ -64,5 +64,4 @@ app.mixin({
   }
 });
 
-console.log(store);
 app.mount('#app');

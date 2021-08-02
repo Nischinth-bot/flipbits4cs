@@ -1,4 +1,5 @@
 import { createStore } from 'vuex';
+import  createPersistedState from 'vuex-persistedstate';
 
 import bit_patterns from './bit_patterns/index.js';
 import cart from './user/cart/index.js';
@@ -12,7 +13,8 @@ var store = createStore({
     cart_stuff: cart,
     shop: shop,
     auth: auth
-  }
+  },
+  plugins:[createPersistedState()]
 });
 
 export default store;

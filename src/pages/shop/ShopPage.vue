@@ -47,6 +47,7 @@ export default {
     }
     this.isLoading = false;
     this.$store.dispatch('setInventory', this.shop_items);
+    this.$emit('updateCartCount');
   },
 
   computed: {
@@ -59,6 +60,7 @@ export default {
 
 <style scoped>
 .wrapper {
+  width:100%;
 }
 
 .spinner {
@@ -68,8 +70,7 @@ export default {
 .shop-items {
   display: flex;
   justify-content: flex-start;
-  padding-bottom: 10%;
-  padding-top: 5%;
+  flex-wrap: wrap;
   /* margin-left: 10%; */
 }
 .shop-alpha-modal:hover {
