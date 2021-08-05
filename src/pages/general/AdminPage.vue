@@ -13,7 +13,6 @@
         <inventory-item
           v-for="item in shop_items"
           :key="item.key"
-          :hashKey="item.hashKey"
           :description="item.description"
           :imgLink="item.imgLink"
           :price="item.price"
@@ -25,13 +24,17 @@
       </div>
       <inventory-form class="inv-form"> </inventory-form>
     </div>
-    <div class="orders"></div>
-    
+    <div class="orders">
+      <h2>Open Orders</h2>
+      <ul>
+        <li v-for="order in orders" :key="order.key" ><span> {{ order.key }} </span> </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import { getInventory } from '@/firebase';
+import { getInventory, getOrders } from '@/firebase';
 import { mapGetters } from 'vuex';
 import { inject, toRefs } from 'vue';
 import store from '@/store/index.js';
@@ -46,6 +49,7 @@ export default {
   data() {
     return {
       shop_items: [],
+      orders: [],
       isLoading: false,
       inventoryUpdated: false,
     };
@@ -56,9 +60,11 @@ export default {
   methods: {
     /** Load the inventory from Firebase and update the state to display a spinner. */
     async loadInventory() {
-      this.isLoading = true;
       this.shop_items = await getInventory();
-      this.isLoading = false;
+    },
+
+    async loadOrders() {
+      this.orders = await getOrders();
     },
   },
   watch: {
@@ -81,8 +87,12 @@ export default {
     }
   },
   async mounted() {
+    this.isLoading = true;
     await this.loadInventory();
+    await this.loadOrders();
+    this.isLoading = false;
     this.$emit('updateCartCount');
+    console.log(this.orders);
   },
   setup(props) {
     const { isSignIn } = toRefs(props);
@@ -100,6 +110,7 @@ export default {
 <style scoped>
 .meta {
   margin-top: 1rem;
+  height: 100%;
 }
 .container {
   display: flex;
@@ -137,5 +148,12 @@ button:hover {
 .popup {
   font-size: 15px;
   animation: fade 0.5s ease-in-out;
+}
+
+.orders {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 </style>

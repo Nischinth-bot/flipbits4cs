@@ -103,3 +103,14 @@ export const addOrderToQueue = async order => {
     console.log('Error from @/firebase.addOrderToQueue()', error);
   }
 };
+
+/**
+ * Get all orders in the Database.
+ */
+export const getOrders = async () => {
+  try {
+    return (await db.ref('orders/').get()).toJSON();
+  } catch (error) {
+    console.log('Error from @/firebase.getOrders()', error);
+  }
+};
