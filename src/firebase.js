@@ -19,20 +19,20 @@ export const getInventory = async () => {
     const inventory = (await db.ref('inventory').get()).toJSON();
     return inventory;
   } catch (error) {
-    console.log('Error @ firebase/getInventory', error);
+    console.log('Error @ firebase/getInventory()', error);
   }
 };
 
 /**
  * Helper method to add item to Firebase inventory.
- * Takes a Javascript Object as argument.
+ * Takes a JSON shop_item as argument.
  */
 export const addItemToInventory = async shop_item => {
   try {
     console.log(shop_item);
     await db.ref('inventory/' + shop_item.key).set(shop_item);
   } catch (error) {
-    console.log('Error @ firebase/addItemToInventory', error);
+    console.log('Error @ firebase/addItemToInventory()', error);
   }
 };
 
@@ -44,6 +44,33 @@ export const removeItemFromInventory = async item_key => {
   try {
     await db.ref('inventory/' + item_key).remove();
   } catch (error) {
-    console.log('Error @firebase/removeItemFromInventory', error);
+    console.log('Error @firebase/removeItemFromInventory()', error);
+  }
+};
+/**
+ * Userbase is keyed on email.
+ * @param {*} user_obj : Javascript object with fields: key, firstname, lastname, addressl1, addressl2, phone, orders
+ */
+export const addUserToUserbase = async user_obj => {
+  try {
+    console.log(user_obj);
+    await db.ref('users/' + user_obj.key).set(JSON.stringify(user_obj));
+  } catch (error) {
+    console.log('Error from @/firebase/addUserToUserBase()', error);
+  }
+};
+/**
+ * Return true if user exists. False if not.
+ * @param {*} user_email : Check if user with this email exists in Userbase.
+ */
+export const checkIfUserExists = async email => {
+  try {
+    const userBase = await db.ref('users/').get();
+    for (const user in userBase) {
+      if (user.email == email) return true;
+    }
+    return false;
+  } catch (error) {
+    console.log('Error from @/firebase/checkIfUserExists()', error);
   }
 };

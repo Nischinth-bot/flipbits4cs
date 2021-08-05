@@ -90,6 +90,7 @@ body {
   color: gold;
   margin-top: 5rem;
   text-align: center;
+  width: 100%;
 }
 
 .router-view {

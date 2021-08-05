@@ -43,8 +43,9 @@ export default {
       }
       //Get the auth state and put it in Vuex for global visibility
       this.$store.commit('signIn', this.user);
-      console.log(this.$store.getters.isAuthenticated);
-      console.log(this.$store.getters.userId);
+      this.$router.push('/signup');
+      // console.log(this.$store.getters.isAuthenticated);
+      // console.log(this.$store.getters.userId);
     },
     async handleClickSignOut() {
       try {

@@ -37,6 +37,9 @@ export default {
       this.totalPrice += item.price * item.units;
     }
   },
+  /**
+   * You can enter into Checkout only if you are authenticated.
+   */
   beforeRouteEnter(to,from,next){
     if(store.getters.isAuthenticated) next(); 
     else next('/cart');
