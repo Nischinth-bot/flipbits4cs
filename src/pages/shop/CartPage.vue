@@ -62,10 +62,11 @@ export default {
         this.showSignInDialog = true;
         return;
       }
-      if ((await !checkIfUserExists(this.$store.getters.userId)) === false) {
+      const userExists = await checkIfUserExists(this.$store.getters.userId);
+      if (userExists === false) {
         this.$router.push('/signup');
       }
-      this.$router.push('/checkout');
+      else this.$router.push('/checkout');
     },
   },
 };

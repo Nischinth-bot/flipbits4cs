@@ -1,6 +1,11 @@
 <template>
   <div class="container">
     <h1 class="banner">SIGNUP</h1>
+    <img :src="getImgUrl('asu_logo.png')" />
+    <h3 class="info">
+      We just need some info from you in order to process your orders. Please
+      fill out the form below!
+    </h3>
     <form @submit.prevent="createAndExportUser()">
       <ul class="std-form">
         <li class="form-item">
@@ -85,10 +90,17 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 100vh;
   border: 1px solid black;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .std-form {
   display: flex;
   flex-direction: column;
@@ -97,10 +109,22 @@ export default {
   border-radius: 25px;
   justify-content: space-between;
   width: 25vh;
-  margin-top: 25%;
+  font-size: 25px;
 }
 
 li {
   margin: 10px;
+}
+
+.info {
+  font-size: 25px;
+  color: black;
+  margin: 2rem;
+}
+
+img {
+  width: 150px;
+  height: 50px;
+  margin-top: 2rem;
 }
 </style>

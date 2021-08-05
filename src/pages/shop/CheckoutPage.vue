@@ -38,7 +38,7 @@
 <script>
 import store from '@/store/index.js';
 import CartItem from '../../components/cart/CartItem.vue';
-import { addOrderToQueue } from '@/firebase.js';
+import { addOrderToQueue, checkIfUserExists } from '@/firebase.js';
 import BaseSpinner from '../../components/ui/wrappers/BaseSpinner.vue';
 export default {
   components: {
@@ -92,8 +92,8 @@ export default {
   /**
    * You can enter into Checkout only if you are authenticated.
    */
-  beforeRouteEnter(to, from, next) {
-    if (store.getters.isAuthenticated) next();
+  async beforeRouteEnter(to, from, next) {
+    if (store.getters.isAuthenticated && await checkIfUserExists(store.getters.userId)) next();
     else next('/cart');
   },
 };
