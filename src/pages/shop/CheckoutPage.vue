@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import store from '@/store/index.js';
 export default {
   data() {
     return {
@@ -36,6 +37,10 @@ export default {
       this.totalPrice += item.price * item.units;
     }
   },
+  beforeRouteEnter(to,from,next){
+    if(store.getters.isAuthenticated) next(); 
+    else next('/cart');
+  }
 };
 </script>
 
@@ -60,7 +65,6 @@ img {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  animation: fade 0.5s ease-in-out;
   margin-top: 5rem;
 }
 

@@ -19,9 +19,13 @@
 // import FlipBitsTile from '../../components/campaign/FlipBitsTile.vue';
 // import AppHackTile from '../../components/campaign/AppHackTile.vue';
 export default {
+  emits: ['updateCartCount'],
   components: {
     // FlipBitsTile,
     // AppHackTile,
+  },
+  mounted() {
+    this.$emit('updateCartCount');
   },
 };
 </script>

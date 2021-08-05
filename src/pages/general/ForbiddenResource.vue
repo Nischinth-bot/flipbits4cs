@@ -9,6 +9,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  emits: ['updateCartCount'],
+  created(){
+    this.$emit('updateCartCount');
+  }
+};
+</script>
+
+
 <style scoped>
 .container {
   height: 100%;

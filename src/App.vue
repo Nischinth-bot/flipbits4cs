@@ -97,6 +97,11 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.warning {
+  color: red;
+}
+
 .brown-button {
   color: white;
   background: brown;
@@ -127,5 +132,5 @@ body {
   100% {
     opacity: 1;
   }
-} 
+}
 </style>

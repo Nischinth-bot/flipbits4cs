@@ -28,9 +28,13 @@
         </base-card>
       </div>
       <div class="button" v-if="cartItems.length > 0">
-        <base-button @click="$router.push('/checkout')">
-          Proceed to Checkout
-        </base-button>
+        <base-button @click="doCheckOut()"> Proceed to Checkout </base-button>
+        <message-modal
+          :open="showSignInDialog"
+          @close="showSignInDialog = false"
+        >
+          <div class="warning">You need to sign in first!</div>
+        </message-modal>
       </div>
     </div>
   </div>
@@ -38,14 +42,27 @@
 
 <script>
 import CartItem from '../../components/cart/CartItem.vue';
+import MessageModal from '../../components/ui/wrappers/MessageModal.vue';
 export default {
-  components: { CartItem },
+  data() {
+    return { showSignInDialog: false };
+  },
+  components: { CartItem, MessageModal },
   computed: {
     cartItems() {
       return this.$store.getters.cartItems;
     },
     cartIsEmpty() {
       return this.$store.getters.cartIsEmpty;
+    },
+  },
+  methods: {
+    doCheckOut() {
+      if (!this.$store.getters.isAuthenticated) {
+        this.showSignInDialog = true;
+        return;
+      }
+      this.$router.push('/checkout');
     },
   },
 };

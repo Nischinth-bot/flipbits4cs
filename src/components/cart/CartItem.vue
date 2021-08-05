@@ -1,35 +1,31 @@
 <template>
   <div class="cart-item-alpha">
-      <div class="cart-item">
-        <div class="item-img">
-          <img :src="getImgUrl(imgLink)" />
-        </div>
-        <div class="description">
-          {{ description }}
-        </div>
-        <div class="opts">
-          <li v-for="opt in opts" :key="opt">
-            {{ opt }}
-          </li>
-        </div>
-        <div class="units">
-          {{ units }}
-        </div>
-        <div class="buttons">
-          <button @click="removeItemFromCart()" class="cart-button">
-            Remove
-          </button>
-          <!-- <base-button class="cart-button" @click="clickedEdit = true">
+    <div class="cart-item">
+      <div class="item-img">
+        <img :src="getImgUrl(imgLink)" />
+      </div>
+      <div class="description">
+        {{ description }}
+      </div>
+      <div class="opts">
+        <li v-for="opt in opts" :key="opt">
+          {{ opt }}
+        </li>
+      </div>
+      <div class="units">
+        {{ units }}
+      </div>
+      <button @click="removeItemFromCart()" class="brown-button">Remove</button>
+      <!-- <base-button class="cart-button" @click="clickedEdit = true">
           <div class="button">Edit item</div>
         </base-button> -->
-        </div>
-      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  components: {  },
+  components: {},
   data() {
     return {
       clickedRemove: false,
@@ -81,26 +77,5 @@ export default {
   flex-direction: column;
   list-style: none;
   padding-bottom: 10px;
-}
-
-.cart-button {
-  background-color: wheat;
-  font-size: 15px;
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 100%;
-  border: 1px solid black;
-}
-
-.cart-button:hover {
-  cursor: pointer;
-}
-
-.buttons {
-  display: flex;
-  flex-direction: column;
-}
-.button {
-  font-size: 12px;
 }
 </style>

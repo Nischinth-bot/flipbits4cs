@@ -31,6 +31,7 @@
 <script>
 import { getInventory } from '@/firebase';
 import { mapGetters } from 'vuex';
+import { inject, toRefs } from 'vue';
 import store from '@/store/index.js';
 import InventoryForm from '../../components/ui/forms/InventoryForm.vue';
 import InventoryItem from '../../components/admin/InventoryItem.vue';
@@ -39,6 +40,7 @@ export default {
     InventoryItem,
     InventoryForm,
   },
+  emits: ['updateCartCount'],
   data() {
     return {
       shop_items: [],
@@ -78,6 +80,17 @@ export default {
   },
   async mounted() {
     await this.loadInventory();
+    this.$emit('updateCartCount');
+  },
+  setup(props) {
+    const { isSignIn } = toRefs(props);
+    const Vue3GoogleOauth = inject('Vue3GoogleOauth');
+    const handleClickLogin = () => {};
+    return {
+      Vue3GoogleOauth,
+      handleClickLogin,
+      isSignIn,
+    };
   },
 };
 </script>

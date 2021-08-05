@@ -5,7 +5,9 @@
       {{ description }}
     </div>
     <div class="cart-wishlist">
-      <button class="brown-button" @click="showItemDialog = true">Add to Cart</button>
+      <button class="brown-button" @click="showItemDialog = true">
+        Add to Cart
+      </button>
       <base-modal
         title="Please Confirm"
         :open="showItemDialog"
@@ -28,13 +30,14 @@
           @close="showItemDialog = false"
         ></misc-form>
       </base-modal>
-      <div @click="wishlist()" :class="heartColor">&hearts;
-      <message-modal
-        :open="showWishListedDialog"
-        @close="showWishListedDialog = false"
-      >
-        <div style="color:green">Your item has been wishlisted.</div>
-      </message-modal>
+      <div @click="wishlist()" :class="heartColor">
+        &hearts;
+        <message-modal
+          :open="showWishListedDialog"
+          @close="showWishListedDialog = false"
+        >
+          <div style="color: green">Your item has been wishlisted.</div>
+        </message-modal>
       </div>
       <div class="price">${{ price }}</div>
     </div>
@@ -74,7 +77,7 @@ export default {
         this.showWishListedDialog = true;
         setTimeout(() => {
           this.showWishListedDialog = false;
-        }, 2000);
+        }, 1000);
       } else {
         this.wishlisted = false;
         return;
