@@ -42,6 +42,7 @@
 <script>
 import CartItem from '../../components/cart/CartItem.vue';
 import MessageModal from '../../components/ui/wrappers/MessageModal.vue';
+import { checkIfUserExists } from '@/firebase.js';
 export default {
   data() {
     return { showSignInDialog: false };
@@ -56,10 +57,13 @@ export default {
     },
   },
   methods: {
-    doCheckOut() {
+    async doCheckOut() {
       if (!this.$store.getters.isAuthenticated) {
         this.showSignInDialog = true;
         return;
+      }
+      if ((await !checkIfUserExists(this.$store.getters.userId)) === false) {
+        this.$router.push('/signup');
       }
       this.$router.push('/checkout');
     },

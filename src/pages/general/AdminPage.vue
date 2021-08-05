@@ -13,6 +13,7 @@
         <inventory-item
           v-for="item in shop_items"
           :key="item.key"
+          :hashKey="item.key"
           :description="item.description"
           :imgLink="item.imgLink"
           :price="item.price"
@@ -22,7 +23,7 @@
         >
         </inventory-item>
       </div>
-      <inventory-form class="inv-form"> </inventory-form>
+      <inventory-form class="inv-form" @inventoryChanged="loadInventory()"> </inventory-form>
     </div>
     <div class="orders">
       <h2>Open Orders</h2>

@@ -25,7 +25,7 @@
 <script>
 import { removeItemFromInventory } from '@/firebase';
 export default {
-  props: ['description', 'type', 'price', 'units', 'imgLink', 'hashKey'],
+  props: ['description', 'type', 'price', 'units', 'imgLink', 'key_'],
   emits: ['inventoryChanged'],
   data() {
     return {
@@ -35,8 +35,8 @@ export default {
   methods: {
     async deleteSelf() {
       this.showDialog = true;
-      console.log('Hashkey...', this.hashKey);
-      await removeItemFromInventory(this.hashKey);
+      console.log('Hashkey...', this.key_);
+      await removeItemFromInventory(this.key_);
       this.$emit('inventoryChanged');
     },
   },

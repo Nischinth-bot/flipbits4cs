@@ -109,6 +109,7 @@ body {
   text-align: center;
   margin: 1rem;
   padding: 0.25rem;
+  width: 100%;
 }
 
 .brown-button:hover {

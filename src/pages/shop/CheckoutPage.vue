@@ -59,7 +59,7 @@ export default {
     calculateCartTotal() {
       this.totalPrice = 0;
       for (const item of this.cartItems) {
-        this.totalPrice += item.price * item.units;
+        this.totalPrice += Math.round(item.price * item.units);
       }
     },
     async doConfirmOrder() {
@@ -115,8 +115,6 @@ export default {
   height: 6rem;
   width: 100%;
 }
-
-
 </style>
 
 

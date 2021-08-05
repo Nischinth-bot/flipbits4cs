@@ -2,27 +2,27 @@
   <div class="home-page">
     <h1 class="banner">HOME</h1>
     <div class="body">
-      <img :src="getImgUrl('under_construction.png')" />
-      <!-- <div class="flipbits-apphack">
-      <base-card class="flipbits-tile">
-        <flip-bits-tile></flip-bits-tile>
-      </base-card>
-      <base-card class="apphack-tile">
-        <app-hack-tile></app-hack-tile>
-      </base-card> -->
-      <!-- </div> -->
+      <!-- <img :src="getImgUrl('under_construction.png')" /> -->
+      <div class="flipbits-apphack">
+        <base-card class="flipbits-tile">
+          <flip-bits-tile></flip-bits-tile>
+        </base-card>
+        <base-card class="apphack-tile">
+          <app-hack-tile></app-hack-tile>
+        </base-card>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-// import FlipBitsTile from '../../components/campaign/FlipBitsTile.vue';
-// import AppHackTile from '../../components/campaign/AppHackTile.vue';
+import FlipBitsTile from '../../components/campaign/FlipBitsTile.vue';
+import AppHackTile from '../../components/campaign/AppHackTile.vue';
 export default {
   emits: ['updateCartCount'],
   components: {
-    // FlipBitsTile,
-    // AppHackTile,
+    FlipBitsTile,
+    AppHackTile,
   },
   mounted() {
     this.$emit('updateCartCount');

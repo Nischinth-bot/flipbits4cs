@@ -27,6 +27,7 @@
 
 <script>
 import { inject, toRefs } from 'vue';
+import { checkIfUserExists } from '@/firebase';
 export default {
   methods: {
     async handleClickSignIn() {
@@ -43,7 +44,11 @@ export default {
       }
       //Get the auth state and put it in Vuex for global visibility
       this.$store.commit('signIn', this.user);
-      this.$router.push('/signup');
+      if (await checkIfUserExists(this.$store.getters.userId) === false) {
+        this.$router.push('/signup');
+      } else {
+        this.$router.push('/shop');
+      }
       // console.log(this.$store.getters.isAuthenticated);
       // console.log(this.$store.getters.userId);
     },

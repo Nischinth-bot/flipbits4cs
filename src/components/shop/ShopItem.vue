@@ -29,6 +29,14 @@
           @itemsAddedToCart="$emit('updateCartCount')"
           @close="showItemDialog = false"
         ></misc-form>
+        <accessory-form
+          v-else-if="type === 'accessory'"
+          :description="description"
+          :imgLink="imgLink"
+          :price="price"
+          @itemsAddedToCart="$emit('updateCartCount')"
+          @close="showItemDialog = false"
+        ></accessory-form>
       </base-modal>
       <div @click="wishlist()" :class="heartColor">
         &hearts;
@@ -48,10 +56,11 @@
 import ClothesForm from '../ui/forms/ClothesForm.vue';
 import MiscForm from '../ui/forms/MiscForm.vue';
 import MessageModal from '../../components/ui/wrappers/MessageModal.vue';
+import AccessoryForm from '../ui/forms/AccessoryForm.vue';
 
 export default {
   emits: ['updateCartCount'],
-  components: { ClothesForm, MiscForm, MessageModal },
+  components: { ClothesForm, MiscForm, MessageModal, AccessoryForm },
   props: ['imgLink', 'price', 'description', 'type'],
   data() {
     return {

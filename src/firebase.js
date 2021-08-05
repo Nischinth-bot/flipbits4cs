@@ -65,11 +65,11 @@ export const addUserToUserbase = async user_obj => {
  */
 export const checkIfUserExists = async email => {
   try {
-    const userBase = await db.ref('users/').get();
-    for (const user in userBase) {
-      if (user.email === email) return true;
+    const userBase = (await db.ref('users/').get()).toJSON();
+    for (const key in userBase) {
+      if (userBase[key].email === email) return true;
     }
-    return false;
+    return false; 
   } catch (error) {
     console.log('Error from @/firebase.checkIfUserExists()', error);
   }

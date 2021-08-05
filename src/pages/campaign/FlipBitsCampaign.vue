@@ -1,7 +1,7 @@
 <template>
   <div class="campaign">
-    <h1 class="campaign-header"></h1>
-    <flip-bits></flip-bits>
+    <h1 class="banner"> CAMPAIGN </h1>
+    <flip-bits class="flip"></flip-bits>
   </div>
 </template>
 
@@ -17,10 +17,11 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 2rem;
 }
 
-.campaign-header {
-  text-align: center;
+.flip {
+  margin: 2rem;
 }
+
+
 </style>

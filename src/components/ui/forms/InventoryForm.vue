@@ -62,8 +62,7 @@ export default {
         imgLink: this.imgLink,
         units: this.units,
         type: this.type,
-        key: this.hashKey(this.desc),
-        hashKey: this.hashKey(this.desc),
+        key: Date.now(),
       };
       /** If somethings not truthy, show an error and return */
       this.isLoading = true;

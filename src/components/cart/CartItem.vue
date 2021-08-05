@@ -18,10 +18,11 @@
       <div class="price" v-if="price">
         {{ price }}
       </div>
-      <button @click="removeItemFromCart()" class="brown-button">Remove</button>
-      <!-- <base-button class="cart-button" @click="clickedEdit = true">
-          <div class="button">Edit item</div>
-        </base-button> -->
+      <div class="button">
+        <button @click="removeItemFromCart()" class="brown-button">
+          Remove
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -64,7 +65,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20%;
   text-align: center;
 }
 .cart-item img {
@@ -80,5 +80,8 @@ export default {
   flex-direction: column;
   list-style: none;
   padding-bottom: 10px;
+}
+
+.button {
 }
 </style>

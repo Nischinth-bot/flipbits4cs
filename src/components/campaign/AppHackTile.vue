@@ -14,6 +14,7 @@
 .apphack {
   display: flex;
   background: black;
+  color: gold;
   flex-direction: column;
   justify-content: center;
   align-items: center;
