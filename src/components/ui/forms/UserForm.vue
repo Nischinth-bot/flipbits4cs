@@ -63,7 +63,7 @@ export default {
         phone: this.phone,
       };
       await addUserToUserbase(user);
-      this.$emit('createdUser', user);
+      this.$emit('createdUser');
       this.showWarning = false;
       this.$router.push('/checkout');
     },

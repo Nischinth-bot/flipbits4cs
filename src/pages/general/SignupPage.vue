@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="user-form">
-      <user-form></user-form>
+      <user-form @createdUser="$router.push('/cart')"></user-form>
     </div>
   </div>
 </template>
@@ -15,9 +15,6 @@ export default {
   },
   data() {
     return {};
-  },
-  async beforeRouteEnter(to, from, next) {
-    next('/user');
   },
 };
 </script>

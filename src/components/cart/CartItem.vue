@@ -15,6 +15,9 @@
       <div class="units">
         {{ units }}
       </div>
+      <div class="price" v-if="price">
+        {{ price }}
+      </div>
       <button @click="removeItemFromCart()" class="brown-button">Remove</button>
       <!-- <base-button class="cart-button" @click="clickedEdit = true">
           <div class="button">Edit item</div>
@@ -36,7 +39,7 @@ export default {
   props: ['description', 'opts', 'type', 'price', 'key__', 'units', 'imgLink'],
   methods: {
     removeItemFromCart() {
-      console.log('Here');
+      // console.log('Here');
       this.$store.commit('removeItemFromCart', this.key__);
       this.$emit('updateCartCount');
     },

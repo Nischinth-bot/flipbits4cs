@@ -19,7 +19,6 @@
             :key__="item.key"
             :description="item.description"
             :opts="item.opts"
-            :price="item.price"
             :units="item.units"
             :imgLink="item.imgLink"
             :type="item.type"
