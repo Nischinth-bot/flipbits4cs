@@ -19,7 +19,7 @@ export const getInventory = async () => {
     const inventory = (await db.ref('inventory').get()).toJSON();
     return inventory;
   } catch (error) {
-    console.log('Error @ firebase/getInventory()', error);
+    console.log('Error @ firebase.getInventory()', error);
   }
 };
 
@@ -32,7 +32,7 @@ export const addItemToInventory = async shop_item => {
     console.log(shop_item);
     await db.ref('inventory/' + shop_item.key).set(shop_item);
   } catch (error) {
-    console.log('Error @ firebase/addItemToInventory()', error);
+    console.log('Error @ firebase.addItemToInventory()', error);
   }
 };
 
@@ -44,7 +44,7 @@ export const removeItemFromInventory = async item_key => {
   try {
     await db.ref('inventory/' + item_key).remove();
   } catch (error) {
-    console.log('Error @firebase/removeItemFromInventory()', error);
+    console.log('Error @firebase.removeItemFromInventory()', error);
   }
 };
 /**
@@ -54,9 +54,9 @@ export const removeItemFromInventory = async item_key => {
 export const addUserToUserbase = async user_obj => {
   try {
     console.log(user_obj);
-    await db.ref('users/' + user_obj.key).set(JSON.stringify(user_obj));
+    await db.ref('users/' + user_obj.key).set(user_obj);
   } catch (error) {
-    console.log('Error from @/firebase/addUserToUserBase()', error);
+    console.log('Error from @/firebase.addUserToUserBase()', error);
   }
 };
 /**
@@ -67,10 +67,39 @@ export const checkIfUserExists = async email => {
   try {
     const userBase = await db.ref('users/').get();
     for (const user in userBase) {
-      if (user.email == email) return true;
+      if (user.email === email) return true;
     }
     return false;
   } catch (error) {
-    console.log('Error from @/firebase/checkIfUserExists()', error);
+    console.log('Error from @/firebase.checkIfUserExists()', error);
+  }
+};
+/**
+ * Return user with a particular email.
+ * @param {*} email : Key to lookup users
+ */
+export const getUserByEmail = async email => {
+  try {
+    const userBase = await db.ref('users/').get();
+    for (const user in userBase) {
+      if (user.email === email) {
+        return user;
+      }
+    }
+    return null;
+  } catch (error) {
+    console.log('Error from @/firebase.getUserByEmail()', error);
+  }
+};
+
+/**
+ *
+ * @param {*} order : Add an order to the list of open orders yet to be processed.
+ */
+export const addOrderToQueue = async order => {
+  try {
+    await db.ref('orders/' + order.key).set(order);
+  } catch (error) {
+    console.log('Error from @/firebase.addOrderToQueue()', error);
   }
 };

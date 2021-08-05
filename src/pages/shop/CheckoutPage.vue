@@ -17,23 +17,38 @@
           @updateCartCount="doUpdate()"
         />
       </base-card>
+      <div class="right">
+        <div class="total-price">
+          <h3>Total: ${{ totalPrice }}</h3>
+        </div>
+        <div class="buttons">
+          <base-button v-if="cartItems.length > 0" @click="doConfirmOrder()">
+            Confirm Order
+          </base-button>
+          <base-button v-else @click="$router.push('/shop')">
+            Back To Shop
+          </base-button>
+        </div>
+      </div>
     </div>
-    <div class="total-price">
-      <h3>Total: ${{ totalPrice }}</h3>
-    </div>
+    <base-spinner v-if="isLoading"> </base-spinner>
   </div>
 </template>
 
 <script>
 import store from '@/store/index.js';
 import CartItem from '../../components/cart/CartItem.vue';
+import { addOrderToQueue } from '@/firebase.js';
+import BaseSpinner from '../../components/ui/wrappers/BaseSpinner.vue';
 export default {
   components: {
     CartItem,
+    BaseSpinner,
   },
   data() {
     return {
       totalPrice: 0,
+      isLoading: false,
     };
   },
   methods: {
@@ -46,6 +61,23 @@ export default {
       for (const item of this.cartItems) {
         this.totalPrice += item.price * item.units;
       }
+    },
+    async doConfirmOrder() {
+      const order = {
+        key: Date.now(),
+        email: this.$store.getters.userId,
+        date: new Date(),
+        order: {
+          ...this.cartItems,
+        },
+      };
+
+      console.log(order);
+      this.isLoading = true;
+      await addOrderToQueue(order);
+      this.isLoading = false;
+      this.$store.commit('refreshCart');
+      this.$emit('updateCartCount');
     },
   },
   computed: {
@@ -74,28 +106,16 @@ export default {
   flex-direction: column;
 }
 
-.checkout-item {
-  width: 700px;
+.right {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 20px;
-  margin: 10px;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 6rem;
+  width: 100%;
 }
-h1 {
-  margin-bottom: 3rem;
-}
-img {
-  width: 100px;
-  height: 100px;
-}
-.total-price {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-left: auto;
-  margin-right: 20%;
-}
+
+
 </style>
 
 

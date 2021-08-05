@@ -61,6 +61,7 @@ export default {
         addressl1: this.addressl1,
         addressl2: this.addressl2,
         phone: this.phone,
+        orders: [],
       };
       await addUserToUserbase(user);
       this.$emit('createdUser');

@@ -12,5 +12,8 @@ export default {
         return;
       }
     }
+  },
+  refreshCart(state) {
+    state.cartItems = [];
   }
 };
