@@ -16,5 +16,8 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    this.$emit('updateCartCount');
+  },
 };
 </script>

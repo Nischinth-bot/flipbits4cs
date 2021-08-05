@@ -65,9 +65,11 @@ export default {
       const userExists = await checkIfUserExists(this.$store.getters.userId);
       if (userExists === false) {
         this.$router.push('/signup');
-      }
-      else this.$router.push('/checkout');
+      } else this.$router.push('/checkout');
     },
+  },
+  mounted() {
+    this.$emit('updateCartCount');
   },
 };
 </script>

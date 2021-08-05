@@ -88,12 +88,17 @@ export default {
   },
   mounted() {
     this.calculateCartTotal();
+    this.$emit('updateCartCount');
   },
   /**
    * You can enter into Checkout only if you are authenticated.
    */
   async beforeRouteEnter(to, from, next) {
-    if (store.getters.isAuthenticated && await checkIfUserExists(store.getters.userId)) next();
+    if (
+      store.getters.isAuthenticated &&
+      (await checkIfUserExists(store.getters.userId))
+    )
+      next();
     else next('/cart');
   },
 };
