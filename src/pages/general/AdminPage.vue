@@ -1,7 +1,7 @@
 <template>
   <div class="meta">
     <div class="header">
-      <h1>
+      <h1 class="banner">
         ADMIN
         <img :src="getImgUrl('admin.png')" />
       </h1>
@@ -25,6 +25,8 @@
       </div>
       <inventory-form class="inv-form"> </inventory-form>
     </div>
+    <div class="orders"></div>
+    
   </div>
 </template>
 
@@ -97,12 +99,13 @@ export default {
 
 <style scoped>
 .meta {
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 .container {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .header {
@@ -117,13 +120,6 @@ export default {
 
 .inv-form {
   width: 25%;
-}
-
-.header h1,
-h2 {
-  color: black;
-  text-align: center;
-  margin: 2rem;
 }
 
 button {

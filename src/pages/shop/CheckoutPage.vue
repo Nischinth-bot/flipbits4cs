@@ -77,6 +77,7 @@ export default {
       await addOrderToQueue(order);
       this.isLoading = false;
       this.$store.commit('refreshCart');
+      this.calculateCartTotal();
       this.$emit('updateCartCount');
     },
   },
