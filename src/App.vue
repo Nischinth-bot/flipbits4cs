@@ -17,7 +17,7 @@
       </div>
     </div>
     <i class="fa fa-user"></i>
-    <!-- <div class="footer"></div> -->
+    <div class="footer">Footer</div>
   </div>
 </template>
 
@@ -115,6 +115,18 @@ body {
 .brown-button:hover {
   background: rgb(123, 29, 29);
   cursor: pointer;
+}
+
+.footer {
+  background: black;
+  color: gold;
+  margin-top: 100%;
+  width: 100%;
+  padding-right: 5%;
+  display: flex;
+  position: absolute;
+  justify-content: flex-end;
+  border: 1px solid black;
 }
 
 @keyframes slide-zoom {
