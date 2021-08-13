@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <h1 class="banner"> STOREFRONT  </h1>
+    <h1 class="banner">STOREFRONT</h1>
     <base-spinner v-if="isLoading"> </base-spinner>
     <div v-if="ready" class="shop-items">
       <shop-item
@@ -43,7 +43,7 @@ export default {
       console.log('Error @ ShopPage.mounted()', error);
     });
     for (const item in inventory) {
-     this.shop_items.push(inventory[item]); // Gotta use push for making changes to arrays rerender lists in Vue. 
+      this.shop_items.push(inventory[item]); // Gotta use push for making changes to arrays rerender lists in Vue.
     }
     this.isLoading = false;
     this.$store.dispatch('setInventory', this.shop_items);
@@ -60,7 +60,7 @@ export default {
 
 <style scoped>
 .wrapper {
-  width:100%;
+  width: 100%;
 }
 
 .spinner {
@@ -73,17 +73,8 @@ export default {
   flex-wrap: wrap;
   /* margin-left: 10%; */
 }
-.shop-alpha-modal:hover {
-  height: 100vh;
-  width: 100vh;
-  opacity: 100%;
-  background: gold;
-  opacity: 20%;
-  cursor: pointer;
-}
 
-.shop-alpha,
-.shop-alpha-modal {
+.shop-alpha {
   display: flex;
   overflow: auto;
 }

@@ -66,6 +66,7 @@ export default {
 <style scoped>
 .clothes-form {
   display: flex;
+  height:100%;
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
@@ -80,6 +81,7 @@ h3 {
   display: flex;
   list-style: none;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .form li {

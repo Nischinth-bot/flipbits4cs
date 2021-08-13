@@ -23,7 +23,7 @@ export default {
 <style scoped>
 .backdrop {
   position: fixed;
-  border: 1px solid black;
+  border: 1px solid rgb(214, 152, 152);
   top: 0;
   left: 0;
   width: 100%;

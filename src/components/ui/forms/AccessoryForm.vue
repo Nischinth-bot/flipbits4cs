@@ -10,11 +10,11 @@
     </ul>
     <div class="buttons">
       <base-button @click="addToCartContinueShopping()">
-        <div class="txt">
-          Continue Shopping
-        </div>
+        <div class="txt">Continue Shopping</div>
       </base-button>
-      <base-button @click="addToCartContinueShoppingAndCheckout()"> <div class="txt">Proceed to Checkout</div> </base-button>
+      <base-button @click="addToCartContinueShoppingAndCheckout()">
+        <div class="txt">Proceed to Checkout</div>
+      </base-button>
     </div>
   </div>
 </template>
@@ -51,10 +51,10 @@ export default {
       this.$emit('itemsAddedToCart');
       this.$emit('close');
     },
-    addToCartContinueShoppingAndCheckout(){
-        this.addToCartContinueShopping();
-        this.$router.push('/checkout');
-    }
+    addToCartContinueShoppingAndCheckout() {
+      this.addToCartContinueShopping();
+      this.$router.push('/checkout');
+    },
   },
 };
 </script>
@@ -62,10 +62,10 @@ export default {
 <style scoped>
 .clothes-form {
   display: flex;
+  height: 20rem;
   align-items: flex-start;
-  justify-content: space-between;
   flex-direction: column;
-  /* border: 1px solid black; */
+  justify-content: space-between;
 }
 
 h3 {
