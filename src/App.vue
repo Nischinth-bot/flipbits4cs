@@ -63,9 +63,8 @@ body {
 
 .app {
   display: flex;
-  height: 100vh;
+  height: 100%  ;
   flex-direction: column;
-  color: rgba(204, 178, 28);
 }
 
 .the-header {
@@ -122,12 +121,12 @@ body {
 
 .app .footer {
   width: 100%;
-  position: absolute;
+  text-align: center;
   background: black;
   color: gold;
   font-size: 20px;
   padding: 0.5rem;
-  margin-top: 100%;
+  margin-top: auto;
 
 }
 

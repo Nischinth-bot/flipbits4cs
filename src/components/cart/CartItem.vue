@@ -54,6 +54,7 @@ export default {
   flex-direction: column;
   justify-content: space-evenly;
   background: white;
+  color: black;
 }
 .cart-item {
   display: flex;

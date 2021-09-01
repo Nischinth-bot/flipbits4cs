@@ -23,5 +23,6 @@ export default {
   height: 25rem;
   padding: 2rem;
   margin: 2rem;
+  color: black;
 }
 </style>

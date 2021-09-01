@@ -8,13 +8,9 @@
 
 <script>
 import UserForm from '../../components/ui/forms/UserForm.vue';
-// import { checkIfUserExists } from '@/firebase.js';
 export default {
   components: {
     UserForm,
-  },
-  data() {
-    return {};
   },
   mounted() {
     this.$emit('updateCartCount');

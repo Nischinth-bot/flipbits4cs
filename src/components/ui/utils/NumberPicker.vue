@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  props: ['value'],
   emits: ['update'],
   data() {
     return {
@@ -27,13 +28,18 @@ export default {
         this.$emit('update', payload);
       }
     },
+    mounted() {
+      if (this.value) {
+        this.number = this.value;
+      }
+    },
   },
 };
 </script>
 
 <style scoped>
 .number-picker {
-  width: 25%;
+  width: 60px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;

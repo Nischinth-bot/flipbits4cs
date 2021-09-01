@@ -92,7 +92,6 @@ export default {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  border: 1px solid black;
 }
 
 form {
