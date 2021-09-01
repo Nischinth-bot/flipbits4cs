@@ -21,7 +21,7 @@ export default {
 
 <style scoped>
 .container {
-  height: 100%;
+  height: 100vh;
   background: gold;
   color: black;
   display: flex;

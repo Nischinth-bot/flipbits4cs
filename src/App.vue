@@ -1,12 +1,12 @@
 <template>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
   <div class="app">
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      />
-    </head>
     <div class="the-header">
       <the-header :numItems="numCartItems"></the-header>
     </div>
@@ -17,7 +17,7 @@
       </div>
     </div>
     <i class="fa fa-user"></i>
-    <div class="footer">Footer</div>
+    <div class="footer"> &copy; Nischinth Murari </div>
   </div>
 </template>
 
@@ -62,19 +62,20 @@ body {
 }
 
 .app {
-  height: 100vh;
   display: flex;
+  height: 100%  ;
   flex-direction: column;
-  color: rgba(204, 178, 28);
 }
 
 .the-header {
   width: 100%;
   position: fixed;
+  flex-grow: 1;
 }
 
 .sidebar-router {
   display: flex;
+  flex: 1 0 auto;
   justify-content: flex-start;
   height: 100%;
   min-width: 100%;
@@ -97,6 +98,7 @@ body {
   color: black;
   width: 100%;
   height: 100%;
+  flex: 1;
 }
 
 .warning {
@@ -117,17 +119,17 @@ body {
   cursor: pointer;
 }
 
-.footer {
+.app .footer {
+  width: 100%;
+  text-align: center;
   background: black;
   color: gold;
-  margin-top: 100%;
-  width: 100%;
-  padding-right: 5%;
-  display: flex;
-  position: absolute;
-  justify-content: flex-end;
-  border: 1px solid black;
+  font-size: 20px;
+  padding: 0.5rem;
+  margin-top: auto;
+
 }
+
 
 @keyframes slide-zoom {
   0% {

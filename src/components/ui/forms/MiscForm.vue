@@ -14,15 +14,19 @@
           <number-picker id="units" @update="updateUnits"></number-picker>
         </div>
       </li>
-    </ul>
-    <div class="buttons">
-      <base-button>
-        <div class="txt" @click="addToCartContinueShopping()">
-          Continue Shopping
+      <li>
+        <div class="buttons">
+          <base-button>
+            <div class="txt" @click="addToCartContinueShopping()">
+              Continue Shopping
+            </div>
+          </base-button>
+          <base-button>
+            <div class="txt">Proceed to Checkout</div>
+          </base-button>
         </div>
-      </base-button>
-      <base-button> <div class="txt">Proceed to Checkout</div> </base-button>
-    </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -44,8 +48,9 @@ export default {
     },
     addToCartContinueShopping() {
       // This would be the CartItem object if this was TypeScript.
+      console.log("Here");
       const addedToCart = {
-        type: "misc",
+        type: 'misc',
         description: this.description,
         units: this.selectedUnits,
         price: this.price,
@@ -55,7 +60,7 @@ export default {
         },
       };
       //Add the CartItem object to cartItems in Vuex Store and then close the modal.
-      this.$store.commit('addItemToCart',addedToCart);
+      this.$store.commit('addItemToCart', addedToCart);
       this.$emit('itemsAddedToCart');
       this.$emit('close');
     },
@@ -69,7 +74,6 @@ export default {
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
-  /* border: 1px solid black; */
 }
 
 h3 {
@@ -80,13 +84,15 @@ h3 {
   display: flex;
   list-style: none;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 41vh;
 }
 
 .form li {
   padding: 1rem;
 }
 .buttons {
-  margin-top: 10%;
 }
 
 select,

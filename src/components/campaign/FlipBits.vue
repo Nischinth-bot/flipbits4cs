@@ -142,14 +142,13 @@ h1 a.router-link-active {
   justify-content: center;
   align-items: center;
 }
-
 .content * {
   margin: 0.25rem;
 }
-
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 </style>
