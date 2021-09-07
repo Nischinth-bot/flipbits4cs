@@ -89,6 +89,7 @@ export default {
   border-radius: 20px;
   margin-bottom: auto;
   color: black;
+  margin-top: 2rem;
 }
 
 .form {

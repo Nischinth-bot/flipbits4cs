@@ -1,6 +1,6 @@
 <template>
   <div class="campaign">
-    <h1 class="banner"> CAMPAIGN </h1>
+    <h1 class="banner">CAMPAIGN</h1>
     <flip-bits class="flip"></flip-bits>
   </div>
 </template>
@@ -16,13 +16,11 @@ export default {
 .campaign {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100vh;
 }
 
 .flip {
-  margin: 5rem;
+  margin-top: 5rem;
 }
-
-
 </style>

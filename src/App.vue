@@ -126,7 +126,7 @@ body {
   color: gold;
   font-size: 20px;
   padding: 0.5rem;
-  margin-top: auto;
+  margin-top: 50vh;
 
 }
 

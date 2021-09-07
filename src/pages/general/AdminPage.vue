@@ -7,49 +7,29 @@
       </h1>
     </div>
     <div class="container">
-      <div class="inventory">
-        <h2>Current inventory</h2>
-        <base-spinner v-if="isLoading"> </base-spinner>
-        <inventory-item
-          v-for="item in shop_items"
-          :key="item.key"
-          :hashKey="item.key"
-          :description="item.description"
-          :imgLink="item.imgLink"
-          :price="item.price"
-          :type="item.type"
-          :units="item.units"
-          @inventoryChanged="inventoryUpdated = true"
-        >
-        </inventory-item>
-      </div>
-      <inventory-form class="inv-form" @inventoryChanged="loadInventory()"> </inventory-form>
-    </div>
-    <div class="orders">
-      <h2>Open Orders</h2>
-      <ul>
-        <li v-for="order in orders" :key="order.key" ><span> {{ order.key }} </span> </li>
-      </ul>
+      <admin-dashboard @changedComponent="changeComponent"> </admin-dashboard>
+      <component :is="selectedComponent"> </component>
     </div>
   </div>
 </template>
 
 <script>
-import { getInventory, getOrders } from '@/firebase';
+import { getOrders } from '@/firebase';
 import { mapGetters } from 'vuex';
-import { inject, toRefs } from 'vue';
 import store from '@/store/index.js';
+import AdminDashboard from '../../components/admin/AdminDashboard.vue';
+import InventoryList from '../../components/admin/InventoryList.vue';
 import InventoryForm from '../../components/ui/forms/InventoryForm.vue';
-import InventoryItem from '../../components/admin/InventoryItem.vue';
 export default {
   components: {
-    InventoryItem,
+    AdminDashboard,
+    InventoryList,
     InventoryForm,
   },
   emits: ['updateCartCount'],
   data() {
     return {
-      shop_items: [],
+      selectedComponent: 'InventoryList',
       orders: [],
       isLoading: false,
       inventoryUpdated: false,
@@ -59,13 +39,13 @@ export default {
     ...mapGetters(['isAuthenticated', 'userId']),
   },
   methods: {
-    /** Load the inventory from Firebase and update the state to display a spinner. */
-    async loadInventory() {
-      this.shop_items = await getInventory();
-    },
-
+    /** Load the orders from Firebase and update the state to display a spinner. */
     async loadOrders() {
       this.orders = await getOrders();
+    },
+    changeComponent(arg) {
+      console.log(arg);
+      this.selectedComponent = arg;
     },
   },
   watch: {
@@ -93,17 +73,7 @@ export default {
     await this.loadOrders();
     this.isLoading = false;
     this.$emit('updateCartCount');
-    console.log(this.orders);
-  },
-  setup(props) {
-    const { isSignIn } = toRefs(props);
-    const Vue3GoogleOauth = inject('Vue3GoogleOauth');
-    const handleClickLogin = () => {};
-    return {
-      Vue3GoogleOauth,
-      handleClickLogin,
-      isSignIn,
-    };
+    // console.log(this.orders);
   },
 };
 </script>
@@ -115,6 +85,7 @@ export default {
 }
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   margin-top: 2rem;
